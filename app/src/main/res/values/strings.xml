@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ETZ_Cocktails</string>
+    <string name="search_cocktails">Search Cocktails</string>
+    <string name="search_ingredient">Search Ingredient</string>
+    <string name="my_favorite_cocktails">My Favorite Cocktails</string>
+    <string name="my_cocktails">My Cocktails</string>
+    <string name="my_ingredients">My Ingredients</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
