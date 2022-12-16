@@ -36,15 +36,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.FavCocktails -> {replaceFragment(FavCocktails())
                     true
                 }
-
                 else -> {
                     replaceFragment(SearchCocktails())
                     true
                 }
             }
-
         }
-
     }
 
     private fun replaceFragment(fragment: Fragment) {
