@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    Default Values    -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,4 +8,30 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!--    Extra Values    -->
+    <color name="transparent">#0000FFFF</color>
+    <color name="dark_blue_medium">#414c50</color>
+    <color name="dark_blue_gray">#2d383c</color>
+    <color name="back_gray">#21FFFFFF</color>
+    <color name="pop_back_gray">#2d2d2d</color>
+    <color name="dark_blue_gray_almost_black">#192428</color>
+    <color name="dark_gray">#66000000</color>
+    <color name="blue_aqua">#D8F2F1</color>
+    <color name="color_primary_dark">#FF9CAD</color>
+    <color name="color_secondary_dark">#FF9CAD</color>
+    <color name="color_accent">#FF4081</color>
+    <color name="nice_pink">#ab0d49</color>
+    <color name="nice_pink_dark">#770933</color>
+    <color name="gold">#C8AC65</color>
+    <color name="purple_bright">#911DEE</color>
+    <color name="background_color">#f2f2f2</color>
+    <color name="blue">#03A9F4</color>
+    <color name="blue_dark">#2196F3</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="dark_blue_light">#39ace7</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="color_primary_light">#388EE9</color>
+    <color name="dark_blue_almost_light">#0784b5</color>
+    <color name="light_blue_900">#FF01579B</color>
 </resources>
