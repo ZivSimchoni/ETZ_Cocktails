@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ETZ_Cocktails</string>
+    <string name="search_cocktails">חפש קוקטייל</string>
+    <string name="search_ingredient">חפש מרכיב</string>
+    <string name="my_favorite_cocktails">מועדפים</string>
+    <string name="my_cocktails">הקוקטיילים שלי</string>
+    <string name="my_ingredients">המרכיבים שלי</string>
+    <string name="cocktail">קוקטייל</string>
+    <string name="instructions">מרכיבים</string>
+    <string name="glass">כוס</string>
+    <string name="serve">הגשה</string>
+    <string name="ing_whiskey">וויסקי</string>
+    <string name="ing_rum">רום</string>
+    <string name="ing_gin">ג\'ין</string>
+    <string name="ing_tequila">טקילה</string>
+    <string name="ing_vodka">וודקה</string>
+</resources>

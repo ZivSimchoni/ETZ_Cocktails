@@ -1,10 +1,64 @@
 <resources>
+    <!--   ETC    -->
     <string name="app_name">ETZ_Cocktails</string>
     <string name="search_cocktails">Search Cocktails</string>
     <string name="search_ingredient">Search Ingredient</string>
     <string name="my_favorite_cocktails">Favorite Cocktails</string>
     <string name="my_cocktails">My Cocktails</string>
     <string name="my_ingredients">My Ingredients</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cocktail">Cocktail</string>
+    <string name="instructions">Instructions</string>
+    <string name="glass">Glass</string>
+    <string name="serve">Serve</string>
+    <!--   Ingredients    -->
+    <string name="ing_whiskey">Whiskey</string>
+    <string name="ing_rum">Rum</string>
+    <string name="ing_gin">Gin</string>
+    <string name="ing_tequila">Tequila</string>
+    <string name="ing_vodka">Vodka</string>
+    <string name="ing_lemon">Lemon</string>
+    <!--   Glasses    -->
+    <string name="tag_lowBall">Lowball Glass</string>
+    <string name="tag_oldFashioned">Old-fashioned Glass</string>
+    <string name="tag_whiskey">Whiskey Glass</string>
+    <string name="tag_highBall">Highball Glass</string>
+    <string name="tag_CocktailGlass">Cocktail Glass</string>
+    <string name="tag_jar">Jar</string>
+    <string name="tag_hurricane">Hurricane Glass</string>
+    <string name="tag_collins">Collins Glass</string>
+    <!--   Tags    -->
+    <!-- IBA = international bar association   -->
+    <string name="tag_iba">IBA</string>
+    <string name="tag_alcoholic">Alcoholic</string>
+    <string name="tag_classic">Classic</string>
+    <string name="tag_classy">Classy</string>
+    <string name="tag_beach">Beach</string>
+    <string name="tag_dinnerParty">Dinner Party</string>
+    <string name="tag_colorful">Colorful</string>
+    <string name="tag_summer">Summer</string>
+    <string name="tag_winter">Winter</string>
+    <string name="tag_fresh">Fresh</string>
+    <string name="tag_dairy">Dairy</string>
+    <string name="tag_dark">Dark</string>
+    <string name="tag_nutty">Nutty</string>
+    <string name="tag_nature">Nature</string>
+    <string name="tag_frozen">Frozen</string>
+    <string name="tag_cold">Cold</string>
+    <string name="tag_hot">Hot</string>
+    <string name="tag_fruity">Fruity</string>
+    <string name="tag_sweet">Sweet</string>
+    <string name="tag_spicy">Spicy</string>
+    <string name="tag_sour">Sour</string>
+    <string name="tag_savory">Savory</string>
+    <string name="tag_breakfast">Breakfast</string>
+    <string name="tag_brunch">Brunch</string>
+    <string name="tag_hangover">Hangover</string>
+    <string name="tag_strong">Strong</string>
+    <!--   Units    -->
+    <string name="unit_ml">ml</string>
+    <string name="unit_cl">cl</string>
+    <string name="unit_oz">oz</string>
+    <string name="unit_dash">Dash</string>
+    <string name="unit_drop">Drops</string>
+    <string name="unit_tsp">Table Spoon</string>
 </resources>
