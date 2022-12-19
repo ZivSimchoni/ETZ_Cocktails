@@ -1,6 +1,6 @@
 <resources>
     <!--   ETC    -->
-    <string name="app_name">ETZ_Cocktails</string>
+    <string name="app_name">ETZ Cocktails</string>
     <string name="search_cocktails">Search Cocktails</string>
     <string name="search_ingredient">Search Ingredient</string>
     <string name="my_favorite_cocktails">Favorite Cocktails</string>
@@ -10,6 +10,12 @@
     <string name="instructions">Instructions</string>
     <string name="glass">Glass</string>
     <string name="serve">Serve</string>
+    <!--   Add A Cocktail    -->
+    <string name="add_name">Enter Cocktail Name: </string>
+    <string name="add_ing">Enter Ingredient Name: </string>
+    <string name="add_measure">Enter Ingredient Measure: </string>
+    <string name="add_photo">Enter Cocktail Photo: </string>
+    <string name="add_save">Save</string>
     <!--   Ingredients    -->
     <string name="ing_whiskey">Whiskey</string>
     <string name="ing_rum">Rum</string>
@@ -18,14 +24,16 @@
     <string name="ing_vodka">Vodka</string>
     <string name="ing_lemon">Lemon</string>
     <!--   Glasses    -->
-    <string name="tag_lowBall">Lowball Glass</string>
-    <string name="tag_oldFashioned">Old-fashioned Glass</string>
-    <string name="tag_whiskey">Whiskey Glass</string>
-    <string name="tag_highBall">Highball Glass</string>
-    <string name="tag_CocktailGlass">Cocktail Glass</string>
-    <string name="tag_jar">Jar</string>
-    <string name="tag_hurricane">Hurricane Glass</string>
-    <string name="tag_collins">Collins Glass</string>
+    <string name="glass_lowBall">Lowball Glass</string>
+    <string name="glass_oldFashioned">Old-fashioned Glass</string>
+    <string name="glass_whiskey">Whiskey Glass</string>
+    <string name="glass_highBall">Highball Glass</string>
+    <string name="glass_CocktailGlass">Cocktail Glass</string>
+    <string name="glass_jar">Jar</string>
+    <string name="glass_hurricane">Hurricane Glass</string>
+    <string name="glass_collins">Collins Glass</string>
+    <string name="glass_shot">Shot Glass</string>
+    <string name="glass_martini">Martini Glass</string>
     <!--   Tags    -->
     <!-- IBA = international bar association   -->
     <string name="tag_iba">IBA</string>
