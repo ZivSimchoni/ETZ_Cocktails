@@ -10,25 +10,74 @@
         android:id="@+id/mainActivity"
         android:name="com.example.ETZcocktails.MainActivity"
         android:label="activity_main"
-        tools:layout="@layout/activity_main" />
-    <fragment
-        android:id="@+id/favCocktails"
-        android:name="com.example.ETZcocktails.FavCocktails"
-        android:label="fragment_fav_cocktails"
-        tools:layout="@layout/fragment_fav_cocktails" />
-    <fragment
-        android:id="@+id/searchCocktails2"
-        android:name="com.example.ETZcocktails.SearchCocktails"
-        android:label="fragment_search_cocktails"
-        tools:layout="@layout/fragment_search_cocktails" />
-    <fragment
-        android:id="@+id/searchIngredient2"
-        android:name="com.example.ETZcocktails.SearchIngredient"
-        android:label="fragment_search_ingredient"
-        tools:layout="@layout/fragment_search_ingredient" />
+        tools:layout="@layout/activity_main"/>
     <fragment
         android:id="@+id/myCocktails2"
-        android:name="com.example.ETZcocktails.MyCocktails"
+        android:name="com.example.ETZcocktails.ui.MyCocktails"
         android:label="fragment_my_cocktails"
-        tools:layout="@layout/fragment_my_cocktails" />
+        tools:layout="@layout/fragment_my_cocktails" >
+        <action
+            android:id="@+id/action_myCocktails2_to_addCocktail2"
+            app:destination="@id/addCocktail2" />
+        <action
+            android:id="@+id/action_myCocktails2_to_mainActivity"
+            app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_myCocktails2_to_favCocktails"
+            app:destination="@id/favCocktails" />
+        <action
+            android:id="@+id/action_myCocktails2_to_searchCocktails2"
+            app:destination="@id/searchCocktails2" />
+        <action
+            android:id="@+id/action_myCocktails2_to_searchIngredient2"
+            app:destination="@id/searchIngredient2" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCocktail2"
+        android:name="com.example.ETZcocktails.ui.add_cocktail.AddCocktail"
+        android:label="fragment_add_cocktail"
+        tools:layout="@layout/fragment_add_cocktail" >
+        <action
+            android:id="@+id/action_addCocktail2_to_myCocktails2"
+            app:destination="@id/myCocktails2" />
+    </fragment>
+    <fragment
+        android:id="@+id/favCocktails"
+        android:name="com.example.ETZcocktails.ui.FavCocktails"
+        android:label="fragment_fav_cocktails"
+        tools:layout="@layout/fragment_fav_cocktails" >
+        <action
+            android:id="@+id/action_favCocktails_to_mainActivity"
+            app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_favCocktails_to_searchCocktails2"
+            app:destination="@id/searchCocktails2" />
+        <action
+            android:id="@+id/action_favCocktails_to_searchIngredient2"
+            app:destination="@id/searchIngredient2" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchCocktails2"
+        android:name="com.example.ETZcocktails.ui.SearchCocktails"
+        android:label="fragment_search_cocktails"
+        tools:layout="@layout/fragment_search_cocktails" >
+        <action
+            android:id="@+id/action_searchCocktails2_to_mainActivity"
+            app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_searchCocktails2_to_searchIngredient2"
+            app:destination="@id/searchIngredient2" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchIngredient2"
+        android:name="com.example.ETZcocktails.ui.SearchIngredient"
+        android:label="fragment_search_ingredient"
+        tools:layout="@layout/fragment_search_ingredient" >
+        <action
+            android:id="@+id/action_searchIngredient2_to_mainActivity"
+            app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_searchIngredient2_to_searchCocktails2"
+            app:destination="@id/searchCocktails2" />
+    </fragment>
 </navigation>
