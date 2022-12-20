@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.ETZcocktails.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.example.ETZcocktails.ui.SearchCocktails
+import com.example.ETZcocktails.ui.SearchIngredient
+import com.example.ETZcocktails.ui.MyCocktails
+import com.example.ETZcocktails.ui.FavCocktails
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,9 +48,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager: FragmentManager = supportFragmentManager
-        val fragnentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragnentTransaction.replace(R.id.frameLayout, fragment)
-        fragnentTransaction.commit()
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.commit()
     }
 }
 

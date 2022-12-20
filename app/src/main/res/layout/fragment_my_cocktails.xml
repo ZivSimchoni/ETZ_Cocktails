@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyCocktails">
+    tools:context=".ui.MyCocktails">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="MY COCK" 
+        android:text="@string/my_cocktails"
+        android:fontFamily="@font/oxygen_bold"
         android:textAlignment="center"/>
 
 </FrameLayout>
