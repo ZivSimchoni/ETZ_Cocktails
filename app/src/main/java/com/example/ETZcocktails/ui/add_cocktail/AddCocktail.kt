@@ -1,60 +1,74 @@
 package com.example.ETZcocktails.ui.add_cocktail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.ETZcocktails.Cocktail
+import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.R
+import com.example.ETZcocktails.databinding.FragmentAddCocktailBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddCocktail.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddCocktail : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private var _binding : FragmentAddCocktailBinding? = null
+
+    private val binding get() = _binding!!
+
+    private var imageUri: Uri? = null
+
+    private val viewModel : CocktailViewModel by activityViewModels()
+
+    val pickImageLauncher : ActivityResultLauncher<Array<String>> =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) {
+            binding.resultImage.setImageURI(it)
+            requireActivity().contentResolver.takePersistableUriPermission(it!!, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            imageUri = it
         }
-    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_cocktail, container, false)
+
+        _binding = FragmentAddCocktailBinding.inflate(inflater,container,false)
+
+        binding.finishBtn.setOnClickListener {
+
+            val cocktail  = Cocktail(1, "A Cocktail","try for yourselves",
+            "",
+                "IBA","Nutz","Alcoholic","lowBall","leftB","rightB","it",
+                "null","null","null","null","null","null",
+                "null","null","null","null","null","null","null",
+                "null","null","null","null", imageUri.toString())
+            print("Cocktail Added:\n${cocktail}")
+            viewModel.addItem(cocktail)
+
+            //findNavController().navigate(R.id.action_myCocktails2_to_addCocktail)
+
+            }
+
+        binding.imageBtn.setOnClickListener {
+            pickImageLauncher.launch(arrayOf("image/*"))
+        }
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddCocktail.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddCocktail().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

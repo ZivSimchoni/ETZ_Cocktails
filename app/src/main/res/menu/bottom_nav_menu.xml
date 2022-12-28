@@ -17,4 +17,11 @@
     <item android:title="@string/my_cocktails"
         android:id="@+id/myCocktails"
         android:icon="@drawable/ic_star_rate"/>
+
+    <!-- TEST   -->
+    <item android:title="add_CockTail"
+        android:id="@+id/addCocktail"
+        android:icon="@drawable/ic_baseline_add_24"/>
+    <!-- TEST   -->
+
 </menu>

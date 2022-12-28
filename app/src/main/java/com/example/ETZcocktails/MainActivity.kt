@@ -10,6 +10,7 @@ import com.example.ETZcocktails.ui.SearchCocktails
 import com.example.ETZcocktails.ui.SearchIngredient
 import com.example.ETZcocktails.ui.MyCocktails
 import com.example.ETZcocktails.ui.FavCocktails
+import com.example.ETZcocktails.ui.add_cocktail.AddCocktail
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +39,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.FavCocktails -> {replaceFragment(FavCocktails())
                     true
                 }
+                // ############ TEST ############
+                R.id.addCocktail -> { replaceFragment(AddCocktail())
+                 true
+                }
+                // ############ TEST ############
                 else -> {
                     replaceFragment(SearchCocktails())
                     true

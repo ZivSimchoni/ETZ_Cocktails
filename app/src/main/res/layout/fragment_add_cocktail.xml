@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.add_cocktail.AddCocktail"
-    android:padding="16dp">
+    tools:context=".ui.add_cocktail.AddCocktail">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -48,7 +47,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
         android:id="@+id/result_image"
-        android:src="@mipmap/ic_launcher" />
+        android:autofillHints="photo"
+        android:src="@mipmap/ic_launcher"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -57,6 +57,5 @@
         android:id="@+id/finish_btn"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"/>
-
 
 </LinearLayout>
