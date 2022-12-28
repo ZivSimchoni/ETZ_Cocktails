@@ -18,13 +18,17 @@
         tools:layout="@layout/fragment_my_cocktails" >
         <action
             android:id="@+id/action_myCocktails2_to_addCocktail2"
-            app:destination="@id/addCocktail2" />
+            app:destination="@id/addCocktail2"
+            app:popEnterAnim="@anim/slide_down"
+            app:popExitAnim="@anim/slide_up" />
         <action
             android:id="@+id/action_myCocktails2_to_mainActivity"
             app:destination="@id/mainActivity" />
         <action
             android:id="@+id/action_myCocktails2_to_favCocktails"
-            app:destination="@id/favCocktails" />
+            app:destination="@id/favCocktails"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_myCocktails2_to_searchCocktails2"
             app:destination="@id/searchCocktails2" />
@@ -39,7 +43,9 @@
         tools:layout="@layout/fragment_add_cocktail" >
         <action
             android:id="@+id/action_addCocktail2_to_myCocktails2"
-            app:destination="@id/myCocktails2" />
+            app:destination="@id/myCocktails2"
+            app:popEnterAnim="@anim/bounce"
+            app:popExitAnim="@anim/fade" />
     </fragment>
     <fragment
         android:id="@+id/favCocktails"
