@@ -9,10 +9,13 @@ import java.io.Serializable
 
 @Entity(tableName = "cocktails")
 data class Cocktail(
-    
+
     @PrimaryKey()
     @ColumnInfo(name = "id")
     val id:Int,
+//    @PrimaryKey(autoGenerate = true)
+//    @ColumnInfo(name = "id")
+//    var id : Int = 0,
 
     @ColumnInfo(name = "name")
     val name:String,
