@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -15,16 +17,16 @@ import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.MainActivity
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.databinding.FragmentMyCocktailsBinding
+import com.example.ETZcocktails.ui.add_cocktail.AddCocktail
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MyCocktails : Fragment() {
 
     private var _binding : FragmentMyCocktailsBinding? = null
 
-    private val binding get() = _binding!!
-
     val viewModel : CocktailViewModel by activityViewModels()
 
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,8 @@ class MyCocktails : Fragment() {
                 "null","null","null","null","null","null","null",
                 "null","null","null","null", "imageUri.toString()")
             print("Cocktail #2 Added: ${cocktail.name}\n")
+            //findNavController().navigate(R.id.action_myCocktails2_to_addCocktail)
+            replaceFragment(AddCocktail())
         }
 
 //        binding.fab.setOnClickListener{
@@ -67,5 +71,12 @@ class MyCocktails : Fragment() {
         super.onDestroy()
 //        setMenuVisibility(true)
         _binding = null
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.commit()
     }
 }

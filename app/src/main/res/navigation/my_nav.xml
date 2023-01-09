@@ -30,7 +30,8 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_in_left"
             app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_in_left" />
+            app:popExitAnim="@android:anim/slide_in_left"
+            app:popUpTo="@id/myCocktails2" />
     </fragment>
     <fragment
         android:id="@+id/searchCocktails2"

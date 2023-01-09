@@ -41,18 +41,18 @@ class AddCocktail : Fragment() {
     ): View? {
 
         _binding = FragmentAddCocktailBinding.inflate(inflater,container,false)
-
+        var index = 1
         binding.finishBtn.setOnClickListener {
 
-            val cocktail  = Cocktail(1, "A Cocktail","try for yourselves",
+            val cocktail  = Cocktail(index, binding.addCocktailName.text.toString(),"try for yourselves",
             "",
-                "IBA","Nutz","Alcoholic","lowBall","leftB","rightB","it",
+                "IBA","Nutz","Alcoholic","lowBall", binding.addCocktailIngredient.text.toString(),"rightB","it",
                 "null","null","null","null","null","null",
                 "null","null","null","null","null","null","null",
                 "null","null","null","null", imageUri.toString())
             print("Cocktail Added:\n${cocktail}")
             viewModel.addItem(cocktail)
-
+            index ++
             //findNavController().navigate(R.id.action_myCocktails2_to_addCocktail)
 
             }

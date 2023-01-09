@@ -39,11 +39,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.FavCocktails -> {replaceFragment(FavCocktails())
                     true
                 }
-                // ############ TEST ############
-                R.id.addCocktail -> { replaceFragment(AddCocktail())
-                 true
-                }
-                // ############ TEST ############
                 else -> {
                     replaceFragment(SearchCocktails())
                     true
