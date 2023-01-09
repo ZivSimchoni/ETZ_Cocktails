@@ -18,7 +18,7 @@ object RetrofitHelper {
             .build()
         cocktailapi = retrofit.create(CocktailAPI::class.java)
     }
-    fun fetchACock(): Call<CocktailList?>?{
-        return cocktailapi.fetchACock()
+    fun fetchACock(CockToSearch: String): Call<CocktailList?>?{
+        return cocktailapi.fetchACock(CockToSearch)
     }
 }

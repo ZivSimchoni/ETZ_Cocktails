@@ -122,7 +122,7 @@ class CocktailTEST {
     var strMeasure5: String? = null
 
     override fun toString(): String {
-        return idDrink.toString() + strDrink+strInstructions+strDrinkThumb+strIngredient1+strIngredient2+strIngredient3+strIngredient4+strIngredient5+strMeasure1+strMeasure2+strMeasure3+strMeasure4+strMeasure5
+        return "id:" + idDrink.toString()+"   " + strDrink+strInstructions+strDrinkThumb+strIngredient1+strIngredient2+strIngredient3+strIngredient4+strIngredient5+strMeasure1+strMeasure2+strMeasure3+strMeasure4+strMeasure5
     }
 }
 
