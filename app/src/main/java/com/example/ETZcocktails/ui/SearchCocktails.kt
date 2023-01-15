@@ -7,9 +7,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.data.models.RetrofitHelper
+import com.example.ETZcocktails.utils.autoCleared
+import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,16 +30,16 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class SearchCocktails : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var binding : SearchCocktails by autoCleared()
+
+    //private val viewModel: cocktail_view_list by viewModels()
+
+    private lateinit var  adapter: CocktailAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
         }
 
 
@@ -51,6 +54,7 @@ class SearchCocktails : Fragment() {
             ) {
                 if (response.body() != null) {
                     val cocktailList = response.body()!!.drinks!!
+                    printCocktails(cocktailList)
                     for (cocktail in cocktailList) {
                         println(cocktail.strDrink)
                     }
@@ -63,6 +67,14 @@ class SearchCocktails : Fragment() {
             }
 
         })
+
+
+    }
+
+    fun printCocktails(cocktailList: List<Cocktail>) {
+        adapter = CocktailAdapter(cocktailList)
+        binding.charactersRv.layoutManager = LinearLayoutManager(requireContext())
+        binding.charactersRv.adapter = adapter
     }
 
     override fun onCreateView(
