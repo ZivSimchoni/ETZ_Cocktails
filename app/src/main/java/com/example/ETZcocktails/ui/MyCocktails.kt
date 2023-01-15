@@ -39,26 +39,8 @@ class MyCocktails : Fragment() {
         _binding = FragmentMyCocktailsBinding.inflate(inflater,container,false)
 
         binding.btnAddCocktail.setOnClickListener{
-            val cocktail  = Cocktail(1, "A Cocktail","try for yourselves",
-                "",
-                "IBA","NutZ","Alcoholic","lowBall","leftB","rightB","it",
-                "null","null","null","null","null","null",
-                "null","null","null","null","null","null","null",
-                "null","null","null","null", "imageUri.toString()")
-            print("Cocktail #2 Added: ${cocktail.name}\n")
-            //findNavController().navigate(R.id.action_myCocktails2_to_addCocktail)
             replaceFragment(AddCocktail())
         }
-
-//        binding.fab.setOnClickListener{
-//            val cocktail  = Cocktail(1, "Ziv Cock's","try for yourselves",
-//                "",
-//                "IBA","Nutz","Alcoholic","lowBall","leftB","rightB","it",
-//                "null","null","null","null","null","null",
-//                "null","null","null","null","null","null","null",
-//                "null","null","null","null", "imageUri.toString()")
-//            print("Cocktail #2 Added: ${cocktail.name}\n")
-//        }
 
         return binding.root
     }
