@@ -44,12 +44,13 @@ class AddCocktail : Fragment() {
         var index = 1
         binding.finishBtn.setOnClickListener {
 
-            val cocktail  = Cocktail(index, binding.addCocktailName.text.toString(),"try for yourselves",
-            "",
-                "IBA","Nutz","Alcoholic","lowBall", binding.addCocktailIngredient.text.toString(),"rightB","it",
-                "null","null","null","null","null","null",
-                "null","null","null","null","null","null","null",
-                "null","null","null","null", imageUri.toString())
+            val cocktail  = Cocktail(index, binding.addCocktailName.text.toString(), binding.addCocktailInstructions.text.toString(),
+            "","NULL","Nutz","Alcoholic","lowBall",
+                binding.addCocktailIngredient1.text.toString(),binding.addCocktailIngredient2.text.toString(),binding.addCocktailIngredient3.text.toString(),binding.addCocktailIngredient4.text.toString(),
+                binding.addCocktailIngredient5.text.toString(),"null","null","null","null","null",
+                binding.addCocktailIngredient1measure.text.toString(),binding.addCocktailIngredient2measure.text.toString(),binding.addCocktailIngredient3measure.text.toString(),binding.addCocktailIngredient4measure.text.toString(),
+                binding.addCocktailIngredient5measure.text.toString(),"null","null","null","null","null",
+                imageUri.toString())
             print("Cocktail Added:\n${cocktail}")
             viewModel.addItem(cocktail)
             index ++

@@ -11,10 +11,11 @@
     <string name="glass">Glass</string>
     <string name="serve">Serve</string>
     <!--   Add A Cocktail    -->
-    <string name="add_name">Enter Cocktail Name: </string>
-    <string name="add_ing">Enter Ingredient Name: </string>
-    <string name="add_measure">Enter Ingredient Measure: </string>
-    <string name="add_photo">Enter Cocktail Photo: </string>
+    <string name="add_name">Enter Cocktail Name</string>
+    <string name="add_instructions">Enter Cocktail\'s Instructions</string>
+    <string name="add_ing">Enter Ingredient Name</string>
+    <string name="add_measure">Enter Ingredient Measure</string>
+    <string name="add_photo">Enter Cocktail Photo</string>
     <string name="add_save">Save</string>
     <!--   Ingredients    -->
     <string name="ing_whiskey">Whiskey</string>
