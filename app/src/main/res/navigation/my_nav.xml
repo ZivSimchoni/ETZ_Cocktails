@@ -18,6 +18,13 @@
             app:popExitAnim="@anim/slide_in_right"
             app:popUpTo="@id/myCocktails2"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_myCocktails2_to_searchCocktails2"
+            app:destination="@id/searchCocktails2"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/fade"
+            app:popEnterAnim="@anim/accelerated"
+            app:popExitAnim="@anim/bounce" />
     </fragment>
     <fragment
         android:id="@+id/addCocktail"
@@ -37,5 +44,13 @@
         android:id="@+id/searchCocktails2"
         android:name="com.example.ETZcocktails.ui.SearchCocktails"
         android:label="fragment_search_cocktails"
-        tools:layout="@layout/fragment_search_cocktails" />
+        tools:layout="@layout/fragment_search_cocktails" >
+        <action
+            android:id="@+id/action_searchCocktails2_to_myCocktails2"
+            app:destination="@id/myCocktails2"
+            app:enterAnim="@anim/rotate"
+            app:exitAnim="@anim/rotation"
+            app:popEnterAnim="@anim/sequential"
+            app:popExitAnim="@anim/slide_up" />
+    </fragment>
 </navigation>

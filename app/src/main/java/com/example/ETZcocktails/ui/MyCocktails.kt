@@ -16,6 +16,7 @@ import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.MainActivity
 import com.example.ETZcocktails.R
+import com.example.ETZcocktails.data.repository.CocktailRepository
 import com.example.ETZcocktails.databinding.FragmentMyCocktailsBinding
 import com.example.ETZcocktails.ui.add_cocktail.AddCocktail
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -42,6 +43,16 @@ class MyCocktails : Fragment() {
             replaceFragment(AddCocktail())
         }
 
+        binding.btnDeleteCocktail.setOnClickListener{
+            //TODO delete all DB
+        }
+
+        if (viewModel.items != null)
+        {
+            //TODO show all cocktails - this is a temp value
+            binding.textMyCocktailName.text = viewModel.items.toString()
+        }
+
         return binding.root
     }
 
@@ -51,7 +62,6 @@ class MyCocktails : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-//        setMenuVisibility(true)
         _binding = null
     }
 

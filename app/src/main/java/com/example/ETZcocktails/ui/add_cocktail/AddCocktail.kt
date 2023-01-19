@@ -12,8 +12,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
+import com.example.ETZcocktails.MainActivity
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.databinding.FragmentAddCocktailBinding
 
@@ -43,9 +45,9 @@ class AddCocktail : Fragment() {
         _binding = FragmentAddCocktailBinding.inflate(inflater,container,false)
         var index = 1
         binding.finishBtn.setOnClickListener {
-
+            // TODO Input Validation!
             val cocktail  = Cocktail(index, binding.addCocktailName.text.toString(), binding.addCocktailInstructions.text.toString(),
-            "","NULL","Nutz","Alcoholic","lowBall",
+            "","null","Nutz","Alcoholic","lowBall",
                 binding.addCocktailIngredient1.text.toString(),binding.addCocktailIngredient2.text.toString(),binding.addCocktailIngredient3.text.toString(),binding.addCocktailIngredient4.text.toString(),
                 binding.addCocktailIngredient5.text.toString(),"null","null","null","null","null",
                 binding.addCocktailIngredient1measure.text.toString(),binding.addCocktailIngredient2measure.text.toString(),binding.addCocktailIngredient3measure.text.toString(),binding.addCocktailIngredient4measure.text.toString(),
@@ -54,6 +56,7 @@ class AddCocktail : Fragment() {
             print("Cocktail Added:\n${cocktail}")
             viewModel.addItem(cocktail)
             index ++
+
             //findNavController().navigate(R.id.action_myCocktails2_to_addCocktail)
 
             }

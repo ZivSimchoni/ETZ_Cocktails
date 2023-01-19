@@ -22,6 +22,28 @@
         android:text="Add Cocktail"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:cornerRadius="16dp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_Delete_Cocktail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove Cocktail"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cornerRadius="16dp"
+        android:paddingLeft="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_MyCocktailName"
+        android:hint="cocktail_name"
+        android:text="@string/add_name"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_cocktail"
+        app:layout_constraintStart_toStartOf="@id/btn_add_cocktail"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout >
