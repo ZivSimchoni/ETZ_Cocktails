@@ -51,4 +51,26 @@
     <string name="unit_ml">מ\"ל</string>
     <string name="unit_drop">טיפות</string>
     <string name="unit_tsp">כפית</string>
+    <string name="add_ing1">הכניסו שם מרכיב #1</string>
+    <string name="add_ing2">הכניסו שם מרכיב #2</string>
+    <string name="add_ing3">הכניסו שם מרכיב #3</string>
+    <string name="add_ing4">הכניסו שם מרכיב #4</string>
+    <string name="add_ing5">הכניסו שם מרכיב #5</string>
+    <string name="add_ing6">הכניסו שם מרכיב #6</string>
+    <string name="add_ing7">הכניסו שם מרכיב #7</string>
+    <string name="add_ing8">הכניסו שם מרכיב #8</string>
+    <string name="add_ing9">הכניסו שם מרכיב #9</string>
+    <string name="add_ing10">הכניסו שם מרכיב #10</string>
+    <string name="add_measure1">הכניסו כמות מרכיב #1</string>
+    <string name="add_measure10">הכניסו כמות מרכיב #10</string>
+    <string name="add_measure9">הכניסו כמות מרכיב #9</string>
+    <string name="add_measure8">הכניסו כמות מרכיב #8</string>
+    <string name="add_measure7">הכניסו כמות מרכיב #7</string>
+    <string name="add_measure6">הכניסו כמות מרכיב #6</string>
+    <string name="add_measure5">הכניסו כמות מרכיב #5</string>
+    <string name="add_measure4">הכניסו כמות מרכיב #4</string>
+    <string name="add_measure3">הכניסו כמות מרכיב #3</string>
+    <string name="add_measure2">הכניסו כמות מרכיב #2</string>
+    <string name="unit_dash">טיפות</string>
+    <string name="unit_cl">ס\"ל</string>
 </resources>

@@ -14,7 +14,27 @@
     <string name="add_name">Enter Cocktail Name</string>
     <string name="add_instructions">Enter Cocktail\'s Instructions</string>
     <string name="add_ing">Enter Ingredient Name</string>
+    <string name="add_ing1">Enter Ingredient #1 Name</string>
+    <string name="add_ing2">Enter Ingredient #2 Name</string>
+    <string name="add_ing3">Enter Ingredient #3 Name</string>
+    <string name="add_ing4">Enter Ingredient #4 Name</string>
+    <string name="add_ing5">Enter Ingredient #5 Name</string>
+    <string name="add_ing6">Enter Ingredient #6 Name</string>
+    <string name="add_ing7">Enter Ingredient #7 Name</string>
+    <string name="add_ing8">Enter Ingredient #8 Name</string>
+    <string name="add_ing9">Enter Ingredient #9 Name</string>
+    <string name="add_ing10">Enter Ingredient #10 Name</string>
     <string name="add_measure">Enter Ingredient Measure</string>
+    <string name="add_measure1">Enter Ingredient #1 Measure</string>
+    <string name="add_measure2">Enter Ingredient #2 Measure</string>
+    <string name="add_measure3">Enter Ingredient #3 Measure</string>
+    <string name="add_measure4">Enter Ingredient #4 Measure</string>
+    <string name="add_measure5">Enter Ingredient #5 Measure</string>
+    <string name="add_measure6">Enter Ingredient #6 Measure</string>
+    <string name="add_measure7">Enter Ingredient #7 Measure</string>
+    <string name="add_measure8">Enter Ingredient #8 Measure</string>
+    <string name="add_measure9">Enter Ingredient #9 Measure</string>
+    <string name="add_measure10">Enter Ingredient #10 Measure</string>
     <string name="add_photo">Enter Cocktail Photo</string>
     <string name="add_save">Save</string>
     <!--   Ingredients    -->
