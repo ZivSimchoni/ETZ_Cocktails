@@ -54,7 +54,7 @@ class SearchCocktails : Fragment() {
             ) {
                 if (response.body() != null) {
                     val cocktailList = response.body()!!.drinks!!
-                    printCocktails(cocktailList)
+                    //printCocktails(cocktailList) // error so comment
                     for (cocktail in cocktailList) {
                         println(cocktail.strDrink)
                     }
@@ -71,11 +71,12 @@ class SearchCocktails : Fragment() {
 
     }
 
-    fun printCocktails(cocktailList: List<Cocktail>) {
-        adapter = CocktailAdapter(cocktailList)
-        binding.charactersRv.layoutManager = LinearLayoutManager(requireContext())
-        binding.charactersRv.adapter = adapter
-    }
+    // error so comment
+//    fun printCocktails(cocktailList: List<Cocktail>) {
+//        adapter = CocktailAdapter(cocktailList)
+//        binding.charactersRv.layoutManager = LinearLayoutManager(requireContext())
+//        binding.charactersRv.adapter = adapter
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
