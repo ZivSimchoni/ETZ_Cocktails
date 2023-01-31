@@ -46,7 +46,7 @@ class SearchCocktails : Fragment() {
             }
 
     fun getCocktails(CockToSearch :String){
-        val API = RetrofitHelper.fetchACock(CockToSearch)
+        val API = RetrofitHelper.FetchCocktailByName(CockToSearch)
         API?.enqueue(object: Callback<CocktailList?> {
             override fun onResponse(
                 call: Call<CocktailList?>,

@@ -12,9 +12,9 @@
 
     <item android:title="@string/my_favorite_cocktails"
         android:id="@+id/FavCocktails"
-        android:icon="@drawable/ic_favorite_24"/>
+        android:icon="@drawable/ic_star_rate"/>
 
     <item android:title="@string/my_cocktails"
         android:id="@+id/myCocktails"
-        android:icon="@drawable/ic_star_rate"/>
+        android:icon="@drawable/ic_favorite_24"/>
 </menu>

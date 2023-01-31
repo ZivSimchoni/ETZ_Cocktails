@@ -18,7 +18,16 @@ object RetrofitHelper {
             .build()
         cocktailapi = retrofit.create(CocktailAPI::class.java)
     }
-    fun fetchACock(CockToSearch: String): Call<CocktailList?>?{
-        return cocktailapi.fetchACock(CockToSearch)
+
+    fun FetchCocktailByName(CocktailToSearch: String): Call<CocktailList?>?{
+        return cocktailapi.FetchCocktailByName(CocktailToSearch)
+    }
+
+    fun FetchCocktailByIng (IngToSearch: String): Call<CocktailList?>? {
+        // TODO LOGIC
+        // TODO: 1. Call search ing
+        // TODO: 2. Manipulate the result and make a list of cocktails objects from it by sending name to 'FetchCocktailByName'
+        // TODO: 3. return the fetched cocktails from the prev step
+        return cocktailapi.FetchCocktailByIng(IngToSearch)
     }
 }

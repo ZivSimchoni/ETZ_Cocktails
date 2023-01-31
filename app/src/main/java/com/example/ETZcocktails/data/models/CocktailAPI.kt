@@ -8,6 +8,13 @@ import retrofit2.http.Query
 
 interface CocktailAPI {
     @GET("search.php?s=")
-    fun fetchACock(@Query("s") CockToSearch:String) : Call<CocktailList?>?
+    fun FetchCocktailByName(@Query("s") CockToSearch:String) : Call<CocktailList?>? // what 's' stand for?
 
+    // Get Ingredient
+    @GET("filter.php?i=")
+    fun FetchCocktailByIng(@Query("i") IngToSearch:String) : Call<CocktailList?>?
+
+    // perhaps this will be useful in the future
+    //@GET("lookup.php?i=")
+    //fun fetchACocktailByID(@Query("i") IDCockToSearch:String) : Call<CocktailList?>?
 }
