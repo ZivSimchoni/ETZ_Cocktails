@@ -43,7 +43,7 @@ class SearchCocktails : Fragment() {
         }
 
 
-            }
+    }
 
     fun getCocktails(CockToSearch :String){
         val API = RetrofitHelper.FetchCocktailByName(CockToSearch)
@@ -60,15 +60,11 @@ class SearchCocktails : Fragment() {
                     }
                 }
             }
-
             override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
                     TODO("Not yet implemented")
                 println("error")
             }
-
         })
-
-
     }
 
     // error so comment
