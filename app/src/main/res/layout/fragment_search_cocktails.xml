@@ -6,23 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ui.SearchCocktails">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <EditText
-        android:id="@+id/CocktailToSearchInput"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:iconifiedByDefault="false"
-        android:padding="4dp"
-        android:queryHint="Enter Cocktail to search"
-        app:layout_constraintEnd_toStartOf="@+id/searchButton"
-        app:layout_constraintHorizontal_bias="0.0"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/CocktailToSearchInputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <com.google.android.material.textfield.TextInputEditText
+            android:queryHint="Enter Cocktail to search"
+            app:layout_constraintEnd_toStartOf="@+id/searchButton"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:hint="@string/search_ingredient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/CocktailToSearchInput"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/searchButton"
@@ -43,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CocktailToSearchInput" />
+        app:layout_constraintTop_toBottomOf="@+id/CocktailToSearchInputText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
