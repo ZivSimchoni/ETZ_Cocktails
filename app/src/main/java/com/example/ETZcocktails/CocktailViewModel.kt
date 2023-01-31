@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.ETZcocktails.data.repository.CocktailRepository
 
 class CocktailViewModel (application: Application)  : AndroidViewModel(application){
+
     private val repository = CocktailRepository(application)
 
     val items : LiveData<List<Cocktail>>? = repository.getItems()
