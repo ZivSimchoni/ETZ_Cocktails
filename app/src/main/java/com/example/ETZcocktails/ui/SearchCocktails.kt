@@ -28,9 +28,9 @@ class SearchCocktails : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    fun GetCocktailsByName(CockToSearch :String){
+    fun GetCocktailsByName(CocktailToSearch :String){
         // TODO: re-implement this function - null safety
-        val API = RetrofitHelper.FetchCocktailByName(CockToSearch)
+        val API = RetrofitHelper.FetchCocktailByName(CocktailToSearch)
         API?.enqueue(object: Callback<CocktailList?> {
             override fun onResponse(
                 call: Call<CocktailList?>,
@@ -51,7 +51,7 @@ class SearchCocktails : Fragment() {
 
             override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
                     TODO("Not yet implemented")
-                println("error")
+                println("API onFailure ERROR")
             }
         })
     }

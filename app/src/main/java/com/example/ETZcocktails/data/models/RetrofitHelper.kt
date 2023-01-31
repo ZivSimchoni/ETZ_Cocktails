@@ -1,5 +1,6 @@
 package com.example.ETZcocktails.data.models
 
+import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -24,10 +25,10 @@ object RetrofitHelper {
     }
 
     fun FetchCocktailByIng (IngToSearch: String): Call<CocktailList?>? {
-        // TODO LOGIC
-        // TODO: 1. Call search ing
-        // TODO: 2. Manipulate the result and make a list of cocktails objects from it by sending name to 'FetchCocktailByName'
-        // TODO: 3. return the fetched cocktails from the prev step
         return cocktailapi.FetchCocktailByIng(IngToSearch)
+    }
+
+    fun FetchCocktailByID (CocktailIdToSearch: String): Call<CocktailList?>? {
+        return cocktailapi.FetchCocktailByID(CocktailIdToSearch)
     }
 }
