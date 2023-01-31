@@ -38,6 +38,8 @@
     <!-- IBA = international bar association   -->
     <string name="tag_iba">IBA</string>
     <string name="tag_alcoholic">Alcoholic</string>
+    <string name="tag_nonAlcoholic">Non alcoholic</string>
+    <string name="tag_optionalAlcoholic">Optional alcohol</string>
     <string name="tag_classic">Classic</string>
     <string name="tag_classy">Classy</string>
     <string name="tag_beach">Beach</string>
