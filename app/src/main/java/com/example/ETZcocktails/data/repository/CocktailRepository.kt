@@ -29,5 +29,4 @@ class CocktailRepository(application: Application) {
     fun deleteAll() {
         cocktailDao?.deleteAll()
     }
-
 }

@@ -28,5 +28,4 @@
         android:textAlignment="center"
         android:textDirection="locale"/>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

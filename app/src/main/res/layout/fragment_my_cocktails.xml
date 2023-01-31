@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MyCocktails">
+    tools:context=".ui.MyCocktails"
+    android:padding="16dp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -13,4 +15,35 @@
         android:fontFamily="@font/oxygen_bold"
         android:textAlignment="center"/>
 
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_cocktail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Cocktail"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cornerRadius="16dp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_Delete_Cocktail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove Cocktail"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cornerRadius="16dp"
+        android:paddingLeft="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_MyCocktailName"
+        android:hint="cocktail_name"
+        android:text="@string/add_name"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_cocktail"
+        app:layout_constraintStart_toStartOf="@id/btn_add_cocktail"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout >
