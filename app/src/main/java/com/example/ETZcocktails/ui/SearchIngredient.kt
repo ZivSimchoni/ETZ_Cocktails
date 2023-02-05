@@ -48,17 +48,14 @@ class SearchIngredient : Fragment() {
                 call: Call<CocktailList?>,
                 response: Response<CocktailList?>
             ) {
-                // TODO LOGIC
-                // TODO: 1. Call search ing
-                // TODO: 2. Manipulate the result and make a list of cocktails objects from it by sending name to 'FetchCocktailByName'
-                // TODO: 3. return the fetched cocktails from the prev step
+
                 if (response.body() != null) {
+                    //get list of cocktail names containing the ingredient
                     val cocktailList = response.body()!!.drinks!!
-                    //var cocktailsNamesToReturn = mutableListOf<Cocktail>()
+
                     for (cocktail in cocktailList) {
-                        // TODO check whats better ID or Name
-                        // TODO: fill the list somehow and display it for the user
-                        //GetCocktailByID(cocktail.idDrink.toString())
+
+                        //send each cocktail name and print its name (in the future display it)
                         GetCocktailsByName(cocktail.strDrink.toString())
                     }
                 }
@@ -81,7 +78,7 @@ class SearchIngredient : Fragment() {
             ) {
                 if (response.body()?.drinks != null) {
                     val cocktailList = response.body()!!.drinks!!
-                    //printCocktails(cocktailList) // error so comment
+
                     for (cocktail in cocktailList) {
                         println(cocktail.strDrink)
                     }
@@ -99,28 +96,5 @@ class SearchIngredient : Fragment() {
         })
     }
 
-//    fun GetCocktailByName(CocktailNameToSearch :String) {
-//        val API = RetrofitHelper.FetchCocktailByName(CocktailNameToSearch)
-//        // TODO check whats better ID or Name
-//        // val API = RetrofitHelper.FetchCocktailByName(CocktailIdToSearch)
-//        API?.enqueue(object: Callback<CocktailList?> {
-//            override fun onResponse(
-//                call: Call<CocktailList?>,
-//                response: Response<CocktailList?>
-//            ) {
-//                if (response.body() != null) {
-//                    println(response.body()!!.drinks!![0].strDrink)
-//                }
-//                else
-//                {
-//                    println("error Drinks NULL!")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
-//                TODO("Not yet implemented")
-//                println("API onFailure ERROR")
-//            }
-//        })
-//    }
+
 }
