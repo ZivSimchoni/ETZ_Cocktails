@@ -54,12 +54,12 @@ class SearchIngredient : Fragment() {
                 // TODO: 3. return the fetched cocktails from the prev step
                 if (response.body() != null) {
                     val cocktailList = response.body()!!.drinks!!
-                    var cocktailsNamesToReturn = mutableListOf<Cocktail>()
+                    //var cocktailsNamesToReturn = mutableListOf<Cocktail>()
                     for (cocktail in cocktailList) {
                         // TODO check whats better ID or Name
                         // TODO: fill the list somehow and display it for the user
                         //GetCocktailByID(cocktail.idDrink.toString())
-                        GetCocktailByID(cocktail.strDrink.toString())
+                        GetCocktailsByName(cocktail.strDrink.toString())
                     }
                 }
             }
@@ -71,17 +71,20 @@ class SearchIngredient : Fragment() {
         })
     }
 
-    fun GetCocktailByID(CocktailIdToSearch :String) {
-        val API = RetrofitHelper.FetchCocktailByID(CocktailIdToSearch)
-        // TODO check whats better ID or Name
-        // val API = RetrofitHelper.FetchCocktailByName(CocktailIdToSearch)
+    fun GetCocktailsByName(CocktailToSearch :String){
+        // TODO: re-implement this function - null safety
+        val API = RetrofitHelper.FetchCocktailByName(CocktailToSearch)
         API?.enqueue(object: Callback<CocktailList?> {
             override fun onResponse(
                 call: Call<CocktailList?>,
                 response: Response<CocktailList?>
             ) {
-                if (response.body() != null) {
-                    println(response.body()!!.drinks!![0].strDrink)
+                if (response.body()?.drinks != null) {
+                    val cocktailList = response.body()!!.drinks!!
+                    //printCocktails(cocktailList) // error so comment
+                    for (cocktail in cocktailList) {
+                        println(cocktail.strDrink)
+                    }
                 }
                 else
                 {
@@ -95,4 +98,29 @@ class SearchIngredient : Fragment() {
             }
         })
     }
+
+//    fun GetCocktailByName(CocktailNameToSearch :String) {
+//        val API = RetrofitHelper.FetchCocktailByName(CocktailNameToSearch)
+//        // TODO check whats better ID or Name
+//        // val API = RetrofitHelper.FetchCocktailByName(CocktailIdToSearch)
+//        API?.enqueue(object: Callback<CocktailList?> {
+//            override fun onResponse(
+//                call: Call<CocktailList?>,
+//                response: Response<CocktailList?>
+//            ) {
+//                if (response.body() != null) {
+//                    println(response.body()!!.drinks!![0].strDrink)
+//                }
+//                else
+//                {
+//                    println("error Drinks NULL!")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
+//                TODO("Not yet implemented")
+//                println("API onFailure ERROR")
+//            }
+//        })
+//    }
 }
