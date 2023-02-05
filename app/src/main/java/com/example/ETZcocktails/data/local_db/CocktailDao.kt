@@ -16,7 +16,7 @@ interface CocktailDao {
     @Update
     fun updateItem(cocktail: Cocktail)
 
-    @Query("SELECT * FROM cocktails ORDER BY name ASC")
+    @Query("SELECT * FROM cocktails ORDER BY strDrink ASC")
     fun getItems() : LiveData<List<Cocktail>>
 
     @Query("SELECT * FROM cocktails WHERE id =:id")

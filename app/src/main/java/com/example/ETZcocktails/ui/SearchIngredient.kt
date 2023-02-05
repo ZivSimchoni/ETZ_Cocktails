@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
-import com.example.ETZcocktails.CocktailTEST
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.data.models.RetrofitHelper
 import com.example.ETZcocktails.databinding.FragmentSearchIngredientBinding
