@@ -55,18 +55,28 @@ class MyCocktails : Fragment() {
             //TODO show all cocktails - this is a temp value
             binding.textMyCocktailName.text = viewModel.items.toString()
             //get cocktail list
-            val cocktailList=viewModel.getListCocktails()!!
-            //show all cocktails
-            binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
-                override fun onItemClicked(index: Int) {
-                    println("Clicked")
-                }
 
-                override fun onItemLongClicked(index: Int) {
-                    println("Long Clicked")
-                }
-            })
-            binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
+            try
+            {
+                val cocktailList=viewModel.getListCocktails()!!
+                //show all cocktails
+                binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
+                    override fun onItemClicked(index: Int) {
+                        println("Clicked")
+                    }
+
+                    override fun onItemLongClicked(index: Int) {
+                        println("Long Clicked")
+                    }
+                })
+                binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
+            }
+            catch (e:Exception)
+            {
+                print("error in cocktail list probably")
+            }
+
+
         }
 
         return binding.root
