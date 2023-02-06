@@ -5,7 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.ETZcocktails.Cocktail
-import com.example.ETZcocktails.data.local_db.CocktailDao
 
 @Database(entities = arrayOf(Cocktail::class), version = 1, exportSchema = false)
 abstract class CocktailDataBase : RoomDatabase() {
