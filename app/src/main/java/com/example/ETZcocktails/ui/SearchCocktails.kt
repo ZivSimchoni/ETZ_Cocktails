@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ETZcocktails.CocktailList
 import com.example.ETZcocktails.data.models.RetrofitHelper
 import com.example.ETZcocktails.databinding.FragmentSearchCocktailsBinding
@@ -42,6 +43,19 @@ class SearchCocktails : Fragment() {
                     for (cocktail in cocktailList) {
                         println(cocktail.strDrink)
                     }
+                    binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
+                        override fun onItemClicked(index: Int) {
+                            println("Clicked")
+                        }
+
+                        override fun onItemLongClicked(index: Int) {
+                            println("Long Clicked")
+                        }
+                    })
+
+                    binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
+
+
                 }
                 else
                 {
