@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ETZcocktails.Cocktail
+import com.example.ETZcocktails.CocktailList
 import com.example.ETZcocktails.databinding.CocktailViewListBinding
 
 class CocktailAdapter(val items:List<Cocktail>, val callBack: ItemListener)
@@ -35,15 +36,34 @@ class CocktailAdapter(val items:List<Cocktail>, val callBack: ItemListener)
         }
 
         fun bind(cocktail: Cocktail) {
-            print("BINDED")
             binding.NameOfCocktail.text = cocktail.strDrink
-            binding.NumberOfIngredients.text = "5"
+            binding.NumberOfIngredients.text = getNumberOfIng(cocktail).toString()
+            binding.CocktailInstructions.text = getInstructionPreview(cocktail.strInstructions.toString())
 
-            //binding.itemImage.setImageURI(Uri.parse(item.photo))
             Glide.with(binding.root).load(cocktail.strDrinkThumb).circleCrop()
                 .into(binding.PhotoOfCocktail)
             binding.PhotoOfCocktail
         }
+    }
+
+    private fun getNumberOfIng(cocktail : Cocktail) :Int
+    {
+        var numberOfIng = 0
+        if (cocktail.strIngredient1 != null) numberOfIng++
+        if (cocktail.strIngredient2 != null) numberOfIng++
+        if (cocktail.strIngredient3 != null) numberOfIng++
+        if (cocktail.strIngredient4 != null) numberOfIng++
+        if (cocktail.strIngredient5 != null) numberOfIng++
+        return numberOfIng
+    }
+
+    private fun getInstructionPreview(fullInstructions: String): String
+    {
+        if (fullInstructions.length > 30)
+        {
+            return (fullInstructions.substring(0,30) + "...")
+        }
+        return fullInstructions
     }
 
     fun itemAt(position:Int) = items[position]

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="108dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="@string/add_name"
         android:textSize="16sp" />
 
     <ImageView
@@ -27,14 +27,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|right"
         android:layout_marginEnd="16dp"
-        android:text="TextView"
+        android:text="@string/my_ingredients"
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/CocktailDescrption"
+        android:id="@+id/CocktailInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/instructions"
         android:textSize="14sp"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="8dp"/>

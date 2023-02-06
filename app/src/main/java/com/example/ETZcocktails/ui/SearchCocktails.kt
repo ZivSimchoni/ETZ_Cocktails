@@ -51,7 +51,6 @@ class SearchCocktails : Fragment() {
                     }
                     binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
-
                             println("Clicked")
                         }
 
@@ -59,10 +58,7 @@ class SearchCocktails : Fragment() {
                             println("Long Clicked")
                         }
                     })
-
                     binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
-
-
                 }
                 else
                 {
@@ -76,6 +72,7 @@ class SearchCocktails : Fragment() {
             }
         })
     }
+
 
     // error so comment
 //    fun printCocktails(cocktailList: List<Cocktail>) {
@@ -98,6 +95,7 @@ class SearchCocktails : Fragment() {
             GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
             view?.let { activity?.hideKeyboard(it) }
         }
+
         binding.CocktailToSearchInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
@@ -105,8 +103,6 @@ class SearchCocktails : Fragment() {
             }
             false
         })
-
-
 
         return binding.root
     }
