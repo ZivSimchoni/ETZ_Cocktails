@@ -45,7 +45,6 @@ class AddCocktail : Fragment() {
         var index = 1
         binding.finishBtn.setOnClickListener {
             // TODO Input Validation!
-
             val selectedId: Int = binding.addCocktailRadioGroup.checkedRadioButtonId
             val radio_button_text: String=binding.root.findViewById<RadioButton>(selectedId).hint.toString()
 
@@ -60,6 +59,7 @@ class AddCocktail : Fragment() {
                 "Added ${binding.addCocktailName.text.toString()}",
                 Toast.LENGTH_SHORT
             ).show()
+
             Log.d(
                 "ETZ-Add-Cocktail",
                 "Cocktail Added ${binding.addCocktailName.text.toString()}"
@@ -67,9 +67,10 @@ class AddCocktail : Fragment() {
             parentFragmentManager.popBackStack()
             }
 
-        binding.imageBtn.setOnClickListener {
+            binding.imageBtn.setOnClickListener {
             pickImageLauncher.launch(arrayOf("image/*"))
         }
+
         return binding.root
     }
 

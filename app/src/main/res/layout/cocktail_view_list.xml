@@ -11,7 +11,8 @@
         android:id="@+id/NameOfCocktail"
         android:layout_width="match_parent"
         android:layout_height="108dp"
-        android:gravity="center"
+        android:paddingTop="20dp"
+        android:gravity="center|top"
         android:text="@string/add_name"
         android:textSize="16sp" />
 
@@ -22,13 +23,21 @@
         app:srcCompat="@mipmap/ic_launcher_monochrome" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right"
+        android:layout_marginEnd="20dp"
+        android:text="@string/number_ingredients"
+        android:textSize="14sp" />
+
+    <TextView
         android:id="@+id/NumberOfIngredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|right"
-        android:layout_marginEnd="16dp"
-        android:text="@string/my_ingredients"
-        android:textSize="12sp" />
+        android:layout_marginEnd="10dp"
+        android:text="##"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/CocktailInstructions"
@@ -38,5 +47,6 @@
         android:textSize="14sp"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="8dp"/>
+
 
 </androidx.cardview.widget.CardView>
