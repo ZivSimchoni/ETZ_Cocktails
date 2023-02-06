@@ -1,6 +1,7 @@
 package com.example.ETZcocktails.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -62,7 +63,11 @@ class SearchIngredient : Fragment() {
 
             override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
                 // TODO("Not yet implemented")
-                println("API onFailure ERROR")
+                //println("API onFailure ERROR")
+                Log.d(
+                    "ETZ-Ingredient-List-null",
+                    "List Length is null"
+                )
             }
         })
     }

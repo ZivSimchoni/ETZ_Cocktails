@@ -3,13 +3,13 @@ package com.example.ETZcocktails.ui
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.TextView.OnEditorActionListener
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ETZcocktails.CocktailList
@@ -62,13 +62,25 @@ class SearchCocktails : Fragment() {
                 }
                 else
                 {
-                    println("error Drinks NULL!")
+                    Toast.makeText(requireContext(),
+                        "Error No Drinks Found!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.d(
+                        "ETZ-CocktailsList-null",
+                        "List Length is null"
+                    )
+                    //println("Error Drinks NULL!")
                 }
             }
 
             override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
-                    TODO("Not yet implemented")
-                println("API onFailure ERROR")
+                // TODO("Not yet implemented")
+                //println("API onFailure ERROR")
+                Log.d(
+                    "ETZ-Cocktails-API-ERROR",
+                    "Found No Cocktails on API"
+                )
             }
         })
     }

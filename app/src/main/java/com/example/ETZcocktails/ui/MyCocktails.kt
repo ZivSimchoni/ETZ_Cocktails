@@ -40,8 +40,6 @@ class MyCocktails : Fragment() {
         _binding = FragmentMyCocktailsBinding.inflate(inflater,container,false)
 
         binding.btnAddCocktail.setOnClickListener{
-
-
             replaceFragment(AddCocktail())
         }
 
