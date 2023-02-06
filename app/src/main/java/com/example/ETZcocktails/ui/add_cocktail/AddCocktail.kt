@@ -42,7 +42,16 @@ class AddCocktail : Fragment() {
     ): View? {
 
         _binding = FragmentAddCocktailBinding.inflate(inflater,container,false)
-        var index = 1
+        var index = viewModel.getMaxId()
+        if(index==null)
+        {
+            index=0
+        }
+        else
+        {
+            index++
+        }
+
         binding.finishBtn.setOnClickListener {
             // TODO Input Validation!
             val selectedId: Int = binding.addCocktailRadioGroup.checkedRadioButtonId
@@ -53,7 +62,7 @@ class AddCocktail : Fragment() {
                   binding.addCocktailIngredient1measure.text.toString(),binding.addCocktailIngredient2measure.text.toString(),binding.addCocktailIngredient3measure.text.toString(),binding.addCocktailIngredient4measure.text.toString(),binding.addCocktailIngredient5measure.text.toString())
             print("Cocktail Added:\n${cocktail}")
             viewModel.addItem(cocktail)
-            index ++
+            //index ++
 
             Toast.makeText(requireContext(),
                 "Added ${binding.addCocktailName.text.toString()}",

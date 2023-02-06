@@ -9,8 +9,10 @@ import android.widget.Button
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
@@ -19,6 +21,7 @@ import com.example.ETZcocktails.R
 import com.example.ETZcocktails.data.repository.CocktailRepository
 import com.example.ETZcocktails.databinding.FragmentMyCocktailsBinding
 import com.example.ETZcocktails.ui.add_cocktail.AddCocktail
+import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MyCocktails : Fragment() {
@@ -51,6 +54,19 @@ class MyCocktails : Fragment() {
         {
             //TODO show all cocktails - this is a temp value
             binding.textMyCocktailName.text = viewModel.items.toString()
+            //get cocktail list
+            val cocktailList=viewModel.getListCocktails()!!
+            //show all cocktails
+            binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
+                override fun onItemClicked(index: Int) {
+                    println("Clicked")
+                }
+
+                override fun onItemLongClicked(index: Int) {
+                    println("Long Clicked")
+                }
+            })
+            binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
         }
 
         return binding.root

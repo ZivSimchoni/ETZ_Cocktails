@@ -16,6 +16,8 @@ class CocktailRepository(application: Application) {
 
     fun getItems() = cocktailDao?.getItems()
 
+    fun getListCocktails() =cocktailDao?.getListCocktails()
+
     fun addItem(cocktail:Cocktail) {
         cocktailDao?.addItem(cocktail)
     }
@@ -29,4 +31,6 @@ class CocktailRepository(application: Application) {
     fun deleteAll() {
         cocktailDao?.deleteAll()
     }
+
+    fun getMaxId() = cocktailDao?.getMaxId()
 }

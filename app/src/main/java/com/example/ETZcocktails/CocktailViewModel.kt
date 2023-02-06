@@ -23,6 +23,8 @@ class CocktailViewModel (application: Application)  : AndroidViewModel(applicati
         repository.addItem(cocktail)
     }
 
+    fun getListCocktails() = repository.getListCocktails()
+
     fun deleteItem(cocktail: Cocktail) {
         repository.deleteItem(cocktail)
     }
@@ -30,4 +32,6 @@ class CocktailViewModel (application: Application)  : AndroidViewModel(applicati
     fun deleteAll() {
         repository.deleteAll()
     }
+
+    fun getMaxId() = repository.getMaxId()
 }
