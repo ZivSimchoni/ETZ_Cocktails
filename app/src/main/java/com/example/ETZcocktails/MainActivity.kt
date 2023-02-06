@@ -10,7 +10,6 @@ import com.example.ETZcocktails.ui.SearchCocktails
 import com.example.ETZcocktails.ui.SearchIngredient
 import com.example.ETZcocktails.ui.MyCocktails
 import com.example.ETZcocktails.ui.FavCocktails
-import com.example.ETZcocktails.ui.add_cocktail.AddCocktail
 
 class MainActivity : AppCompatActivity() {
 
