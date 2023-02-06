@@ -2,7 +2,7 @@
     <!--   ETC    -->
     <string name="app_name">ETZ Cocktails</string>
     <string name="search_cocktails">Search Cocktails</string>
-    <string name="search_ingredient">Search Ingredient</string>
+    <string name="search_ingredient">Search By Ingredient</string>
     <string name="my_favorite_cocktails">Favorite Cocktails</string>
     <string name="my_cocktails">My Cocktails</string>
     <string name="my_ingredients">My Ingredients</string>
