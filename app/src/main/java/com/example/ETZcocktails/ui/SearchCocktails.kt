@@ -1,9 +1,15 @@
 package com.example.ETZcocktails.ui
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView.OnEditorActionListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ETZcocktails.CocktailList
@@ -45,6 +51,7 @@ class SearchCocktails : Fragment() {
                     }
                     binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
+
                             println("Clicked")
                         }
 
@@ -76,7 +83,10 @@ class SearchCocktails : Fragment() {
 //        binding.charactersRv.layoutManager = LinearLayoutManager(requireContext())
 //        binding.charactersRv.adapter = adapter
 //    }
-
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -86,7 +96,17 @@ class SearchCocktails : Fragment() {
         // TODO InputValidation
         binding.searchButton.setOnClickListener {
             GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
+            view?.let { activity?.hideKeyboard(it) }
         }
+        binding.CocktailToSearchInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
+                return@OnKeyListener true
+            }
+            false
+        })
+
+
 
         return binding.root
     }
