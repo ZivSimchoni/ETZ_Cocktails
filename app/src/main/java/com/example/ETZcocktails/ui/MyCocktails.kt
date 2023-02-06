@@ -40,6 +40,8 @@ class MyCocktails : Fragment() {
         _binding = FragmentMyCocktailsBinding.inflate(inflater,container,false)
 
         binding.btnAddCocktail.setOnClickListener{
+
+
             replaceFragment(AddCocktail())
         }
 
@@ -69,6 +71,7 @@ class MyCocktails : Fragment() {
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.addToBackStack("myCocktails")
         fragmentTransaction.commit()
     }
 }

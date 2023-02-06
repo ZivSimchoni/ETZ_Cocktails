@@ -10,7 +10,9 @@ import android.widget.RadioButton
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.FragmentNavigator
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.databinding.FragmentAddCocktailBinding
@@ -68,8 +70,7 @@ class AddCocktail : Fragment() {
             viewModel.addItem(cocktail)
             index ++
 
-            //findNavController().navigate(R.id.action_myCocktails2_to_addCocktail)
-
+                parentFragmentManager.popBackStack()
             }
 
         binding.imageBtn.setOnClickListener {
