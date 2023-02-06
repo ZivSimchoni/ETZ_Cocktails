@@ -73,4 +73,8 @@
     <string name="add_measure2">הכניסו כמות מרכיב #2</string>
     <string name="unit_dash">טיפות</string>
     <string name="unit_cl">ס\"ל</string>
+    <string name="search_txt">חפש</string>
+    <string name="tag_hangover">האנגאובר</string>
+    <string name="glass_jar">צנצנת</string>
+    <string name="glass_whiskey">כוס וויסקי</string>
 </resources>
