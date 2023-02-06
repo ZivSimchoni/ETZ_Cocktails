@@ -42,14 +42,14 @@ class AddCocktail : Fragment() {
     ): View? {
 
         _binding = FragmentAddCocktailBinding.inflate(inflater,container,false)
-        var index = viewModel.getMaxId()
-        if(index==null)
+
+        var index : Int
+        try {
+            index = viewModel.getMaxId()!! +1
+        }
+        catch (e:Exception)
         {
             index=0
-        }
-        else
-        {
-            index++
         }
 
         binding.finishBtn.setOnClickListener {
