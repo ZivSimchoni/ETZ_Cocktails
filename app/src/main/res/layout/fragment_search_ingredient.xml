@@ -10,6 +10,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/text_search_ing"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,22 +27,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/enter_ing_name"/>
     </com.google.android.material.textfield.TextInputLayout>
-
-<!--    <EditText-->
-<!--        android:id="@+id/CocktailToSearchInput"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="48dp"-->
-<!--        android:layout_margin="8dp"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:iconifiedByDefault="false"-->
-<!--        android:padding="4dp"-->
-<!--        android:queryHint="Enter Cocktail to search"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/searchButton"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:ignore="SpeakableTextPresentCheck" />-->
 
     <Button
         android:id="@+id/searchButton"
@@ -62,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CocktailToSearchInput" />
+        app:layout_constraintTop_toBottomOf="@+id/text_search_ing" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
