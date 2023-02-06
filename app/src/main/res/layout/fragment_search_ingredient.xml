@@ -44,6 +44,9 @@
         android:id="@+id/CocktailViewList"
         android:layout_width="409dp"
         android:layout_height="673dp"
+        android:layout_marginTop="16dp"
+        android:paddingTop="16dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

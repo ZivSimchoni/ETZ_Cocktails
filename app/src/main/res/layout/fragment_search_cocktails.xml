@@ -8,29 +8,29 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:minWidth="200dp"
-        android:layout_width="350dp"
-        android:minHeight="16dp"
-        android:layout_height="80dp"
-        android:padding="8dp"
         android:id="@+id/CocktailToSearchInputText"
-        app:layout_constraintStart_toStartOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:minWidth="200dp"
+        android:minHeight="16dp"
+        android:padding="8dp"
         app:layout_constraintEnd_toStartOf="@id/searchButton"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.textfield.TextInputEditText
-            android:queryHint="Enter Cocktail to search"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:hint="@string/search_cocktails"
+            android:id="@+id/CocktailToSearchInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/CocktailToSearchInput"/>
+            android:hint="@string/search_cocktails"
+            android:queryHint="Enter Cocktail to search"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/searchButton"
-        app:cornerRadius="16dp"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -38,17 +38,22 @@
         android:text="@string/search_txt"
         android:textAlignment="center"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@id/CocktailToSearchInputText"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:cornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/CocktailToSearchInputText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/CocktailViewList"
-        android:layout_width="409dp"
-        android:layout_height="673dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CocktailToSearchInputText" />
+        app:layout_constraintTop_toBottomOf="@+id/CocktailToSearchInputText"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
