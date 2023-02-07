@@ -56,9 +56,8 @@ class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val T
                     binding.root.removeAllViews()
                     binding.root.visibility = View.GONE
                 }
-
-
             }
+
 
             Glide.with(binding.root).load(cocktail.strDrinkThumb).circleCrop()
                 .into(binding.PhotoOfCocktail)

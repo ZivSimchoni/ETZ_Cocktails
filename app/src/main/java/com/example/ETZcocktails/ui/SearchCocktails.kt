@@ -127,4 +127,12 @@ class SearchCocktails : Fragment() {
 
         return binding.root
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        //TODO fix the cocktail view list not saving
+        //save the recycler view CocktailViewList
+//        outState.putParcelable("CocktailViewList", binding.CocktailViewList.layoutManager?.onSaveInstanceState())
+
+    }
 }

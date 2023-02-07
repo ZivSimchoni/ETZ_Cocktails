@@ -21,12 +21,18 @@ class CocktailRepository(application: Application) {
     fun addItem(cocktail:Cocktail) {
         cocktailDao?.addItem(cocktail)
     }
-
+    fun addFavouriteItem(cocktail:Cocktail) {
+        cocktail.id= cocktailDao?.getMaxId()?.plus(1) ?: 0
+        cocktailDao?.addItem(cocktail)
+    }
+    fun deleteItemIdDrink(id:Long) {
+        cocktailDao?.deleteItemIdDrink(id)
+    }
     fun deleteItem(cocktail: Cocktail) {
         cocktailDao?.deleteItem(cocktail)
     }
 
-    fun getItem(id:Int)  = cocktailDao?.getItem(id)
+    fun getItemIdDrink(id:Long)  = cocktailDao?.getItemIdDrink(id)
 
     fun deleteAll() {
         cocktailDao?.deleteAll()
