@@ -77,4 +77,7 @@
     <string name="tag_hangover">האנגאובר</string>
     <string name="glass_jar">צנצנת</string>
     <string name="glass_whiskey">כוס וויסקי</string>
+    <string name="number_ingredients"># מרכיבים</string>
+    <string name="add_cocktail">הוסף קוקטייל</string>
+    <string name="remove_all">מחק הכל</string>
 </resources>
