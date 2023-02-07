@@ -43,8 +43,8 @@ Dark mode that utilizes purple and dark color palette
 ## What is the app's target devices?
 
 The app is designed for Android mobile devices with Android 5.0 and above. (API 21+)
-Minimum API: 21
-Target API: 32
+Minimum SDK: 26
+Target SDK: 33
 
 ## Cocktail object structure
 
