@@ -3,14 +3,21 @@ package com.example.ETZcocktails.ui.all_characters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
+import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.databinding.CocktailViewListBinding
 
-class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val TrashVisibility:Boolean =true)
+
+
+
+class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val TrashVisibility:Boolean =true,val viewModel: CocktailViewModel?=null)
     : RecyclerView.Adapter<CocktailAdapter.ItemViewHolder>() {
+
+
 
     interface ItemListener {
         fun onItemClicked(index:Int)
@@ -40,6 +47,16 @@ class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val T
             binding.NumberOfIngredients.text = getNumberOfIng(cocktail).toString()
             binding.CocktailInstructions.text = getInstructionPreview(cocktail.strInstructions.toString())
             binding.Trash.visibility= if (TrashVisibility) View.VISIBLE else View.INVISIBLE
+
+            if(TrashVisibility && viewModel!=null)
+            {
+                binding.Trash.setOnClickListener{
+                    viewModel.deleteItem(cocktail)
+
+                }
+
+
+            }
 
             Glide.with(binding.root).load(cocktail.strDrinkThumb).circleCrop()
                 .into(binding.PhotoOfCocktail)

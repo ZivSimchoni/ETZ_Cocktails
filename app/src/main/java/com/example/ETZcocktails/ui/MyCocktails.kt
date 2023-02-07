@@ -68,7 +68,7 @@ class MyCocktails : Fragment() {
                     override fun onItemLongClicked(index: Int) {
                         println("Long Clicked")
                     }
-                })
+                },true,viewModel)
                 binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
             }
             catch (e:Exception)

@@ -11,7 +11,7 @@ interface CocktailDao {
     fun addItem(cocktail:Cocktail)
 
     @Delete
-    fun deleteItem(vararg  cocktails:Cocktail)
+    fun deleteItem(cocktail:Cocktail)
 
     @Update
     fun updateItem(cocktail: Cocktail)
