@@ -13,6 +13,7 @@ import com.example.ETZcocktails.R
 import com.example.ETZcocktails.data.models.RetrofitHelper
 import com.example.ETZcocktails.databinding.FragmentSearchIngredientBinding
 import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
+import com.example.ETZcocktails.ui.single_cocktail.SingleCocktailFragment
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -98,6 +99,11 @@ class SearchIngredient : Fragment() {
                     binding.CocktailViewList.adapter = CocktailAdapter(CocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
                             println("Clicked")
+                            //replace fragment search cocktails with single cocktail
+                            val fragmentManager = parentFragmentManager
+                            val fragmentTransaction = fragmentManager.beginTransaction()
+                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(CocktailList[index])).addToBackStack(null).commit()
+
                         }
 
                         override fun onItemLongClicked(index: Int) {
