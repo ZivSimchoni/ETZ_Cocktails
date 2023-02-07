@@ -20,6 +20,8 @@ class CocktailRepository(application: Application) {
 
     fun getListCocktailsByMe() = cocktailDao?.getListCocktailsByMe()
 
+    fun getListFavoriteCocktails() = cocktailDao?.getListFavoriteCocktails()
+
     fun addItem(cocktail:Cocktail) {
         cocktailDao?.addItem(cocktail)
     }

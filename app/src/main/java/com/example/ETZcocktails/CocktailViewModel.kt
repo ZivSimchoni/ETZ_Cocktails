@@ -31,6 +31,8 @@ class CocktailViewModel (application: Application)  : AndroidViewModel(applicati
 
     fun getListCocktailsByMe() = repository.getListCocktailsByMe()
 
+    fun getListFavoriteCocktails() = repository.getListFavoriteCocktails()
+
     fun deleteItem(cocktail: Cocktail) {
         repository.deleteItem(cocktail)
     }
