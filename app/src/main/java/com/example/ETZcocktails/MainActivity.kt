@@ -10,6 +10,7 @@ import com.example.ETZcocktails.ui.SearchCocktails
 import com.example.ETZcocktails.ui.SearchIngredient
 import com.example.ETZcocktails.ui.MyCocktails
 import com.example.ETZcocktails.ui.FavCocktails
+import com.example.ETZcocktails.utils.GlobalFunctions
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.searchCocktails -> {replaceFragment(SearchCocktails())
+                R.id.searchCocktails -> {
+                    replaceFragment(SearchCocktails())
                 true
                 }
                 R.id.searchIngredient -> {replaceFragment(SearchIngredient())

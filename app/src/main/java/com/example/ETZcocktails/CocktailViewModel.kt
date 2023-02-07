@@ -36,6 +36,12 @@ class CocktailViewModel (application: Application)  : AndroidViewModel(applicati
     fun deleteItem(cocktail: Cocktail) {
         repository.deleteItem(cocktail)
     }
+
+    fun deleteMyCocktails(){
+        repository.deleteMyCocktails()
+    }
+
+
     fun getItemIdDrink(id:Long) = repository.getItemIdDrink(id)
 
     fun deleteItemIdDrink(id:Long) {

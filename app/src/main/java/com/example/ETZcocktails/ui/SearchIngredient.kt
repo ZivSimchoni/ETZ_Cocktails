@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
@@ -14,6 +15,7 @@ import com.example.ETZcocktails.data.models.RetrofitHelper
 import com.example.ETZcocktails.databinding.FragmentSearchIngredientBinding
 import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
 import com.example.ETZcocktails.ui.single_cocktail.SingleCocktailFragment
+import com.example.ETZcocktails.utils.GlobalFunctions
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,7 +41,18 @@ class SearchIngredient : Fragment() {
         _binding = FragmentSearchIngredientBinding.inflate(inflater,container,false)
         // TODO InputValidation
         binding.searchButton.setOnClickListener {
-            GetCocktailsByIng(binding.enterIngName.text.toString())
+            if(GlobalFunctions().isOnline(requireContext()))
+            {
+                GetCocktailsByIng(binding.enterIngName.text.toString())
+            }
+            else
+            {
+                Toast.makeText(requireContext(),
+                    "No internet connection",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
         }
 
         return binding.root

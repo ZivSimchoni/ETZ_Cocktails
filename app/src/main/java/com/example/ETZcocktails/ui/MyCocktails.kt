@@ -48,7 +48,11 @@ class MyCocktails : Fragment() {
         }
 
         binding.btnDeleteCocktail.setOnClickListener{
-            //TODO delete all DB
+            //delete my cocktails from database
+
+            //todo : need to find out how to refresh in order to use this
+//            viewModel.deleteMyCocktails()
+//            binding.root.removeAllViews()
         }
 
         if (viewModel.items != null)

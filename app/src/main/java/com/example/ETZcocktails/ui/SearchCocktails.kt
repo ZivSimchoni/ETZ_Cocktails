@@ -18,6 +18,7 @@ import com.example.ETZcocktails.data.models.RetrofitHelper
 import com.example.ETZcocktails.databinding.FragmentSearchCocktailsBinding
 import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
 import com.example.ETZcocktails.ui.single_cocktail.SingleCocktailFragment
+import com.example.ETZcocktails.utils.GlobalFunctions
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -112,18 +113,40 @@ class SearchCocktails : Fragment() {
 
         _binding = FragmentSearchCocktailsBinding.inflate(inflater,container,false)
         // TODO InputValidation
-        binding.searchButton.setOnClickListener {
-            GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
-            view?.let { activity?.hideKeyboard(it) }
-        }
 
-        binding.CocktailToSearchInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
-                return@OnKeyListener true
+
+            binding.searchButton.setOnClickListener {
+                if(GlobalFunctions().isOnline(requireContext())) {
+                    GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
+                    view?.let { activity?.hideKeyboard(it) }
+                }
+                else {
+                    Toast.makeText(requireContext(),
+                        "No internet connection",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-            false
-        })
+
+            binding.CocktailToSearchInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+                if(GlobalFunctions().isOnline(requireContext())) {
+                    if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                        GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
+                        return@OnKeyListener true
+                    }
+                }
+                else {
+                    Toast.makeText(requireContext(),
+                        "No internet connection",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                false
+            })
+
+
+
 
         return binding.root
     }

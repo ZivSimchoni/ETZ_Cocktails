@@ -36,6 +36,11 @@ class CocktailRepository(application: Application) {
         cocktailDao?.deleteItem(cocktail)
     }
 
+    fun deleteMyCocktails() {
+        cocktailDao?.deleteMyCocktails()
+    }
+
+
     fun getItemIdDrink(id:Long)  = cocktailDao?.getItemIdDrink(id)
 
     fun deleteAll() {

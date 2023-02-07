@@ -16,6 +16,12 @@ interface CocktailDao {
     @Query("DELETE FROM cocktails WHERE IdDrink = :id")
     fun deleteItemIdDrink(id:Long)
 
+    @Query("DELETE FROM cocktails")
+    fun deleteAll()
+
+    @Query("DELETE FROM cocktails WHERE IdDrink <=-1")
+    fun deleteMyCocktails()
+
     @Update
     fun updateItem(cocktail: Cocktail)
 
@@ -34,8 +40,6 @@ interface CocktailDao {
     @Query("SELECT * FROM cocktails WHERE idDrink =:id")
     fun getItemIdDrink(id:Long) : Cocktail
 
-    @Query("DELETE FROM cocktails")
-    fun deleteAll()
 
     @Query("SELECT MAX(id) FROM cocktails")
     fun getMaxId(): Int

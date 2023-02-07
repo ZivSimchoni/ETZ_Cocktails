@@ -66,11 +66,11 @@ class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val T
     private fun getNumberOfIng(cocktail : Cocktail) :Int
     {
         var numberOfIng = 0
-        if (cocktail.strIngredient1 != null) numberOfIng++
-        if (cocktail.strIngredient2 != null) numberOfIng++
-        if (cocktail.strIngredient3 != null) numberOfIng++
-        if (cocktail.strIngredient4 != null) numberOfIng++
-        if (cocktail.strIngredient5 != null) numberOfIng++
+        if (cocktail.strIngredient1 != null&&cocktail.strIngredient1 !="") numberOfIng++
+        if (cocktail.strIngredient2 != null&&cocktail.strIngredient2 !="") numberOfIng++
+        if (cocktail.strIngredient3 != null&&cocktail.strIngredient3 !="") numberOfIng++
+        if (cocktail.strIngredient4 != null&&cocktail.strIngredient4 !="") numberOfIng++
+        if (cocktail.strIngredient5 != null&&cocktail.strIngredient5 !="") numberOfIng++
         return numberOfIng
     }
 
