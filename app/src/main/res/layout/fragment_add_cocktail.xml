@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp"
-    android:layout_marginBottom="50dp"
-    >
+    android:layout_marginBottom="50dp">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -23,7 +22,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_name"
-            android:id="@+id/add_cocktail_name"/>
+            android:id="@+id/add_cocktail_name"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -35,7 +39,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_instructions"
-            android:id="@+id/add_cocktail_instructions" />
+            android:id="@+id/add_cocktail_instructions"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -47,7 +56,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_ing1"
-            android:id="@+id/add_cocktail_ingredient1" />
+            android:id="@+id/add_cocktail_ingredient1"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -59,7 +73,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_ing2"
-            android:id="@+id/add_cocktail_ingredient2" />
+            android:id="@+id/add_cocktail_ingredient2"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -71,7 +90,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_ing3"
-            android:id="@+id/add_cocktail_ingredient3" />
+            android:id="@+id/add_cocktail_ingredient3"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -83,7 +107,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_ing4"
-            android:id="@+id/add_cocktail_ingredient4" />
+            android:id="@+id/add_cocktail_ingredient4"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -95,7 +124,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_ing5"
-            android:id="@+id/add_cocktail_ingredient5" />
+            android:id="@+id/add_cocktail_ingredient5"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -107,7 +141,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_measure1"
-            android:id="@+id/add_cocktail_ingredient1measure" />
+            android:id="@+id/add_cocktail_ingredient1measure"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -119,7 +158,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_measure2"
-            android:id="@+id/add_cocktail_ingredient2measure" />
+            android:id="@+id/add_cocktail_ingredient2measure"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -131,7 +175,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_measure3"
-            android:id="@+id/add_cocktail_ingredient3measure" />
+            android:id="@+id/add_cocktail_ingredient3measure"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -143,7 +192,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_measure4"
-            android:id="@+id/add_cocktail_ingredient4measure" />
+            android:id="@+id/add_cocktail_ingredient4measure"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -155,7 +209,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_measure5"
-            android:id="@+id/add_cocktail_ingredient5measure" />
+            android:id="@+id/add_cocktail_ingredient5measure"
+            android:singleLine="true"
+            android:textColorHint="#757575"
+            android:imeOptions="actionDone"
+            android:maxLength="32"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
@@ -208,4 +267,4 @@
         app:cornerRadius="16dp"/>
 
 </LinearLayout>
-    </ScrollView>
+</ScrollView>

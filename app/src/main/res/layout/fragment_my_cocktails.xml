@@ -14,7 +14,8 @@
         android:text="@string/add_cocktail"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:cornerRadius="16dp"/>
+        app:cornerRadius="16dp"
+        android:textSize="16sp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_Delete_Cocktail"
@@ -25,7 +26,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:cornerRadius="16dp"
         android:paddingStart="20dp"
-        android:paddingEnd="16dp"/>
+        android:paddingEnd="16dp"
+        android:textSize="16sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:scrollbarSize="3dp"

@@ -15,7 +15,7 @@
         android:paddingTop="20dp"
         android:gravity="center|top"
         android:text="@string/add_name"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/PhotoOfCocktail"
