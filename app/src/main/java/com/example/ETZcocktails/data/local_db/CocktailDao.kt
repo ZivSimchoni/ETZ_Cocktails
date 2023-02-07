@@ -25,10 +25,10 @@ interface CocktailDao {
     @Query("SELECT * FROM cocktails ORDER BY strDrink ASC")
     fun getListCocktails() : List<Cocktail>
 
-    @Query("SELECT * FROM cocktails WHERE idDrink=-1 ORDER BY strDrink ASC")
+    @Query("SELECT * FROM cocktails WHERE idDrink<=-1 ORDER BY strDrink ASC")
     fun getListCocktailsByMe(): List<Cocktail>
 
-    @Query("SELECT * FROM cocktails WHERE idDrink!=-1 ORDER BY strDrink ASC")
+    @Query("SELECT * FROM cocktails WHERE idDrink>-1 ORDER BY strDrink ASC")
     fun getListFavoriteCocktails(): List<Cocktail>
 
     @Query("SELECT * FROM cocktails WHERE idDrink =:id")
@@ -39,5 +39,8 @@ interface CocktailDao {
 
     @Query("SELECT MAX(id) FROM cocktails")
     fun getMaxId(): Int
+
+    @Query("SELECT MIN(idDrink) FROM cocktails")
+    fun getMinIdDrink(): Long
 
 }

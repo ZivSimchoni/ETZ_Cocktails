@@ -46,4 +46,6 @@ class CocktailViewModel (application: Application)  : AndroidViewModel(applicati
     }
 
     fun getMaxId() = repository.getMaxId()
+
+    fun getMinIdDrink()= repository.getMinIdDrink()
 }

@@ -52,12 +52,30 @@ class AddCocktail : Fragment() {
             index=0
         }
 
+        var idDrink_current: Long
+        try {
+            idDrink_current=viewModel.getMinIdDrink()!!
+            if(idDrink_current==null||idDrink_current>-1)
+            {
+                idDrink_current=-1
+            }
+            else
+            {
+                idDrink_current--
+            }
+        }
+        catch (e:Exception)
+        {
+            idDrink_current=-1
+        }
+
+
         binding.finishBtn.setOnClickListener {
             // TODO Input Validation!
             val selectedId: Int = binding.addCocktailRadioGroup.checkedRadioButtonId
             val radio_button_text: String=binding.root.findViewById<RadioButton>(selectedId).hint.toString()
 
-            val cocktail = Cocktail(index,-1,binding.addCocktailName.text.toString(),radio_button_text,binding.addCocktailInstructions.text.toString(),imageUri.toString(),
+            val cocktail = Cocktail(index,idDrink_current,binding.addCocktailName.text.toString(),radio_button_text,binding.addCocktailInstructions.text.toString(),imageUri.toString(),
                   binding.addCocktailIngredient1.text.toString(),binding.addCocktailIngredient2.text.toString(),binding.addCocktailIngredient3.text.toString(),binding.addCocktailIngredient4.text.toString(),binding.addCocktailIngredient5.text.toString(),
                   binding.addCocktailIngredient1measure.text.toString(),binding.addCocktailIngredient2measure.text.toString(),binding.addCocktailIngredient3measure.text.toString(),binding.addCocktailIngredient4measure.text.toString(),binding.addCocktailIngredient5measure.text.toString())
             print("Cocktail Added:\n${cocktail}")

@@ -43,4 +43,6 @@ class CocktailRepository(application: Application) {
     }
 
     fun getMaxId() = cocktailDao?.getMaxId()
+
+    fun getMinIdDrink()= cocktailDao?.getMinIdDrink()
 }
