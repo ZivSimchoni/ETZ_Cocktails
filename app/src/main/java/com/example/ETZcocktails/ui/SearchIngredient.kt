@@ -6,11 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.data.models.RetrofitHelper
 import com.example.ETZcocktails.databinding.FragmentSearchIngredientBinding
+import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -52,12 +55,15 @@ class SearchIngredient : Fragment() {
                 if (response.body() != null) {
                     //get list of cocktail names containing the ingredient
                     val cocktailList = response.body()!!.drinks!!
-
+                    val cocktailNameList: MutableList<String> = mutableListOf()
                     for (cocktail in cocktailList) {
 
+                        cocktailNameList.add(cocktail.strDrink.toString())
                         //send each cocktail name and print its name (in the future display it)
-                        GetCocktailsByName(cocktail.strDrink.toString())
+                        //GetCocktailsByName(cocktail.strDrink.toString())
                     }
+
+                    GetCocktailsByName(cocktailNameList)
                 }
             }
 
@@ -72,33 +78,44 @@ class SearchIngredient : Fragment() {
         })
     }
 
-    fun GetCocktailsByName(CocktailToSearch :String){
-        // TODO: re-implement this function - null safety
-        val API = RetrofitHelper.FetchCocktailByName(CocktailToSearch)
-        API?.enqueue(object: Callback<CocktailList?> {
-            override fun onResponse(
-                call: Call<CocktailList?>,
-                response: Response<CocktailList?>
-            ) {
-                if (response.body()?.drinks != null) {
-                    val cocktailList = response.body()!!.drinks!!
 
-                    for (cocktail in cocktailList) {
-                        println(cocktail.strDrink)
+
+    fun GetCocktailsByName(CocktailsToSearch : MutableList<String>) {
+        val CocktailList: MutableList<Cocktail> = mutableListOf()
+        for (cocktail in CocktailsToSearch) {
+            val API = RetrofitHelper.FetchCocktailByName(cocktail)
+            API?.enqueue(object : Callback<CocktailList?> {
+                override fun onResponse(
+                    call: Call<CocktailList?>,
+                    response: Response<CocktailList?>
+                ) {
+                    if (response.body()?.drinks != null) {
+                        val cocktail_ret = response.body()!!.drinks!!
+                        CocktailList.add(cocktail_ret[0])
                     }
-                }
-                else
-                {
-                    println("error Drinks NULL!")
-                }
-            }
 
-            override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
-                TODO("Not yet implemented")
-                println("API onFailure ERROR")
-            }
-        })
+                    //show all cocktails
+                    binding.CocktailViewList.adapter = CocktailAdapter(CocktailList, object : CocktailAdapter.ItemListener {
+                        override fun onItemClicked(index: Int) {
+                            println("Clicked")
+                        }
+
+                        override fun onItemLongClicked(index: Int) {
+                            println("Long Clicked")
+                        }
+                    }, false)
+                    binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
+                }
+
+                override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
+                    TODO("Not yet implemented")
+                    println("API onFailure ERROR")
+                }
+            })
+        }
     }
+
+
 
 
 }
