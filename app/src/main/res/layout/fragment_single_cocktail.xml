@@ -7,13 +7,13 @@
     tools:context=".ui.single_cocktail.SingleCocktailFragment">
 
     <!-- //TODO: Understand wtf is that and what can we do with this  -->
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        tools:visibility="gone"/>
+<!--    <com.google.android.material.progressindicator.CircularProgressIndicator-->
+<!--        android:id="@+id/progress_bar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:indeterminate="true"-->
+<!--        tools:visibility="gone"/>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/single_cocktail_cl"
@@ -43,22 +43,15 @@
 
         <TextView
             android:id="@+id/single_cocktail_instructions"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="128dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="128dp"
+            android:gravity="center"
             android:text="Instructions:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/single_cocktail_name" />
-
-        <TextView
-            android:id="@+id/single_cocktail_instructions_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="60dp"
-            tools:text="Instructions"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/single_cocktail_name" />
 
         <TextView
@@ -75,11 +68,10 @@
             android:id="@+id/single_cocktail_ing_1_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="60dp"
-            tools:text="ING1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/single_cocktail_instructions_value" />
+            app:layout_constraintTop_toTopOf="@+id/single_cocktail_ing_1"
+            tools:text="ING1" />
 
         <TextView
             android:id="@+id/single_cocktail_ing_2"

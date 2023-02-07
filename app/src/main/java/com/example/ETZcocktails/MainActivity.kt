@@ -49,7 +49,8 @@ class MainActivity : AppCompatActivity() {
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.replace(R.id.frameLayout, fragment).addToBackStack(null)
+        //TODO addtobackstack works but dosent update the bottom nav menu #Eytan is the best#
         fragmentTransaction.commit()
     }
 }
