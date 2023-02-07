@@ -22,6 +22,7 @@ import com.example.ETZcocktails.data.repository.CocktailRepository
 import com.example.ETZcocktails.databinding.FragmentMyCocktailsBinding
 import com.example.ETZcocktails.ui.add_cocktail.AddCocktail
 import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
+import com.example.ETZcocktails.ui.single_cocktail.SingleCocktailFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MyCocktails : Fragment() {
@@ -63,6 +64,10 @@ class MyCocktails : Fragment() {
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     override fun onItemClicked(index: Int) {
                         println("Clicked")
+                        val fragmentManager = parentFragmentManager
+                        val fragmentTransaction = fragmentManager.beginTransaction()
+                        fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
+
                     }
 
                     override fun onItemLongClicked(index: Int) {

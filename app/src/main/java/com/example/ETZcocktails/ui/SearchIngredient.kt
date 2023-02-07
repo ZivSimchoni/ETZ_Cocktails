@@ -82,7 +82,7 @@ class SearchIngredient : Fragment() {
 
 
     fun GetCocktailsByName(CocktailsToSearch : MutableList<String>) {
-        val CocktailList: MutableList<Cocktail> = mutableListOf()
+        val cocktailList: MutableList<Cocktail> = mutableListOf()
         for (cocktail in CocktailsToSearch) {
             val API = RetrofitHelper.FetchCocktailByName(cocktail)
             API?.enqueue(object : Callback<CocktailList?> {
@@ -92,17 +92,17 @@ class SearchIngredient : Fragment() {
                 ) {
                     if (response.body()?.drinks != null) {
                         val cocktail_ret = response.body()!!.drinks!!
-                        CocktailList.add(cocktail_ret[0])
+                        cocktailList.add(cocktail_ret[0])
                     }
 
                     //show all cocktails
-                    binding.CocktailViewList.adapter = CocktailAdapter(CocktailList, object : CocktailAdapter.ItemListener {
+                    binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
                             println("Clicked")
                             //replace fragment search cocktails with single cocktail
                             val fragmentManager = parentFragmentManager
                             val fragmentTransaction = fragmentManager.beginTransaction()
-                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(CocktailList[index])).addToBackStack(null).commit()
+                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
 
                         }
 

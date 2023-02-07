@@ -15,6 +15,7 @@ import com.example.ETZcocktails.databinding.FragmentFavCocktailsBinding
 import com.example.ETZcocktails.databinding.FragmentMyCocktailsBinding
 import com.example.ETZcocktails.ui.add_cocktail.AddCocktail
 import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
+import com.example.ETZcocktails.ui.single_cocktail.SingleCocktailFragment
 
 
 class FavCocktails : Fragment() {
@@ -69,6 +70,10 @@ class FavCocktails : Fragment() {
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     override fun onItemClicked(index: Int) {
                         println("Clicked")
+                        val fragmentManager = parentFragmentManager
+                        val fragmentTransaction = fragmentManager.beginTransaction()
+                        fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
+
                     }
 
                     override fun onItemLongClicked(index: Int) {
