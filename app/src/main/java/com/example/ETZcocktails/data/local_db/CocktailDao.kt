@@ -25,6 +25,9 @@ interface CocktailDao {
     @Query("SELECT * FROM cocktails ORDER BY strDrink ASC")
     fun getListCocktails() : List<Cocktail>
 
+    @Query("SELECT * FROM cocktails WHERE idDrink=-1 ORDER BY strDrink ASC")
+    fun getListCocktailsByMe(): List<Cocktail>
+
     @Query("SELECT * FROM cocktails WHERE idDrink =:id")
     fun getItemIdDrink(id:Long) : Cocktail
 

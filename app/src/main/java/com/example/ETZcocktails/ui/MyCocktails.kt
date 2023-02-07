@@ -58,7 +58,7 @@ class MyCocktails : Fragment() {
 
             try
             {
-                val cocktailList=viewModel.getListCocktails()!!
+                val cocktailList=viewModel.getListCocktailsByMe()!!
                 //show all cocktails
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     override fun onItemClicked(index: Int) {
