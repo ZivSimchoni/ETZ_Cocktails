@@ -1,5 +1,6 @@
 package com.example.ETZcocktails.ui.all_characters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,6 +52,10 @@ class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val T
                     //maybe need to take care a bit differently for items that are from api(use deleteItemIdDrink)
                     //not the best but its something maybe find a better way to remove the item
                     //binding.root.visibility = View.GONE
+                    Log.d(
+                        "ETZ-Delete-Cocktail",
+                        "Cocktail Deleted ${cocktail.strDrink.toString()}"
+                    )
                     viewModel.deleteItem(cocktail)
                     binding.root.removeAllViews()
                 }
