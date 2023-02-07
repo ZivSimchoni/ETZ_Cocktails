@@ -9,7 +9,7 @@ import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
 import com.example.ETZcocktails.databinding.CocktailViewListBinding
 
-class CocktailAdapter(val items:List<Cocktail>, val callBack: ItemListener)
+class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val TrashVisibility:Boolean =true)
     : RecyclerView.Adapter<CocktailAdapter.ItemViewHolder>() {
 
     interface ItemListener {
@@ -39,6 +39,7 @@ class CocktailAdapter(val items:List<Cocktail>, val callBack: ItemListener)
             binding.NameOfCocktail.text = cocktail.strDrink
             binding.NumberOfIngredients.text = getNumberOfIng(cocktail).toString()
             binding.CocktailInstructions.text = getInstructionPreview(cocktail.strInstructions.toString())
+            binding.Trash.visibility= if (TrashVisibility) View.VISIBLE else View.INVISIBLE
 
             Glide.with(binding.root).load(cocktail.strDrinkThumb).circleCrop()
                 .into(binding.PhotoOfCocktail)
