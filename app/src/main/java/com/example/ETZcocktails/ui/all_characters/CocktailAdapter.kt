@@ -41,6 +41,10 @@ class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val T
             binding.CocktailInstructions.text = getInstructionPreview(cocktail.strInstructions.toString())
             binding.Trash.visibility= if (TrashVisibility) View.VISIBLE else View.INVISIBLE
 
+            Glide.with(binding.root).load(cocktail.strDrinkThumb).circleCrop()
+                .into(binding.PhotoOfCocktail)
+            binding.PhotoOfCocktail
+
             if(TrashVisibility && viewModel!=null)
             {
                 binding.Trash.setOnClickListener{
@@ -51,9 +55,6 @@ class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val T
                     binding.root.removeAllViews()
                 }
             }
-            Glide.with(binding.root).load(cocktail.strDrinkThumb).circleCrop()
-                .into(binding.PhotoOfCocktail)
-            binding.PhotoOfCocktail
         }
     }
 
