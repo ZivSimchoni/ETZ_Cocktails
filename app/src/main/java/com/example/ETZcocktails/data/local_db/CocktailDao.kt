@@ -13,6 +13,9 @@ interface CocktailDao {
     @Delete
     fun deleteItem(cocktail:Cocktail)
 
+    @Query("DELETE FROM cocktails WHERE IdDrink = :id")
+    fun deleteItemIdDrink(id:Long)
+
     @Update
     fun updateItem(cocktail: Cocktail)
 
@@ -22,8 +25,8 @@ interface CocktailDao {
     @Query("SELECT * FROM cocktails ORDER BY strDrink ASC")
     fun getListCocktails() : List<Cocktail>
 
-    @Query("SELECT * FROM cocktails WHERE id =:id")
-    fun getItem(id:Int) : Cocktail
+    @Query("SELECT * FROM cocktails WHERE idDrink =:id")
+    fun getItemIdDrink(id:Long) : Cocktail
 
     @Query("DELETE FROM cocktails")
     fun deleteAll()

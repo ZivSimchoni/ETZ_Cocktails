@@ -13,9 +13,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ETZcocktails.CocktailList
+import com.example.ETZcocktails.R
 import com.example.ETZcocktails.data.models.RetrofitHelper
 import com.example.ETZcocktails.databinding.FragmentSearchCocktailsBinding
 import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
+import com.example.ETZcocktails.ui.single_cocktail.SingleCocktailFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,7 +53,14 @@ class SearchCocktails : Fragment() {
                     }
                     binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
-                            println("Clicked")
+                            //replace fragment search cocktails with single cocktail
+                            val fragmentManager = parentFragmentManager
+                            val fragmentTransaction = fragmentManager.beginTransaction()
+                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
+
+
+
+
                         }
 
                         override fun onItemLongClicked(index: Int) {
@@ -117,5 +126,13 @@ class SearchCocktails : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        //TODO fix the cocktail view list not saving
+        //save the recycler view CocktailViewList
+//        outState.putParcelable("CocktailViewList", binding.CocktailViewList.layoutManager?.onSaveInstanceState())
+
     }
 }

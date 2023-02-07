@@ -23,12 +23,20 @@ class CocktailViewModel (application: Application)  : AndroidViewModel(applicati
         repository.addItem(cocktail)
     }
 
+    fun addFavItem(cocktail: Cocktail) {
+        repository.addFavouriteItem(cocktail)
+    }
+
     fun getListCocktails() = repository.getListCocktails()
 
     fun deleteItem(cocktail: Cocktail) {
         repository.deleteItem(cocktail)
     }
+    fun getItemIdDrink(id:Long) = repository.getItemIdDrink(id)
 
+    fun deleteItemIdDrink(id:Long) {
+        repository.deleteItemIdDrink(id)
+    }
     fun deleteAll() {
         repository.deleteAll()
     }
