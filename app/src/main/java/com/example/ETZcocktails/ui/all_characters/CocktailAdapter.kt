@@ -52,7 +52,9 @@ class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val T
             {
                 binding.Trash.setOnClickListener{
                     viewModel.deleteItem(cocktail)
-
+                    //not the best but its something maybe find a better way to remove the item
+                    binding.root.removeAllViews()
+                    binding.root.visibility = View.GONE
                 }
 
 
