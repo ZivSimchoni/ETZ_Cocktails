@@ -18,6 +18,7 @@
         <item name="android:navigationBarColor">@color/back_gray</item>
         <item name="android:windowBackground">@color/back_gray</item>
         <!--  TextFill  -->
+        <item name="cardViewStyle">@color/back_gray</item>
         <item name="textFillColor">@color/black</item>
     </style>
 </resources>

@@ -96,4 +96,5 @@
     <string name="unit_tsp">Table Spoon</string>
     <string name="add_cocktail">Add Cocktail</string>
     <string name="remove_all">Remove All</string>
+    <string name="remove">remove</string>
 </resources>
