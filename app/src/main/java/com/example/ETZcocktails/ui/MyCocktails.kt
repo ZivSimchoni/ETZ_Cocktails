@@ -94,7 +94,7 @@ class MyCocktails : Fragment() {
 
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_down,R.anim.slide_up)
         fragmentTransaction.replace(R.id.frameLayout, fragment)
         fragmentTransaction.addToBackStack("myCocktails")
         fragmentTransaction.commit()
