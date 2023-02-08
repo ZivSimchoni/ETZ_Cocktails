@@ -42,13 +42,8 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
         updateCocktail(cocktailToDisplay)
     }
 
-
-
-
-
     private fun updateCocktail(cocktail: Cocktail) {
-
-        println(cocktail.id)
+        //println(cocktail.id)
         binding?.singleCocktailName?.text = cocktail.strDrink
         binding?.singleCocktailInstructions?.text = cocktail.strInstructions
         binding?.singleCocktailIng1?.text = cocktail.strIngredient1
@@ -62,58 +57,44 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
         binding?.singleCocktailIng5?.text = cocktail.strIngredient5
         binding?.singleCocktailIng5Value?.text = cocktail.strMeasure5
 
-
-
         //check if the cocktail is inside the db or not. If it is, then hide the add button
-
-        //if cocktail already liked,display liked image
+        //if cocktail already liked, display liked image
         if (viewModel.getItemIdDrink((cocktail.idDrink)!!) != null) {
-            binding?.Fav?.setImageResource(R.drawable.ic_favorite_24)
-
-        //if cocktail not liked , display not liked image
+            binding?.Fav?.setImageResource(R.drawable.ic_star_rate)
         } else {
-            binding?.Fav?.setImageResource(R.drawable.ic_send)
-
-
-            //set on click listner to add the cocktail to the viewlist
+            //if cocktail not liked, display not liked image
+            binding?.Fav?.setImageResource(R.drawable.ic_star_rate_blank)
         }
+        //Click on the image to add the cocktail to the View-list
         binding?.Fav?.setOnClickListener {
-
             //if cocktail is liked, dislike it
             if (viewModel.getItemIdDrink((cocktail.idDrink)!!) != null) {
-                //if cocktail is made by me
-                if(cocktail.idDrink!!<=-1)
+                if(cocktail.idDrink!!<=-1) //if cocktail is made by me
                 {
                     Toast.makeText(requireContext(),
                         "Cocktail removed from My Cocktails",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                //if cocktail is from api
-                else
+                else //if cocktail is from api
                 {
                     Toast.makeText(requireContext(),
                         "Cocktail removed from Favorites",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
                 viewModel.deleteItemIdDrink(cocktail.idDrink!!)
-                binding?.Fav?.setImageResource(R.drawable.ic_send)
+                binding?.Fav?.setImageResource(R.drawable.ic_star_rate_blank)
             }
-            //if cocktail is not liked , like it
-            else{
-
-                //if cocktail is made by me
-                if(cocktail.idDrink!!<=-1)
+            else { //if cocktail is not liked , like it
+                if(cocktail.idDrink!!<=-1) //if cocktail is made by me
                 {
                     Toast.makeText(requireContext(),
-                        "Cocktail added back to My Cocktails",
+                        "Cocktail added to My Cocktails",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                //if cocktail is from api
-                else
+                else //if cocktail is from api
                 {
                     Toast.makeText(requireContext(),
                         "Cocktail added to Favorites",
@@ -121,11 +102,9 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                     ).show()
                 }
                 viewModel.addFavItem(cocktail)
-                binding?.Fav?.setImageResource(R.drawable.ic_favorite_24)
+                binding?.Fav?.setImageResource(R.drawable.ic_star_rate)
             }
         }
-
-
 
         binding?.singleCocktailImage?.let {
             Glide.with(requireContext()).load(cocktail.strDrinkThumb).circleCrop().into(

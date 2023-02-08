@@ -154,11 +154,15 @@
             app:layout_constraintTop_toBottomOf="@+id/single_cocktail_ing_4_value" />
 
         <ImageButton
+            android:background="@color/transparent"
             android:id="@+id/Fav"
+            android:scaleX="2"
+            android:scaleY="2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="FAV"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Favorite-Icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/single_cocktail_image"
             app:layout_constraintTop_toTopOf="parent" />

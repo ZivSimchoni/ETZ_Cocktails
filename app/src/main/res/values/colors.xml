@@ -3,7 +3,7 @@
     <!--    Default Values    -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
+    <color name="purple_700">#1E0752</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
@@ -22,9 +22,10 @@
     <color name="color_accent">#FF4081</color>
     <color name="nice_pink">#ab0d49</color>
     <color name="nice_pink_dark">#770933</color>
-    <color name="gold">#C8AC65</color>
+    <color name="color_gold">#f2d15d</color>
     <color name="purple_bright">#911DEE</color>
     <color name="background_color">#f2f2f2</color>
+    <color name="dark_purple_almost_black">#0b0029</color>
     <color name="blue">#03A9F4</color>
     <color name="blue_dark">#2196F3</color>
     <color name="light_blue_A400">#FF00B0FF</color>
