@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.databinding.FragmentFavCocktailsBinding
-import com.example.ETZcocktails.databinding.FragmentMyCocktailsBinding
-import com.example.ETZcocktails.ui.add_cocktail.AddCocktail
 import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
 import com.example.ETZcocktails.ui.single_cocktail.SingleCocktailFragment
 
@@ -57,13 +55,9 @@ class FavCocktails : Fragment() {
 
         if (viewModel.items != null)
         {
-
-
             //get cocktail list
-
             try
             {
-
                 val cocktailList=viewModel.getListFavoriteCocktails()!!
                 //show all cocktails
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
@@ -72,9 +66,7 @@ class FavCocktails : Fragment() {
                         val fragmentManager = parentFragmentManager
                         val fragmentTransaction = fragmentManager.beginTransaction()
                         fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
-
                     }
-
                     override fun onItemLongClicked(index: Int) {
                         println("Long Clicked")
                     }
@@ -85,10 +77,7 @@ class FavCocktails : Fragment() {
             {
                 print("error in cocktail list probably")
             }
-
-
         }
-
 
         return binding.root
     }

@@ -2,7 +2,6 @@ package com.example.ETZcocktails.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 
 class GlobalFunctions {
     //check if user as internet connection

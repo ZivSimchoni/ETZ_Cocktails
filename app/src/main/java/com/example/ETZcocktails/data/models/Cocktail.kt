@@ -1,11 +1,7 @@
 package com.example.ETZcocktails
 
-import android.os.Parcelable
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.parcelize.Parcelize
-import java.io.Serializable
 
 @Entity(tableName = "cocktails")
 class Cocktail( _id:Int ?=0,_idDrink: Long ?= null,_strDrink: String? = null,_strAlcoholic:String? = null,_strInstructions: String? = null,_strDrinkThumb: String? = null,_strIngredient1: String? = null,_strIngredient2: String? = null,_strIngredient3: String? = null,_strIngredient4: String? = null,_strIngredient5: String? = null,_strMeasure1: String? = null,_strMeasure2: String? = null,_strMeasure3: String? = null,_strMeasure4: String? = null,_strMeasure5: String? = null) {

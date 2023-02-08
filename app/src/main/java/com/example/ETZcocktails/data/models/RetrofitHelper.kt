@@ -1,6 +1,5 @@
 package com.example.ETZcocktails.data.models
 
-import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
 import okhttp3.OkHttpClient
 import retrofit2.Call

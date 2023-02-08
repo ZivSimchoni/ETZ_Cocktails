@@ -1,22 +1,17 @@
 package com.example.ETZcocktails.ui.single_cocktail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.ETZcocktails.databinding.FragmentSingleCocktailBinding
 import com.bumptech.glide.Glide
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.R
-import com.example.ETZcocktails.utils.autoCleared
-import com.example.ETZcocktails.utils.Loading
-import com.example.ETZcocktails.utils.Success
-import com.example.ETZcocktails.utils.Error
+import com.example.ETZcocktails.databinding.FragmentSingleCocktailBinding
 
 
 class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
