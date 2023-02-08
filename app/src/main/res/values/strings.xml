@@ -12,6 +12,7 @@
     <string name="instructions">Instructions</string>
     <string name="glass">Glass</string>
     <string name="serve">Serve</string>
+    <string name="bye_message">Press back twice</string>
     <!--   Add A Cocktail    -->
     <string name="add_name">Enter Cocktail Name</string>
     <string name="add_instructions">Enter Cocktail\'s Instructions</string>

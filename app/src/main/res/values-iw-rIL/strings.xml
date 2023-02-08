@@ -81,4 +81,5 @@
     <string name="add_cocktail">הוסף קוקטייל</string>
     <string name="remove_all">מחק הכל</string>
     <string name="remove">הסר</string>
+    <string name="bye_message">לחץ פעמיים כדי לצאת</string>
 </resources>
