@@ -81,19 +81,45 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
 
             //if cocktail is liked, dislike it
             if (viewModel.getItemIdDrink((cocktail.idDrink)!!) != null) {
-                Toast.makeText(requireContext(),
-                    "Cocktail removed from Favorites",
-                    Toast.LENGTH_SHORT
-                ).show()
+                //if cocktail is made by me
+                if(cocktail.idDrink!!<=-1)
+                {
+                    Toast.makeText(requireContext(),
+                        "Cocktail removed from My Cocktails",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                //if cocktail is from api
+                else
+                {
+                    Toast.makeText(requireContext(),
+                        "Cocktail removed from Favorites",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
                 viewModel.deleteItemIdDrink(cocktail.idDrink!!)
                 binding?.Fav?.setImageResource(R.drawable.ic_send)
             }
             //if cocktail is not liked , like it
             else{
-                Toast.makeText(requireContext(),
-                    "Cocktail added to Favorites",
-                    Toast.LENGTH_SHORT
-                ).show()
+
+                //if cocktail is made by me
+                if(cocktail.idDrink!!<=-1)
+                {
+                    Toast.makeText(requireContext(),
+                        "Cocktail added back to My Cocktails",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                //if cocktail is from api
+                else
+                {
+                    Toast.makeText(requireContext(),
+                        "Cocktail added to Favorites",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
                 viewModel.addFavItem(cocktail)
                 binding?.Fav?.setImageResource(R.drawable.ic_favorite_24)
             }

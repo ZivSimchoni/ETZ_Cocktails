@@ -72,6 +72,7 @@ class MyCocktails : Fragment() {
                         val fragmentTransaction = fragmentManager.beginTransaction()
                         fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
 
+
                     }
 
                     override fun onItemLongClicked(index: Int) {
