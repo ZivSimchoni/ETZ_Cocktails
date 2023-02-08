@@ -5,25 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.viewModelScope
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
-import com.example.ETZcocktails.MainActivity
 import com.example.ETZcocktails.R
-import com.example.ETZcocktails.data.repository.CocktailRepository
 import com.example.ETZcocktails.databinding.FragmentMyCocktailsBinding
 import com.example.ETZcocktails.ui.add_cocktail.AddCocktail
 import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
 import com.example.ETZcocktails.ui.single_cocktail.SingleCocktailFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MyCocktails : Fragment() {
 
