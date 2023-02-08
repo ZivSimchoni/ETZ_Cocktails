@@ -10,7 +10,6 @@ import com.example.ETZcocktails.ui.SearchCocktails
 import com.example.ETZcocktails.ui.SearchIngredient
 import com.example.ETZcocktails.ui.MyCocktails
 import com.example.ETZcocktails.ui.FavCocktails
-import com.example.ETZcocktails.utils.GlobalFunctions
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,10 +47,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // double click to exit -> the only downside that its over all the fragments
+//    private var doubleBackToExitPressedOnce = false
+//
+//    override fun onBackPressed() {
+//        if (doubleBackToExitPressedOnce) {
+//            super.onBackPressed()
+//            return
+//        }
+//        this.doubleBackToExitPressedOnce = true
+//        Toast.makeText(this,
+//            R.string.bye_message,
+//            Toast.LENGTH_SHORT
+//        ).show()
+//        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+//    }
+
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frameLayout, fragment).addToBackStack(null)
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
         //TODO addtobackstack works but dosent update the bottom nav menu #Eytan is the best#
         fragmentTransaction.commit()
     }
