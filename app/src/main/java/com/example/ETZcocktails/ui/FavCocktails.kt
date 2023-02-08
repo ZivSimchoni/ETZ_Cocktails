@@ -58,8 +58,7 @@ class FavCocktails : Fragment() {
         if (viewModel.items != null)
         {
 
-            //TODO show all cocktails - this is a temp value
-            //binding.textMyCocktailName.text = viewModel.items.toString()
+
             //get cocktail list
 
             try

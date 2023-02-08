@@ -61,16 +61,16 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
         binding?.singleCocktailIng4Value?.text = cocktail.strMeasure4
         binding?.singleCocktailIng5?.text = cocktail.strIngredient5
         binding?.singleCocktailIng5Value?.text = cocktail.strMeasure5
+
+
+
         //check if the cocktail is inside the db or not. If it is, then hide the add button
 
-
-
-
-
+        //if cocktail already liked,display liked image
         if (viewModel.getItemIdDrink((cocktail.idDrink)!!) != null) {
             binding?.Fav?.setImageResource(R.drawable.ic_favorite_24)
 
-
+        //if cocktail not liked , display not liked image
         } else {
             binding?.Fav?.setImageResource(R.drawable.ic_send)
 
@@ -78,13 +78,22 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
             //set on click listner to add the cocktail to the viewlist
         }
         binding?.Fav?.setOnClickListener {
+
+            //if cocktail is liked, dislike it
             if (viewModel.getItemIdDrink((cocktail.idDrink)!!) != null) {
-                println("removed")
+                Toast.makeText(requireContext(),
+                    "Cocktail removed from Favorites",
+                    Toast.LENGTH_SHORT
+                ).show()
                 viewModel.deleteItemIdDrink(cocktail.idDrink!!)
                 binding?.Fav?.setImageResource(R.drawable.ic_send)
             }
+            //if cocktail is not liked , like it
             else{
-                println("added")
+                Toast.makeText(requireContext(),
+                    "Cocktail added to Favorites",
+                    Toast.LENGTH_SHORT
+                ).show()
                 viewModel.addFavItem(cocktail)
                 binding?.Fav?.setImageResource(R.drawable.ic_favorite_24)
             }
