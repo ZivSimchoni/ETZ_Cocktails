@@ -39,7 +39,6 @@ class SearchCocktails : Fragment() {
     }
 
     fun GetCocktailsByName(CocktailToSearch :String){
-        // TODO: re-implement this function - null safety
         val API = RetrofitHelper.FetchCocktailByName(CocktailToSearch)
         API?.enqueue(object: Callback<CocktailList?> {
             override fun onResponse(
@@ -48,7 +47,6 @@ class SearchCocktails : Fragment() {
             ) {
                 if (response.body()?.drinks != null) {
                     val cocktailList = response.body()!!.drinks!!
-                    //printCocktails(cocktailList) // error so comment
                     for (cocktail in cocktailList) {
                         println(cocktail.strDrink)
                     }
@@ -81,8 +79,10 @@ class SearchCocktails : Fragment() {
             }
 
             override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
-                // TODO("Not yet implemented")
-                //println("API onFailure ERROR")
+                Toast.makeText(requireContext(),
+                    "Server Error connection failed!",
+                    Toast.LENGTH_SHORT
+                ).show()
                 Log.d(
                     "ETZ-Cocktails-API-ERROR",
                     "Found No Cocktails on API"
@@ -91,13 +91,6 @@ class SearchCocktails : Fragment() {
         })
     }
 
-
-    // error so comment
-//    fun printCocktails(cocktailList: List<Cocktail>) {
-//        adapter = CocktailAdapter(cocktailList)
-//        binding.charactersRv.layoutManager = LinearLayoutManager(requireContext())
-//        binding.charactersRv.adapter = adapter
-//    }
     fun Context.hideKeyboard(view: View) {
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
@@ -108,41 +101,35 @@ class SearchCocktails : Fragment() {
     ): View? {
 
         _binding = FragmentSearchCocktailsBinding.inflate(inflater,container,false)
-        // TODO InputValidation
 
+        binding.searchButton.setOnClickListener {
+            if(GlobalFunctions().isOnline(requireContext())) {
+                GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
+                view?.let { activity?.hideKeyboard(it) }
+            }
+            else {
+                Toast.makeText(requireContext(),
+                    "No internet connection",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
 
-            binding.searchButton.setOnClickListener {
-                if(GlobalFunctions().isOnline(requireContext())) {
+        binding.CocktailToSearchInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if(GlobalFunctions().isOnline(requireContext())) {
+                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                     GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
-                    view?.let { activity?.hideKeyboard(it) }
-                }
-                else {
-                    Toast.makeText(requireContext(),
-                        "No internet connection",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    return@OnKeyListener true
                 }
             }
-
-            binding.CocktailToSearchInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
-                if(GlobalFunctions().isOnline(requireContext())) {
-                    if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                        GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
-                        return@OnKeyListener true
-                    }
-                }
-                else {
-                    Toast.makeText(requireContext(),
-                        "No internet connection",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                false
-            })
-
-
-
+            else {
+                Toast.makeText(requireContext(),
+                    "No internet connection",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            false
+        })
 
         return binding.root
     }
