@@ -51,7 +51,6 @@ class MyCocktails : Fragment() {
             //TODO show all cocktails - this is a temp value
             //binding.textMyCocktailName.text = viewModel.items.toString()
             //get cocktail list
-
             try
             {
                 val cocktailList=viewModel.getListCocktailsByMe()!!
@@ -62,8 +61,6 @@ class MyCocktails : Fragment() {
                         val fragmentManager = parentFragmentManager
                         val fragmentTransaction = fragmentManager.beginTransaction()
                         fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
-
-
                     }
 
                     override fun onItemLongClicked(index: Int) {
@@ -76,8 +73,6 @@ class MyCocktails : Fragment() {
             {
                 print("error in cocktail list probably")
             }
-
-
         }
 
         return binding.root
