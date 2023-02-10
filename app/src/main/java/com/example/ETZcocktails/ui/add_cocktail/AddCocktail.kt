@@ -11,6 +11,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.ETZcocktails.Cocktail
@@ -42,6 +43,36 @@ class AddCocktail : Fragment() {
     ): View? {
 
         _binding = FragmentAddCocktailBinding.inflate(inflater,container,false)
+
+        val Ingri = arrayOf(binding.addCocktailIngredient1 ,binding.addCocktailIngredient2, binding.addCocktailIngredient3, binding.addCocktailIngredient4, binding.addCocktailIngredient5)
+        val IngriMeasure = arrayOf(binding.addCocktailIngredient1measure ,binding.addCocktailIngredient2measure, binding.addCocktailIngredient3measure, binding.addCocktailIngredient4measure, binding.addCocktailIngredient5measure)
+        //hidde all ingrimeasure
+        IngriMeasure.forEach {
+            it.visibility = View.GONE
+        }
+        //hidde all ingri   except the first
+        Ingri.forEachIndexed { index, editText ->
+            if (index != 0) {
+                editText.visibility = View.GONE
+            }
+        }
+
+        //for each elemnt in iingri add a listener to the text change and if the text is not empty show the next element and the messaure of it
+        Ingri.forEachIndexed { index, editText ->
+            editText.addTextChangedListener {
+                if (it.toString().isNotEmpty()) {
+                    Ingri[index + 1].visibility = View.VISIBLE
+                    IngriMeasure[index].visibility = View.VISIBLE
+                }
+                else
+                {
+                    Ingri[index + 1].visibility = View.GONE
+                    IngriMeasure[index].visibility = View.GONE
+                }
+            }
+        }
+        //binding.addCocktailIngredient2.visibility=View.GONE
+        //binding.addCocktailIngredient2measure.visibility=View.GONE
 
         var index : Int
         try {
