@@ -57,11 +57,7 @@ class SearchCocktails : Fragment() {
                             //replace fragment search cocktails with single cocktail
                             val fragmentManager = parentFragmentManager
                             val fragmentTransaction = fragmentManager.beginTransaction()
-                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
-
-
-
-
+                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack("SingleViewCocktail").commit()
                         }
 
                         override fun onItemLongClicked(index: Int) {

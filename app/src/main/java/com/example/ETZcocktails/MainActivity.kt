@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.ETZcocktails.ui.FavCocktails
+import com.example.ETZcocktails.ui.MyCocktails
 import com.example.ETZcocktails.ui.SearchCocktails
 import com.example.ETZcocktails.ui.SearchIngredient
-import com.example.ETZcocktails.ui.MyCocktails
-import com.example.ETZcocktails.ui.FavCocktails
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,24 +19,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        //create an instance of each fragment
+        val searchCocktails = SearchCocktails()
+        val searchIngredient = SearchIngredient()
+        val myCocktails = MyCocktails()
+        val favCocktails = FavCocktails()
 
-        replaceFragment(SearchCocktails())
+        //set the first fragment
+
+        replaceFragment(searchCocktails)
 
         val bottomNav = findViewById(R.id.bottomNavigationMenu) as BottomNavigationView
 
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.searchCocktails -> {
-                    replaceFragment(SearchCocktails())
-                true
-                }
-                R.id.searchIngredient -> {replaceFragment(SearchIngredient())
+                    replaceFragment(searchCocktails)
                     true
                 }
-                R.id.myCocktails -> {replaceFragment(MyCocktails())
+                R.id.searchIngredient -> {
+                    replaceFragment(searchIngredient)
                     true
                 }
-                R.id.FavCocktails -> {replaceFragment(FavCocktails())
+                R.id.myCocktails -> {
+                    replaceFragment(myCocktails)
+                    true
+                }
+                R.id.FavCocktails -> {
+                    replaceFragment(favCocktails)
                     true
                 }
                 else -> {
@@ -64,13 +74,15 @@ class MainActivity : AppCompatActivity() {
 //    }
 
 
-
     private fun replaceFragment(fragment: Fragment) {
+
         val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_right)
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
         fragmentTransaction.replace(R.id.frameLayout, fragment)
-        //TODO addtobackstack works but dosent update the bottom nav menu #Eytan is the best#
+
         fragmentTransaction.commit()
+
     }
 }
 
