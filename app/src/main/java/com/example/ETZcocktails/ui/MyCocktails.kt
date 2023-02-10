@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.databinding.FragmentMyCocktailsBinding
@@ -39,11 +40,10 @@ class MyCocktails : Fragment() {
         }
 
         binding.btnDeleteCocktail.setOnClickListener{
-            //delete my cocktails from database
-
             //todo : need to find out how to refresh in order to use this
-//            viewModel.deleteMyCocktails()
-//            binding.root.removeAllViews()
+            viewModel.deleteMyCocktails()
+            //binding.root.removeAllViews()
+            binding.root.findViewById<RecyclerView>(R.id.CocktailViewList).removeAllViewsInLayout()
         }
 
         if (viewModel.items != null)
