@@ -1,10 +1,12 @@
 package com.example.ETZcocktails.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
@@ -41,9 +43,26 @@ class MyCocktails : Fragment() {
 
         binding.btnDeleteCocktail.setOnClickListener{
             //todo : need to find out how to refresh in order to use this
-            viewModel.deleteMyCocktails()
-            //binding.root.removeAllViews()
+            var listLen = viewModel.getListCocktailsByMe()!!.toList().size
+            if (listLen == 0) {
+                Toast.makeText(binding.root.context,
+                    "First make at least one Cocktail!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            else {
+            viewModel.deleteMyCocktails() // only this are the old
+            //binding.root.removeAllViews() // only this are the old
             binding.root.findViewById<RecyclerView>(R.id.CocktailViewList).removeAllViewsInLayout()
+            Log.d(
+                "ETZ-Delete-ALL-Cocktail",
+                "Deleted All Cocktails."
+            )
+            Toast.makeText(binding.root.context,
+                "Deleted All Cocktails!",
+                Toast.LENGTH_SHORT
+            ).show()
+            }
         }
 
         if (viewModel.items != null)
