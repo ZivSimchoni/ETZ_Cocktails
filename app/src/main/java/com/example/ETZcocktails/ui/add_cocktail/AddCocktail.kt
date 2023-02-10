@@ -61,13 +61,25 @@ class AddCocktail : Fragment() {
         Ingri.forEachIndexed { index, editText ->
             editText.addTextChangedListener {
                 if (it.toString().isNotEmpty()) {
-                    Ingri[index + 1].visibility = View.VISIBLE
-                    IngriMeasure[index].visibility = View.VISIBLE
+                    if (index == Ingri.size-1) {
+                        Ingri[index].visibility = View.VISIBLE
+                        IngriMeasure[index].visibility = View.VISIBLE
+                    }
+                    else {
+                        Ingri[index + 1].visibility = View.VISIBLE
+                        IngriMeasure[index].visibility = View.VISIBLE
+                    }
                 }
                 else
                 {
-                    Ingri[index + 1].visibility = View.GONE
-                    IngriMeasure[index].visibility = View.GONE
+                    if (index == Ingri.size-1) {
+                        Ingri[index].visibility = View.VISIBLE
+                        IngriMeasure[index].visibility = View.VISIBLE
+                    }
+                    else {
+                        Ingri[index + 1].visibility = View.GONE
+                        IngriMeasure[index].visibility = View.GONE
+                    }
                 }
             }
         }
@@ -86,7 +98,7 @@ class AddCocktail : Fragment() {
         var idDrink_current: Long
         try {
             idDrink_current=viewModel.getMinIdDrink()!!
-            if(idDrink_current==null||idDrink_current>-1)
+            if((idDrink_current == null) || (idDrink_current > -1))
             {
                 idDrink_current=-1
             }
