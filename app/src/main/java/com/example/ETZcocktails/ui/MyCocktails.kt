@@ -37,10 +37,12 @@ class MyCocktails : Fragment() {
     ): View? {
         _binding = FragmentMyCocktailsBinding.inflate(inflater,container,false)
 
+        //add new cocktail
         binding.btnAddCocktail.setOnClickListener{
             replaceFragment(AddCocktail())
         }
 
+        //delete all cocktail
         binding.btnDeleteCocktail.setOnClickListener{
             //todo : need to find out how to refresh in order to use this
             var listLen = viewModel.getListCocktailsByMe()!!.toList().size
@@ -65,14 +67,16 @@ class MyCocktails : Fragment() {
             }
         }
 
-        if (viewModel.items != null)
+        val cocktailList=viewModel.getListCocktailsByMe()!!
+
+        if (cocktailList.isNotEmpty())
         {
             //TODO show all cocktails - this is a temp value
             //binding.textMyCocktailName.text = viewModel.items.toString()
             //get cocktail list
             try
             {
-                val cocktailList=viewModel.getListCocktailsByMe()!!
+                binding.NoCocktailsAddedMyCocktails.visibility = View.GONE
                 //show all cocktails
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     //click on a specific cocktail
@@ -94,6 +98,16 @@ class MyCocktails : Fragment() {
             {
                 print("error in cocktail list probably")
             }
+        }
+        else
+        {
+            binding.NoCocktailsAddedMyCocktails.visibility = View.VISIBLE
+            Toast.makeText(requireContext(),
+                "insert sad smiley",
+                Toast.LENGTH_SHORT
+            ).show()
+
+
         }
 
         return binding.root
