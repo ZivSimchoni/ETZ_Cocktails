@@ -1,5 +1,6 @@
 package com.example.ETZcocktails.data.models
 
+import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -30,4 +31,9 @@ object RetrofitHelper {
     fun FetchCocktailByID (CocktailIdToSearch: String): Call<CocktailList?>? {
         return cocktailapi.FetchCocktailByID(CocktailIdToSearch)
     }
+
+    fun FetchRandomCocktail():Call<CocktailList?>? {
+        return cocktailapi.FetchRandomCocktail()
+    }
+
 }

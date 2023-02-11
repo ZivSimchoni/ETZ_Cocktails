@@ -40,8 +40,65 @@ class SearchCocktails : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    //get the cocktail that correspond to the name sent
     fun GetCocktailsByName(CocktailToSearch :String){
         val API = RetrofitHelper.FetchCocktailByName(CocktailToSearch)
+        API?.enqueue(object: Callback<CocktailList?> {
+            override fun onResponse(
+                call: Call<CocktailList?>,
+                response: Response<CocktailList?>
+            ) {
+                if (response.body()?.drinks != null) {
+                    val cocktailList = response.body()!!.drinks!!
+                    for (cocktail in cocktailList) {
+                        println(cocktail.strDrink)
+                    }
+                    binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
+                        override fun onItemClicked(index: Int) {
+                            //replace fragment search cocktails with single cocktail
+                            replaceFragment(SingleCocktailFragment(cocktailList[index]))
+//                            val fragmentManager = parentFragmentManager
+//                            val fragmentTransaction = fragmentManager.beginTransaction()
+//                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack("SingleViewCocktail").commit()
+                        }
+
+                        override fun onItemLongClicked(index: Int) {
+                            println("Long Clicked")
+                        }
+                    }, false)
+                    binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
+                }
+                else
+                {
+                    Toast.makeText(requireContext(),
+                        "Error No Drinks Found!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.d(
+                        "ETZ-CocktailsList-null",
+                        "List Length is null"
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
+                Toast.makeText(requireContext(),
+                    "Server Error connection failed!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                Log.d(
+                    "ETZ-Cocktails-API-ERROR",
+                    "Found No Cocktails on API"
+                )
+            }
+        })
+    }
+
+
+
+    //get a random cocktail
+    fun GetRandomCocktail(){
+        val API = RetrofitHelper.FetchRandomCocktail()
         API?.enqueue(object: Callback<CocktailList?> {
             override fun onResponse(
                 call: Call<CocktailList?>,
@@ -103,10 +160,24 @@ class SearchCocktails : Fragment() {
     ): View? {
 
         _binding = FragmentSearchCocktailsBinding.inflate(inflater,container,false)
-
+        //when search button is clicked
         binding.searchButton.setOnClickListener {
             if(GlobalFunctions().isOnline(requireContext())) {
                 GetCocktailsByName(binding.CocktailToSearchInput.text.toString())
+                view?.let { activity?.hideKeyboard(it) }
+            }
+            else {
+                Toast.makeText(requireContext(),
+                    "No internet connection",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        //when random button is clicked
+        binding.randomButton.setOnClickListener{
+            if(GlobalFunctions().isOnline(requireContext())) {
+                GetRandomCocktail()
                 view?.let { activity?.hideKeyboard(it) }
             }
             else {

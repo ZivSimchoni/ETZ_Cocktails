@@ -1,5 +1,6 @@
 package com.example.ETZcocktails.data.models
 
+import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
 import retrofit2.Call
 import retrofit2.http.GET
@@ -16,4 +17,7 @@ interface CocktailAPI {
 
     @GET("lookup.php?i=")
     fun FetchCocktailByID(@Query("i") IDCockToSearch:String) : Call<CocktailList?>?
+
+    @GET("random.php")
+    fun FetchRandomCocktail() : Call<CocktailList?>?
 }
