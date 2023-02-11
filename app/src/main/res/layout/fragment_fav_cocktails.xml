@@ -5,9 +5,6 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fadeScrollbars="true"
-    android:scrollbarSize="3dp"
-    android:scrollbars="vertical"
     tools:context=".ui.FavCocktails">
 
 
@@ -30,6 +27,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fadeScrollbars="true"
+        android:scrollbarSize="3dp"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
