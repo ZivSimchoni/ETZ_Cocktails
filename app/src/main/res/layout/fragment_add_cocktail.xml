@@ -40,10 +40,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/add_instructions"
             android:id="@+id/add_cocktail_instructions"
-            android:singleLine="true"
             android:textColorHint="#757575"
             android:imeOptions="actionDone"
-            android:maxLength="32"
             tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 

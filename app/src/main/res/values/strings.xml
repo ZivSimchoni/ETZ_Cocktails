@@ -12,7 +12,7 @@
     <string name="instructions">Instructions</string>
     <string name="glass">Glass</string>
     <string name="serve">Serve</string>
-    <string name="bye_message">Press back twice</string>
+    <string name="bye_message">Press back twice to exit!</string>
     <string name="deleted_message">Cocktail Deleted! Press the bar to view or undo the changes!</string>
     <!--   Add A Cocktail    -->
     <string name="add_name">Enter Cocktail Name</string>
