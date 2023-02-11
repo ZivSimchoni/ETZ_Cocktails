@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:layout_marginBottom="50dp">
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.single_cocktail.SingleCocktailFragment">
 
     <!-- //TODO: Understand wtf is that and what can we do with this  -->
@@ -169,5 +176,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</FrameLayout>
+</FrameLayout >
+</ScrollView>

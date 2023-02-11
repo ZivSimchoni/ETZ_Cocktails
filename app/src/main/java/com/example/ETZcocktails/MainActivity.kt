@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         val favCocktails = FavCocktails()
 
         //set the first fragment
-
         replaceFragment(searchCocktails)
 
         val bottomNav = findViewById(R.id.bottomNavigationMenu) as BottomNavigationView
@@ -80,9 +79,7 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
         fragmentTransaction.replace(R.id.frameLayout, fragment)
-
         fragmentTransaction.commit()
-
     }
 }
 
