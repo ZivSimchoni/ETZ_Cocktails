@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ETZ_Cocktails</string>
+    <string name="app_name">אטז קוקטיילים</string>
     <string name="search_cocktails">חפש קוקטייל</string>
     <string name="search_ingredient">חפש מרכיב</string>
     <string name="my_favorite_cocktails">מועדפים</string>
