@@ -75,11 +75,13 @@ class MyCocktails : Fragment() {
                 val cocktailList=viewModel.getListCocktailsByMe()!!
                 //show all cocktails
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
+                    //click on a specific cocktail
                     override fun onItemClicked(index: Int) {
                         println("Clicked")
-                        val fragmentManager = parentFragmentManager
-                        val fragmentTransaction = fragmentManager.beginTransaction()
-                        fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
+                        replaceFragment(SingleCocktailFragment(cocktailList[index]))
+//                        val fragmentManager = parentFragmentManager
+//                        val fragmentTransaction = fragmentManager.beginTransaction()
+//                        fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
                     }
 
                     override fun onItemLongClicked(index: Int) {
