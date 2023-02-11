@@ -74,7 +74,6 @@ class SearchCocktails : Fragment() {
                         "ETZ-CocktailsList-null",
                         "List Length is null"
                     )
-                    //println("Error Drinks NULL!")
                 }
             }
 
