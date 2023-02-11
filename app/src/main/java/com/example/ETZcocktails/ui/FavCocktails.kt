@@ -63,9 +63,10 @@ class FavCocktails : Fragment() {
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     override fun onItemClicked(index: Int) {
                         println("Clicked")
-                        val fragmentManager = parentFragmentManager
-                        val fragmentTransaction = fragmentManager.beginTransaction()
-                        fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
+                        replaceFragment(SingleCocktailFragment(cocktailList[index]))
+//                        val fragmentManager = parentFragmentManager
+//                        val fragmentTransaction = fragmentManager.beginTransaction()
+//                        fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
                     }
                     override fun onItemLongClicked(index: Int) {
                         println("Long Clicked")
@@ -91,13 +92,22 @@ class FavCocktails : Fragment() {
         _binding = null
     }
 
+
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_down,R.anim.slide_up)
         fragmentTransaction.replace(R.id.frameLayout, fragment)
         fragmentTransaction.addToBackStack("favCocktails")
         fragmentTransaction.commit()
     }
+
+//    private fun replaceFragment(fragment: Fragment) {
+//        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+//        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.frameLayout, fragment)
+//        fragmentTransaction.addToBackStack("favCocktails")
+//        fragmentTransaction.commit()
+//    }
 
 
 

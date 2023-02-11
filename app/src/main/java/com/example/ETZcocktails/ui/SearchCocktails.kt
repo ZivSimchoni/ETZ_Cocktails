@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ETZcocktails.CocktailList
 import com.example.ETZcocktails.R
@@ -53,9 +55,10 @@ class SearchCocktails : Fragment() {
                     binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
                             //replace fragment search cocktails with single cocktail
-                            val fragmentManager = parentFragmentManager
-                            val fragmentTransaction = fragmentManager.beginTransaction()
-                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack("SingleViewCocktail").commit()
+                            replaceFragment(SingleCocktailFragment(cocktailList[index]))
+//                            val fragmentManager = parentFragmentManager
+//                            val fragmentTransaction = fragmentManager.beginTransaction()
+//                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack("SingleViewCocktail").commit()
                         }
 
                         override fun onItemLongClicked(index: Int) {
@@ -139,5 +142,13 @@ class SearchCocktails : Fragment() {
         //save the recycler view CocktailViewList
 //        outState.putParcelable("CocktailViewList", binding.CocktailViewList.layoutManager?.onSaveInstanceState())
 
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_down,R.anim.slide_up)
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.addToBackStack("SearchCocktails")
+        fragmentTransaction.commit()
     }
 }

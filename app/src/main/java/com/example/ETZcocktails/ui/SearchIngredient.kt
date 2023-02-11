@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
@@ -113,9 +115,10 @@ class SearchIngredient : Fragment() {
                         override fun onItemClicked(index: Int) {
                             println("Clicked")
                             //replace fragment search cocktails with single cocktail
-                            val fragmentManager = parentFragmentManager
-                            val fragmentTransaction = fragmentManager.beginTransaction()
-                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
+                            replaceFragment(SingleCocktailFragment(cocktailList[index]))
+//                            val fragmentManager = parentFragmentManager
+//                            val fragmentTransaction = fragmentManager.beginTransaction()
+//                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
 
                         }
 
@@ -132,6 +135,13 @@ class SearchIngredient : Fragment() {
                 }
             })
         }
+    }
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_down,R.anim.slide_up)
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.addToBackStack("SearchIngredient")
+        fragmentTransaction.commit()
     }
 
 
