@@ -98,14 +98,31 @@ class FavCocktails : Fragment() {
         else{
             binding.NoCocktailsAdded.visibility = View.VISIBLE
             if(GlobalFunctions().isOnline(requireContext())) {
+
                 GetRandomCocktails()
+                try{
+                    binding.DiceButton.setOnClickListener(View.OnClickListener {
+                        GetRandomCocktails()
+                    })
+                }
+                catch (e:Exception) {
+                    Toast.makeText(
+                        requireContext(),
+                        "No internet connection",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
             else {
                 Toast.makeText(requireContext(),
                     "No internet connection",
                     Toast.LENGTH_SHORT
                 ).show()
+                //hide RandomCocktailIntro
+                binding.RandomCocktailIntro.visibility = View.GONE
+                binding.DiceButton.visibility = View.GONE
             }
+
         }
 
         return binding.root
@@ -113,7 +130,7 @@ class FavCocktails : Fragment() {
     
     fun GetRandomCocktails() {
         val cocktailList: MutableList<Cocktail> = mutableListOf()
-        for (i in 1..5) {
+        for (i in 1..3) {
             val API = RetrofitHelper.FetchRandomCocktail()
             API?.enqueue(object : Callback<CocktailList?> {
                 override fun onResponse(
@@ -126,7 +143,7 @@ class FavCocktails : Fragment() {
                     }
 
                     //show all cocktails
-                    binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
+                    binding.ListOfRandomCocktails.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
                             println("Clicked")
                             //replace fragment search cocktails with single cocktail
@@ -141,7 +158,7 @@ class FavCocktails : Fragment() {
                             println("Long Clicked")
                         }
                     }, false)
-                    binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
+                    binding.ListOfRandomCocktails.layoutManager = LinearLayoutManager(requireContext())
                 }
 
                 override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
