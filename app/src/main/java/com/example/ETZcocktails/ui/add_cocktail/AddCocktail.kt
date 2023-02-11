@@ -46,18 +46,17 @@ class AddCocktail : Fragment() {
 
         val Ingri = arrayOf(binding.addCocktailIngredient1 ,binding.addCocktailIngredient2, binding.addCocktailIngredient3, binding.addCocktailIngredient4, binding.addCocktailIngredient5)
         val IngriMeasure = arrayOf(binding.addCocktailIngredient1measure ,binding.addCocktailIngredient2measure, binding.addCocktailIngredient3measure, binding.addCocktailIngredient4measure, binding.addCocktailIngredient5measure)
-        //hidde all ingrimeasure
+
         IngriMeasure.forEach {
             it.visibility = View.GONE
         }
-        //hidde all ingri   except the first
+
         Ingri.forEachIndexed { index, editText ->
             if (index != 0) {
                 editText.visibility = View.GONE
             }
         }
 
-        //for each elemnt in iingri add a listener to the text change and if the text is not empty show the next element and the messaure of it
         Ingri.forEachIndexed { index, editText ->
             editText.addTextChangedListener {
                 if (it.toString().isNotEmpty()) {
