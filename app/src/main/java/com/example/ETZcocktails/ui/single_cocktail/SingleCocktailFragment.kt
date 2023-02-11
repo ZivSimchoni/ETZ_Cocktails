@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -40,6 +40,7 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
 
     private fun updateCocktail(cocktail: Cocktail) {
         //println(cocktail.id)
+        //fill the array with pairs accorid to the order of the textviews
         binding?.singleCocktailName?.text = cocktail.strDrink
         binding?.singleCocktailInstructions?.text = cocktail.strInstructions
         binding?.singleCocktailIng1?.text = cocktail.strIngredient1
@@ -52,6 +53,8 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
         binding?.singleCocktailIng4Value?.text = cocktail.strMeasure4
         binding?.singleCocktailIng5?.text = cocktail.strIngredient5
         binding?.singleCocktailIng5Value?.text = cocktail.strMeasure5
+        var Arr = arrayOf(Pair(binding?.singleCocktailName,"strDrink"),Pair(binding?.singleCocktailInstructions,"strInstructions"),Pair(binding?.singleCocktailIng1,"strIngredient1"),Pair(binding?.singleCocktailIng2,"strIngredient2"),Pair(binding?.singleCocktailIng3,"strIngredient3"),Pair(binding?.singleCocktailIng4,"strIngredient4"),Pair(binding?.singleCocktailIng5,"strIngredient5"),Pair(binding?.singleCocktailIng1Value,"strMeasure1"),Pair(binding?.singleCocktailIng2Value,"strMeasure2"),Pair(binding?.singleCocktailIng3Value,"strMeasure3"),Pair(binding?.singleCocktailIng4Value,"strMeasure4"),Pair(binding?.singleCocktailIng5Value,cocktail.strMeasure5))
+
         when(cocktail.strAlcoholic!!)
         {
             binding?.root?.findViewById<RadioButton>(binding?.radioAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(binding?.radioAlcoholic!!.id)
@@ -108,6 +111,53 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                 binding?.Fav?.setImageResource(R.drawable.ic_star_rate)
             }
         }
+        if(cocktail.idDrink!! < 0){
+
+//            binding?.singleCocktailName?.setOnClickListener{
+//                alertName.setPositiveButton("OK") { dialog, whichButton ->
+//                    val name = editTextName1.text.toString()
+//                    cocktail.strDrink = name
+//                    binding?.singleCocktailName?.text = name
+//                    viewModel.updateCocktail(cocktail)
+//
+//                }
+//                alertName.setNegativeButton("Cancel") { dialog, whichButton ->
+//                    // Canceled.
+//                }
+//                alertName.show()
+//            }
+            val editTextName1 = EditText(requireContext())
+            Arr.forEach { it.first?.setOnClickListener{noneed->
+
+                val arrayListCollection: ArrayList<CharSequence> = ArrayList()
+                var adapter: ArrayAdapter<CharSequence?>
+                var txt: EditText // user input bar
+                val alertName: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+                val editTextName1 = EditText(requireContext())
+                alertName.setTitle(" Alert Dialog Title")
+                alertName.setView(editTextName1)
+                val layoutName = LinearLayout(requireContext())
+                layoutName.orientation = LinearLayout.VERTICAL
+                layoutName.addView(editTextName1) // displays the user input bar
+                alertName.setView(layoutName)
+                alertName.setPositiveButton("OK") { dialog, whichButton ->
+                    val name = editTextName1.text.toString()
+                    cocktail.setByColumn(it.second!!,name)
+                    it.first?.text = name
+                    viewModel.updateCocktail(cocktail)
+
+
+                }
+
+                alertName.setNegativeButton("Cancel") { dialog, whichButton ->
+                    dialog.cancel()
+                    // Canceled.
+                }
+                alertName.show()
+            } }
+            //for each element in the array setonclicklistener to display an alert dialog
+
+        }
 
         binding?.singleCocktailImage?.let {
             Glide.with(requireContext()).load(cocktail.strDrinkThumb).circleCrop().into(
@@ -115,4 +165,5 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
             )
         }
     }
+
 }

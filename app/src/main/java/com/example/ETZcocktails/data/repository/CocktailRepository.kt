@@ -40,6 +40,10 @@ class CocktailRepository(application: Application) {
         cocktailDao?.deleteMyCocktails()
     }
 
+    fun updateCocktail(cocktail: Cocktail) {
+        cocktailDao?.updateItem(cocktail)
+    }
+
 
     fun getItemIdDrink(id:Long)  = cocktailDao?.getItemIdDrink(id)
 

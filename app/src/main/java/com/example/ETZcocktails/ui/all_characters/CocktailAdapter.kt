@@ -4,13 +4,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.R
-import com.example.ETZcocktails.databinding.CocktailViewListBinding import com.google.android.material.snackbar.Snackbar
+import com.example.ETZcocktails.databinding.CocktailViewListBinding
+
 
 class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val TrashVisibility:Boolean =true,val viewModel: CocktailViewModel?=null)
     : RecyclerView.Adapter<CocktailAdapter.ItemViewHolder>() {
@@ -66,6 +71,7 @@ class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val T
                     ).show()
                 }
             }
+
         }
     }
 
