@@ -112,23 +112,7 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
             }
         }
         if(cocktail.idDrink!! < 0){
-
-//            binding?.singleCocktailName?.setOnClickListener{
-//                alertName.setPositiveButton("OK") { dialog, whichButton ->
-//                    val name = editTextName1.text.toString()
-//                    cocktail.strDrink = name
-//                    binding?.singleCocktailName?.text = name
-//                    viewModel.updateCocktail(cocktail)
-//
-//                }
-//                alertName.setNegativeButton("Cancel") { dialog, whichButton ->
-//                    // Canceled.
-//                }
-//                alertName.show()
-//            }
-            val editTextName1 = EditText(requireContext())
             Arr.forEach { it.first?.setOnClickListener{noneed->
-
                 val arrayListCollection: ArrayList<CharSequence> = ArrayList()
                 var adapter: ArrayAdapter<CharSequence?>
                 var txt: EditText // user input bar
