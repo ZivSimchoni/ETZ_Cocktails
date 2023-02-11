@@ -102,12 +102,6 @@ class MyCocktails : Fragment() {
         else
         {
             binding.NoCocktailsAddedMyCocktails.visibility = View.VISIBLE
-            Toast.makeText(requireContext(),
-                "insert sad smiley",
-                Toast.LENGTH_SHORT
-            ).show()
-
-
         }
 
         return binding.root
