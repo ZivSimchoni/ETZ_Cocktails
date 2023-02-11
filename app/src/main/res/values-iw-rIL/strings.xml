@@ -94,4 +94,6 @@
     <string name="glass_collins">הכוס של קולין</string>
     <string name="tag_iba">יבא</string>
     <string name="deleted_message">הקוקטייל נמחק! לחצו על הקו הריק כדי לראות או לבטל את השינויים!</string>
+    <string name="no_cocktails_added">לא הוספתה קוקטיילים</string>
+    <string name="heres_afew_random_cocktails">הנה כמה קוקטיילים רנדומליים בנתיים:</string>
 </resources>

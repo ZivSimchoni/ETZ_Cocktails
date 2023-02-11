@@ -100,4 +100,7 @@
     <string name="add_cocktail">Add Cocktail</string>
     <string name="remove_all">Remove All</string>
     <string name="remove">remove</string>
+    <string name="no_cocktails_added">No Cocktails added</string>
+    <string name="heres_afew_random_cocktails">Here are a few random cocktails to look at:</string>
+
 </resources>

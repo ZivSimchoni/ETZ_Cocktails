@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val favCocktails = FavCocktails()
 
         //set the first fragment
-        replaceFragment(searchCocktails)
+        replaceFragment(favCocktails)
 
         val bottomNav = findViewById(R.id.bottomNavigationMenu) as BottomNavigationView
 
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> {
                     ClearBackStack()
-                    replaceFragment(SearchCocktails())
+                    replaceFragment(favCocktails)
                     true
                 }
             }
