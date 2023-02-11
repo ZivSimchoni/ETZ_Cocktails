@@ -35,22 +35,27 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.searchCocktails -> {
+                    ClearBackStack()
                     replaceFragment(searchCocktails)
                     true
                 }
                 R.id.searchIngredient -> {
+                    ClearBackStack()
                     replaceFragment(searchIngredient)
                     true
                 }
                 R.id.myCocktails -> {
+                    ClearBackStack()
                     replaceFragment(myCocktails)
                     true
                 }
                 R.id.FavCocktails -> {
+                    ClearBackStack()
                     replaceFragment(favCocktails)
                     true
                 }
                 else -> {
+                    ClearBackStack()
                     replaceFragment(SearchCocktails())
                     true
                 }
@@ -83,5 +88,18 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.frameLayout, fragment)
         fragmentTransaction.commit()
     }
+
+    private fun ClearBackStack()
+    {
+        val count = supportFragmentManager.backStackEntryCount;
+
+        for(i in 1..count)
+        {
+            supportFragmentManager.popBackStack();
+        }
+
+
+    }
+
 }
 
