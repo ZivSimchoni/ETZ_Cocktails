@@ -142,10 +142,21 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                 alertName.setView(layoutName)
                 alertName.setPositiveButton("OK") { dialog, whichButton ->
                     val name = editTextName1.text.toString()
-                    cocktail.setByColumn(it.second!!,name)
-                    it.first?.text = name
-                    viewModel.updateCocktail(cocktail)
-
+                    if (name != "") {
+                        cocktail.setByColumn(it.second!!, name)
+                        it.first?.text = name
+                        viewModel.updateCocktail(cocktail)
+                        Toast.makeText(requireContext(),
+                            "Cocktail updated",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    else {
+                        Toast.makeText(requireContext(),
+                            "Please enter a value",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
 
                 }
 
