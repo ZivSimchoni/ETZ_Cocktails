@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
 import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.R
@@ -97,7 +98,7 @@ class FavCocktails : Fragment() {
         else{
             binding.NoCocktailsAdded.visibility = View.VISIBLE
             if(GlobalFunctions().isOnline(requireContext())) {
-                GetRandomCocktail()
+                GetRandomCocktails()
             }
             else {
                 Toast.makeText(requireContext(),
@@ -109,58 +110,46 @@ class FavCocktails : Fragment() {
 
         return binding.root
     }
-
-    fun GetRandomCocktail(){
-        val API = RetrofitHelper.FetchRandomCocktail()
-        API?.enqueue(object: Callback<CocktailList?> {
-            override fun onResponse(
-                call: Call<CocktailList?>,
-                response: Response<CocktailList?>
-            ) {
-                if (response.body()?.drinks != null) {
-                    val cocktailList = response.body()!!.drinks!!
-                    for (cocktail in cocktailList) {
-                        println(cocktail.strDrink)
+    
+    fun GetRandomCocktails() {
+        val cocktailList: MutableList<Cocktail> = mutableListOf()
+        for (i in 1..5) {
+            val API = RetrofitHelper.FetchRandomCocktail()
+            API?.enqueue(object : Callback<CocktailList?> {
+                override fun onResponse(
+                    call: Call<CocktailList?>,
+                    response: Response<CocktailList?>
+                ) {
+                    if (response.body()?.drinks != null) {
+                        val cocktail_ret = response.body()!!.drinks!!
+                        cocktailList.add(cocktail_ret[0])
                     }
-                    binding.ListOfRandomCocktails.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
+
+                    //show all cocktails
+                    binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
+                            println("Clicked")
                             //replace fragment search cocktails with single cocktail
                             replaceFragment(SingleCocktailFragment(cocktailList[index]))
 //                            val fragmentManager = parentFragmentManager
 //                            val fragmentTransaction = fragmentManager.beginTransaction()
-//                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack("SingleViewCocktail").commit()
+//                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
+
                         }
 
                         override fun onItemLongClicked(index: Int) {
                             println("Long Clicked")
                         }
                     }, false)
-                    binding.ListOfRandomCocktails.layoutManager = LinearLayoutManager(requireContext())
+                    binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
                 }
-                else
-                {
-                    Toast.makeText(requireContext(),
-                        "Error No Drinks Found!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    Log.d(
-                        "ETZ-CocktailsList-null",
-                        "List Length is null"
-                    )
-                }
-            }
 
-            override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
-                Toast.makeText(requireContext(),
-                    "Server Error connection failed!",
-                    Toast.LENGTH_SHORT
-                ).show()
-                Log.d(
-                    "ETZ-Cocktails-API-ERROR",
-                    "Found No Cocktails on API"
-                )
-            }
-        })
+                override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
+                    TODO("Not yet implemented")
+                    println("API onFailure ERROR")
+                }
+            })
+        }
     }
 
 
