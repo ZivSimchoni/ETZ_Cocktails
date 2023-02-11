@@ -116,7 +116,7 @@ class AddCocktail : Fragment() {
         binding.finishBtn.setOnClickListener {
             // TODO Input Validation!
             val selectedId: Int = binding.addCocktailRadioGroup.checkedRadioButtonId
-            val radio_button_text: String=binding.root.findViewById<RadioButton>(selectedId).hint.toString()
+            val radio_button_text: String = binding.root.findViewById<RadioButton>(selectedId).hint.toString()
 
             val cocktail = Cocktail(index,idDrink_current,binding.addCocktailName.text.toString(),radio_button_text,binding.addCocktailInstructions.text.toString(),imageUri.toString(),
                   binding.addCocktailIngredient1.text.toString(),binding.addCocktailIngredient2.text.toString(),binding.addCocktailIngredient3.text.toString(),binding.addCocktailIngredient4.text.toString(),binding.addCocktailIngredient5.text.toString(),

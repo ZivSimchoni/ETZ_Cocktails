@@ -13,6 +13,7 @@ class CocktailViewModel (application: Application)  : AndroidViewModel(applicati
     val items : LiveData<List<Cocktail>>? = repository.getItems()
 
     private val _chosenItem = MutableLiveData<Cocktail>()
+
     val chosenItem : LiveData<Cocktail> get() = _chosenItem
 
     fun setItem(cocktail: Cocktail) {
@@ -40,7 +41,6 @@ class CocktailViewModel (application: Application)  : AndroidViewModel(applicati
     fun deleteMyCocktails(){
         repository.deleteMyCocktails()
     }
-
 
     fun getItemIdDrink(id:Long) = repository.getItemIdDrink(id)
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -51,6 +52,13 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
         binding?.singleCocktailIng4Value?.text = cocktail.strMeasure4
         binding?.singleCocktailIng5?.text = cocktail.strIngredient5
         binding?.singleCocktailIng5Value?.text = cocktail.strMeasure5
+        when(cocktail.strAlcoholic!!)
+        {
+            binding?.root?.findViewById<RadioButton>(binding?.radioAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(binding?.radioAlcoholic!!.id)
+            binding?.root?.findViewById<RadioButton>(binding?.radioNonAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(binding?.radioNonAlcoholic!!.id)
+            binding?.root?.findViewById<RadioButton>(binding?.radioOptionalAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(binding?.radioOptionalAlcoholic!!.id)
+            else -> binding?.singleCocktailRadioGroup?.check(binding?.radioAlcoholic!!.id)
+        }
 
         //check if the cocktail is inside the db or not. If it is, then hide the add button
         //if cocktail already liked, display liked image
