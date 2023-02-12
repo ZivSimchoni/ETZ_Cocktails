@@ -30,6 +30,7 @@
     <string name="value_missing_message">Please enter value!</string>
     <string name="cocktail_missing_message">First make at least one Cocktail!</string>
     <string name="deleted_message">Cocktail Deleted! Press the bar to view or undo the changes!</string>
+    <string name="no_name_add_cocktail">"Can't upload an cocktail without a name!"</string>
     <!--   Add A Cocktail    -->
     <string name="add_name">Enter Cocktail Name</string>
     <string name="add_instructions">Enter Cocktail\'s Instructions</string>

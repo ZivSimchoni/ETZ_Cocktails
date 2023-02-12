@@ -111,4 +111,5 @@
     <string name="removed_all_my_cocktails_message">כל הקוקטיילים נמחקו!</string>
     <string name="cocktail_missing_message">תחילה צרו לפחות קוקטייל אחד!</string>
     <string name="added_message">התווסף</string>
+    <string name="no_name_add_cocktail">"לא ניתן להוסיף קוקטייל ללא שם!"</string>
 </resources>
