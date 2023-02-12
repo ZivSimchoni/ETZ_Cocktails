@@ -12,7 +12,6 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -20,7 +19,6 @@ import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.databinding.FragmentSingleCocktailBinding
-
 
 
 class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
@@ -42,7 +40,6 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
             requireActivity().contentResolver.takePersistableUriPermission(it!!, Intent.FLAG_GRANT_READ_URI_PERMISSION)
             imageUri = it
         }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -128,16 +125,12 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
         }
 
         //if cocktail is type MyCocktail
-
-
         if(cocktail.idDrink!! < 0){
             val animshake = AnimationUtils.loadAnimation(requireContext(),R.anim.shake_text)
             binding?.singleCocktailImage?.setImageDrawable(getDrawable(requireContext(),R.drawable.ic_launcher))
 
-
             //set onclick listener for edit button and when clicked animate all first elemnts in arr
             binding?.EditButton?.visibility = View.VISIBLE
-
             binding?.EditButton?.setOnClickListener{
                 binding?.radioAlcoholic?.isClickable = true
                 binding?.radioNonAlcoholic?.isClickable = true
@@ -146,7 +139,6 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                     it.first?.isClickable = true
                 }
                 binding?.singleCocktailImage?.isClickable = true
-
 
                 binding?.EditButton?.visibility = View.GONE
                 binding?.Fav?.visibility = View.GONE
@@ -185,7 +177,7 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                 binding?.cancelButton?.setOnClickListener{
                     selectradio(cocktail)
                     Toast.makeText(requireContext(),
-                        "Canceled", //TODO: add string
+                        getString(R.string.canceled_message),
                         Toast.LENGTH_SHORT
                     ).show()
                     Arr.forEach { it.first?.clearAnimation()
@@ -203,9 +195,7 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                     binding?.radioAlcoholic?.isClickable = false
                     binding?.radioNonAlcoholic?.isClickable = false
                     binding?.radioOptionalAlcoholic?.isClickable = false
-
                 }
-
 
                 if (cocktail.strDrinkThumb == "null") {
                     binding?.singleCocktailImage?.isClickable = false
@@ -216,7 +206,6 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                         pickImageLauncher.launch(arrayOf("image/*"))
                     }
                 }
-
 
                 Arr.forEach {
                     it.first?.startAnimation(animshake)
@@ -238,8 +227,6 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                             if (name != "") {
                                 newCocktail.setByColumn(it.second!!, name)
                                 it.first?.text = name
-
-
                             }
                             else {
                                 Toast.makeText(requireContext(),
@@ -255,9 +242,6 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                         alertName.show()
                     }}
             }
-
-
-
             Arr.forEach {  }
             //for each element in the array setonclicklistener to display an alert dialog
             binding?.singleCocktailImage?.let {
@@ -266,8 +250,8 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                 )
             }
         }
-
     }
+
     fun displayCocktail(cocktail: Cocktail){
         binding?.singleCocktailName?.text = cocktail.strDrink
         binding?.singleCocktailInstructions?.text = cocktail.strInstructions

@@ -25,14 +25,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class SearchCocktails : Fragment() {
 
     private var _binding : FragmentSearchCocktailsBinding? = null
 
     private val binding get() = _binding!!
-
-    //private val viewModel: cocktail_view_list by viewModels()
 
     private lateinit var  adapter: CocktailAdapter
 
@@ -55,17 +52,10 @@ class SearchCocktails : Fragment() {
                     }
                     binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
-                            // TODO: Tidy-up
-                            //replace fragment search cocktails with single cocktail
                             replaceFragment(SingleCocktailFragment(cocktailList[index]))
-//                            val fragmentManager = parentFragmentManager
-//                            val fragmentTransaction = fragmentManager.beginTransaction()
-//                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack("SingleViewCocktail").commit()
                         }
 
                         override fun onItemLongClicked(index: Int) {
-                            // TODO: remove its useless
-                            println("Long Clicked")
                         }
                     }, false)
                     binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
@@ -110,12 +100,7 @@ class SearchCocktails : Fragment() {
                     }
                     binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
-                            // TODO: tidy-up
-                            //replace fragment search cocktails with single cocktail
                             replaceFragment(SingleCocktailFragment(cocktailList[index]))
-//                            val fragmentManager = parentFragmentManager
-//                            val fragmentTransaction = fragmentManager.beginTransaction()
-//                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack("SingleViewCocktail").commit()
                         }
 
                         override fun onItemLongClicked(index: Int) {
@@ -175,7 +160,6 @@ class SearchCocktails : Fragment() {
             }
         }
 
-        //when random button is clicked
         binding.randomButton.setOnClickListener{
             if(GlobalFunctions().isOnline(requireContext())) {
                 GetRandomCocktail()
@@ -210,10 +194,6 @@ class SearchCocktails : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        //TODO fix the cocktail view list not saving
-        // TODO: Tidy-Up
-
-
     }
 
     private fun replaceFragment(fragment: Fragment) {

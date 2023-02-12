@@ -24,7 +24,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class FavCocktails : Fragment() {
 
     private var _binding : FragmentFavCocktailsBinding? = null
@@ -50,18 +49,11 @@ class FavCocktails : Fragment() {
                 //show all cocktails
                 binding.NoCocktailsAdded.visibility = View.GONE
                 binding.scrollView.visibility = View.GONE
-
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     override fun onItemClicked(index: Int) {
-                        // TODO: tidy-up
                         replaceFragment(SingleCocktailFragment(cocktailList[index]))
-//                        val fragmentManager = parentFragmentManager
-//                        val fragmentTransaction = fragmentManager.beginTransaction()
-//                        fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
                     }
                     override fun onItemLongClicked(index: Int) {
-                        // TODO: tidy-up
-                        println("Long Clicked")
                     }
                 },true,viewModel)
                 binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())
@@ -103,7 +95,6 @@ class FavCocktails : Fragment() {
                     R.string.no_connection_message,
                     Toast.LENGTH_SHORT
                 ).show()
-                //hide RandomCocktailIntro
                 binding.RandomCocktailIntro.visibility = View.GONE
                 binding.DiceButton.visibility = View.GONE
             }
@@ -128,16 +119,9 @@ class FavCocktails : Fragment() {
                     //show all cocktails
                     binding.ListOfRandomCocktails.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
-                            println("Clicked")
-                            //replace fragment search cocktails with single cocktail
                             replaceFragment(SingleCocktailFragment(cocktailList[index]))
-//                            val fragmentManager = parentFragmentManager
-//                            val fragmentTransaction = fragmentManager.beginTransaction()
-//                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
                         }
                         override fun onItemLongClicked(index: Int) {
-                            // TODO: tidy-up
-                            println("Long Clicked")
                         }
                     }, false)
                     binding.ListOfRandomCocktails.layoutManager = LinearLayoutManager(requireContext())
@@ -167,7 +151,6 @@ class FavCocktails : Fragment() {
         _binding = null
     }
 
-
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_down,R.anim.slide_up)
@@ -175,17 +158,4 @@ class FavCocktails : Fragment() {
         fragmentTransaction.addToBackStack("favCocktails")
         fragmentTransaction.commit()
     }
-
-    // TODO: Tidy-up
-//    private fun replaceFragment(fragment: Fragment) {
-//        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-//        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction.replace(R.id.frameLayout, fragment)
-//        fragmentTransaction.addToBackStack("favCocktails")
-//        fragmentTransaction.commit()
-//    }
-
-
-
-
 }

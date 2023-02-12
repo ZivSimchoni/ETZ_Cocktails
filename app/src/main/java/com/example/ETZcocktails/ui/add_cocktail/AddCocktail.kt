@@ -19,7 +19,6 @@ import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.databinding.FragmentAddCocktailBinding
 
-
 class AddCocktail : Fragment() {
 
     private var _binding : FragmentAddCocktailBinding? = null
@@ -114,11 +113,8 @@ class AddCocktail : Fragment() {
         }
         binding.finishBtn.setOnClickListener {
 
-
         //if entered name to cocktail:
-
-        if(binding.addCocktailName.text.toString()!="")
-        {
+        if(binding.addCocktailName.text.toString()!="") {
             val selectedId: Int = binding.addCocktailRadioGroup.checkedRadioButtonId
             val radio_button_text: String = binding.root.findViewById<RadioButton>(selectedId).hint.toString()
             val cocktail = Cocktail(index,idDrink_current,binding.addCocktailName.text.toString(),radio_button_text,binding.addCocktailInstructions.text.toString(),imageUri.toString(),
@@ -130,25 +126,19 @@ class AddCocktail : Fragment() {
                 "${binding.addCocktailName.text.toString()} ${getString(R.string.added_message)}",
                 Toast.LENGTH_SHORT
             ).show()
-
             Log.d(
                 "ETZ-Add-Cocktail",
                 "Cocktail Added ${binding.addCocktailName.text.toString()}"
             )
             parentFragmentManager.popBackStack()
-
-
         }
-        else
-        {
+        else {
             Toast.makeText(requireContext(),
                 "${getString(R.string.no_name_add_cocktail)}",
                 Toast.LENGTH_SHORT
             ).show()
         }
-
         }
-
 
         return binding.root
     }

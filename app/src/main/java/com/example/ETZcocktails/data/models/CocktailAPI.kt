@@ -15,9 +15,6 @@ interface CocktailAPI {
     @GET("filter.php?i=")
     fun FetchCocktailByIng(@Query("i") IngToSearch:String) : Call<CocktailList?>?
 
-    @GET("lookup.php?i=")
-    fun FetchCocktailByID(@Query("i") IDCockToSearch:String) : Call<CocktailList?>?
-
     @GET("random.php")
     fun FetchRandomCocktail() : Call<CocktailList?>?
 }

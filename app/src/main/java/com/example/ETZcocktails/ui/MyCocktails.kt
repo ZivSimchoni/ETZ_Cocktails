@@ -53,8 +53,7 @@ class MyCocktails : Fragment() {
                 ).show()
             }
             else {
-            viewModel.deleteMyCocktails() // only this are the old
-            //binding.root.removeAllViews() // only this are the old
+            viewModel.deleteMyCocktails()
             binding.root.findViewById<RecyclerView>(R.id.CocktailViewList).removeAllViewsInLayout()
             Log.d(
                 "ETZ-Delete-ALL-Cocktail",
@@ -71,27 +70,17 @@ class MyCocktails : Fragment() {
 
         if (cocktailList.isNotEmpty())
         {
-            //TODO show all cocktails - this is a temp value
-            //TODO: tidy-up
-            //binding.textMyCocktailName.text = viewModel.items.toString()
-            //get cocktail list
-            try
+            try //get cocktail list
             {
                 binding.NoCocktailsAddedMyCocktails.visibility = View.GONE
                 //show all cocktails
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     //click on a specific cocktail
                     override fun onItemClicked(index: Int) {
-                        //TODO: tidy-up
                         replaceFragment(SingleCocktailFragment(cocktailList[index]))
-//                        val fragmentManager = parentFragmentManager
-//                        val fragmentTransaction = fragmentManager.beginTransaction()
-//                        fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
                     }
 
                     override fun onItemLongClicked(index: Int) {
-                        //TODO: tidy-up
-                        println("Long Clicked")
                     }
                 },true,viewModel)
                 binding.CocktailViewList.layoutManager = LinearLayoutManager(requireContext())

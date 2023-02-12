@@ -40,7 +40,6 @@ interface CocktailDao {
     @Query("SELECT * FROM cocktails WHERE idDrink =:id")
     fun getItemIdDrink(id:Long) : Cocktail
 
-
     @Query("SELECT MAX(id) FROM cocktails")
     fun getMaxId(): Int
 

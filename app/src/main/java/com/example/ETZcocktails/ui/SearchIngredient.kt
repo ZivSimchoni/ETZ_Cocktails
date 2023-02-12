@@ -22,13 +22,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class SearchIngredient : Fragment() {
 
     private var _binding : FragmentSearchIngredientBinding? = null
 
     private val binding get() = _binding!!
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,8 +68,6 @@ class SearchIngredient : Fragment() {
                     val cocktailNameList: MutableList<String> = mutableListOf()
                     for (cocktail in cocktailList) {
                         cocktailNameList.add(cocktail.strDrink.toString())
-                        //send each cocktail name and print its name (in the future display it)
-                        //GetCocktailsByName(cocktail.strDrink.toString())
                     }
                     GetCocktailsByName(cocktailNameList)
                 }
@@ -106,12 +102,7 @@ class SearchIngredient : Fragment() {
                     //show all cocktails
                     binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
-                            // TODO: tidy-up
-                            //replace fragment search cocktails with single cocktail
                             replaceFragment(SingleCocktailFragment(cocktailList[index]))
-//                            val fragmentManager = parentFragmentManager
-//                            val fragmentTransaction = fragmentManager.beginTransaction()
-//                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
                         }
 
                         override fun onItemLongClicked(index: Int) {

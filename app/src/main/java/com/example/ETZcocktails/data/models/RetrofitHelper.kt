@@ -1,12 +1,10 @@
 package com.example.ETZcocktails.data.models
 
-import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailList
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 object RetrofitHelper {
     var cocktailapi: CocktailAPI
@@ -28,12 +26,7 @@ object RetrofitHelper {
         return cocktailapi.FetchCocktailByIng(IngToSearch)
     }
 
-    fun FetchCocktailByID (CocktailIdToSearch: String): Call<CocktailList?>? {
-        return cocktailapi.FetchCocktailByID(CocktailIdToSearch)
-    }
-
     fun FetchRandomCocktail():Call<CocktailList?>? {
         return cocktailapi.FetchRandomCocktail()
     }
-
 }
