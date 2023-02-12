@@ -59,13 +59,7 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
 
         updateCocktail(cocktailToDisplay)
     }
-
-    private fun updateCocktail(cocktail: Cocktail) {
-
-        displayCocktail(cocktail)
-        var newCocktail: Cocktail = cocktail.copy()
-        var Arr = arrayOf(Pair(binding?.singleCocktailName,"strDrink"),Pair(binding?.singleCocktailInstructions,"strInstructions"),Pair(binding?.singleCocktailIng1,"strIngredient1"),Pair(binding?.singleCocktailIng2,"strIngredient2"),Pair(binding?.singleCocktailIng3,"strIngredient3"),Pair(binding?.singleCocktailIng4,"strIngredient4"),Pair(binding?.singleCocktailIng5,"strIngredient5"),Pair(binding?.singleCocktailIng1Value,"strMeasure1"),Pair(binding?.singleCocktailIng2Value,"strMeasure2"),Pair(binding?.singleCocktailIng3Value,"strMeasure3"),Pair(binding?.singleCocktailIng4Value,"strMeasure4"),Pair(binding?.singleCocktailIng5Value,cocktail.strMeasure5))
-
+    fun selectradio(cocktail: Cocktail){
         when(cocktail.strAlcoholic!!)
         {
             binding?.root?.findViewById<RadioButton>(binding?.radioAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(binding?.radioAlcoholic!!.id)
@@ -73,6 +67,15 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
             binding?.root?.findViewById<RadioButton>(binding?.radioOptionalAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(binding?.radioOptionalAlcoholic!!.id)
             else -> binding?.singleCocktailRadioGroup?.check(binding?.radioAlcoholic!!.id)
         }
+    }
+
+    private fun updateCocktail(cocktail: Cocktail) {
+
+        displayCocktail(cocktail)
+        var newCocktail: Cocktail = cocktail.copy()
+        var Arr = arrayOf(Pair(binding?.singleCocktailName,"strDrink"),Pair(binding?.singleCocktailInstructions,"strInstructions"),Pair(binding?.singleCocktailIng1,"strIngredient1"),Pair(binding?.singleCocktailIng2,"strIngredient2"),Pair(binding?.singleCocktailIng3,"strIngredient3"),Pair(binding?.singleCocktailIng4,"strIngredient4"),Pair(binding?.singleCocktailIng5,"strIngredient5"),Pair(binding?.singleCocktailIng1Value,"strMeasure1"),Pair(binding?.singleCocktailIng2Value,"strMeasure2"),Pair(binding?.singleCocktailIng3Value,"strMeasure3"),Pair(binding?.singleCocktailIng4Value,"strMeasure4"),Pair(binding?.singleCocktailIng5Value,cocktail.strMeasure5))
+
+            selectradio(cocktail)
 
         binding?.EditButton?.visibility = View.INVISIBLE
         //check if the cocktail is inside the db or not. If it is, then hide the add button
@@ -180,6 +183,7 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                     binding?.radioOptionalAlcoholic?.isClickable = false
                 }
                 binding?.cancelButton?.setOnClickListener{
+                    selectradio(cocktail)
                     Toast.makeText(requireContext(),
                         "Canceled", //TODO: add string
                         Toast.LENGTH_SHORT
