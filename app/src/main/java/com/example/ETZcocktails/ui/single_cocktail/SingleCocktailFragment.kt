@@ -134,10 +134,11 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
 
             //set onclick listener for edit button and when clicked animate all first elemnts in arr
             binding?.EditButton?.visibility = View.VISIBLE
-            binding?.radioAlcoholic?.isClickable = true
-            binding?.radioNonAlcoholic?.isClickable = true
-            binding?.radioOptionalAlcoholic?.isClickable = true
+
             binding?.EditButton?.setOnClickListener{
+                binding?.radioAlcoholic?.isClickable = true
+                binding?.radioNonAlcoholic?.isClickable = true
+                binding?.radioOptionalAlcoholic?.isClickable = true
                 Arr.forEach{
                     it.first?.isClickable = true
                 }
