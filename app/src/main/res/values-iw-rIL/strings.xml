@@ -109,4 +109,6 @@
     <string name="api_fail_message">מתנצלים, יש בעיה בשרת!</string>
     <string name="no_cocktails_message">לא נמצאו קוקטיילים!</string>
     <string name="removed_all_my_cocktails_message">כל הקוקטיילים נמחקו!</string>
+    <string name="cocktail_missing_message">תחילה צרו לפחות קוקטייל אחד!</string>
+    <string name="added_message">התווסף</string>
 </resources>

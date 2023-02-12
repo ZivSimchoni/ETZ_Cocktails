@@ -20,6 +20,7 @@
     <string name="edit_message">Editing: </string>
     <string name="cancel_message">Cancel</string>
     <string name="save_message">Save</string>
+    <string name="added_message">Added</string>
     <string name="edited_message">Cocktail Updated!</string>
     <string name="added_favs_message">Cocktail Added to Favorites!</string>
     <string name="removed_favs_message">Cocktail removed from Favorites!</string>

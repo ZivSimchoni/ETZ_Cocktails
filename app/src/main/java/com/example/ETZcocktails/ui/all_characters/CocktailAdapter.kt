@@ -71,7 +71,6 @@ class CocktailAdapter(val items:List<Cocktail>,val callBack: ItemListener, val T
                     ).show()
                 }
             }
-
         }
     }
 
