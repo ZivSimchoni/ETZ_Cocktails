@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.databinding.FragmentSingleCocktailBinding
+
 
 
 class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
@@ -41,18 +43,8 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
     private fun updateCocktail(cocktail: Cocktail) {
         //println(cocktail.id)
         //fill the array with pairs accorid to the order of the textviews
-        binding?.singleCocktailName?.text = cocktail.strDrink
-        binding?.singleCocktailInstructions?.text = cocktail.strInstructions
-        binding?.singleCocktailIng1?.text = cocktail.strIngredient1
-        binding?.singleCocktailIng1Value?.text = cocktail.strMeasure1
-        binding?.singleCocktailIng2?.text = cocktail.strIngredient2
-        binding?.singleCocktailIng2Value?.text = cocktail.strMeasure2
-        binding?.singleCocktailIng3?.text = cocktail.strIngredient3
-        binding?.singleCocktailIng3Value?.text = cocktail.strMeasure3
-        binding?.singleCocktailIng4?.text = cocktail.strIngredient4
-        binding?.singleCocktailIng4Value?.text = cocktail.strMeasure4
-        binding?.singleCocktailIng5?.text = cocktail.strIngredient5
-        binding?.singleCocktailIng5Value?.text = cocktail.strMeasure5
+        displayCocktail(cocktail)
+        var newCocktail: Cocktail = cocktail.copy()
         var Arr = arrayOf(Pair(binding?.singleCocktailName,"strDrink"),Pair(binding?.singleCocktailInstructions,"strInstructions"),Pair(binding?.singleCocktailIng1,"strIngredient1"),Pair(binding?.singleCocktailIng2,"strIngredient2"),Pair(binding?.singleCocktailIng3,"strIngredient3"),Pair(binding?.singleCocktailIng4,"strIngredient4"),Pair(binding?.singleCocktailIng5,"strIngredient5"),Pair(binding?.singleCocktailIng1Value,"strMeasure1"),Pair(binding?.singleCocktailIng2Value,"strMeasure2"),Pair(binding?.singleCocktailIng3Value,"strMeasure3"),Pair(binding?.singleCocktailIng4Value,"strMeasure4"),Pair(binding?.singleCocktailIng5Value,cocktail.strMeasure5))
 
         when(cocktail.strAlcoholic!!)
@@ -112,42 +104,83 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
             }
         }
         if(cocktail.idDrink!! < 0){
-            Arr.forEach { it.first?.setOnClickListener{_->
-                val arrayListCollection: ArrayList<CharSequence> = ArrayList()
-                var adapter: ArrayAdapter<CharSequence?>
-                var txt: EditText // user input bar
-                val alertName: AlertDialog.Builder = AlertDialog.Builder(requireContext())
-                val editTextName1 = EditText(requireContext())
-                alertName.setTitle("${getString(R.string.edit_message)} ${cocktail.strDrink}")
-                alertName.setView(editTextName1)
-                val layoutName = LinearLayout(requireContext())
-                layoutName.orientation = LinearLayout.VERTICAL
-                layoutName.addView(editTextName1) // displays the user input bar
-                alertName.setView(layoutName)
-                alertName.setPositiveButton(R.string.save_message) { _, _ ->
-                    val name = editTextName1.text.toString()
-                    if (name != "") {
-                        cocktail.setByColumn(it.second!!, name)
-                        it.first?.text = name
-                        viewModel.updateCocktail(cocktail)
-                        Toast.makeText(requireContext(),
-                            R.string.edited_message,
-                            Toast.LENGTH_SHORT
-                        ).show()
+            val animshake = AnimationUtils.loadAnimation(requireContext(),R.anim.shake_text)
+            //set onclick listener for edit button and when clicked animate all first elemnts in arr
+            binding?.EditButton?.setOnClickListener{
+                binding?.EditButton?.visibility = View.GONE
+                binding?.Fav?.visibility = View.GONE
+                binding?.cancelButton?.visibility = View.VISIBLE
+                binding?.saveButton?.visibility = View.VISIBLE
+
+                binding?.saveButton?.setOnClickListener{
+
+                    viewModel.updateCocktail(newCocktail)
+                    Toast.makeText(requireContext(),
+                        R.string.edited_message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Arr.forEach { it.first?.clearAnimation()
                     }
-                    else {
-                        Toast.makeText(requireContext(),
-                            R.string.value_missing_message,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    binding?.EditButton?.visibility = View.VISIBLE
+                    binding?.Fav?.visibility = View.VISIBLE
+                    binding?.cancelButton?.visibility = View.GONE
+                    binding?.saveButton?.visibility = View.GONE
+
+                }
+                binding?.cancelButton?.setOnClickListener{
+                    Toast.makeText(requireContext(),
+                        "Canceled", //TODO: add string
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Arr.forEach { it.first?.clearAnimation()
                     }
+                    binding?.EditButton?.visibility = View.VISIBLE
+                    binding?.Fav?.visibility = View.VISIBLE
+                    binding?.cancelButton?.visibility = View.GONE
+                    binding?.saveButton?.visibility = View.GONE
+                    displayCocktail(cocktail)
                 }
 
-                alertName.setNegativeButton(R.string.cancel_message) { dialog, _ ->
-                    dialog.cancel() // Canceled.
-                }
-                alertName.show()
-            } }
+
+                Arr.forEach { it.first?.startAnimation(animshake)
+                    it.first?.setOnClickListener{_->
+                        val arrayListCollection: ArrayList<CharSequence> = ArrayList()
+                        var adapter: ArrayAdapter<CharSequence?>
+                        var txt: EditText // user input bar
+                        val alertName: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+                        val editTextName1 = EditText(requireContext())
+                        alertName.setTitle("${getString(R.string.edit_message)} ${it.second}")
+                        alertName.setView(editTextName1)
+                        val layoutName = LinearLayout(requireContext())
+                        layoutName.orientation = LinearLayout.VERTICAL
+                        layoutName.addView(editTextName1) // displays the user input bar
+                        alertName.setView(layoutName)
+                        alertName.setPositiveButton(R.string.save_message) { _, _ ->
+                            val name = editTextName1.text.toString()
+                            if (name != "") {
+                                newCocktail.setByColumn(it.second!!, name)
+                                it.first?.text = name
+
+
+                            }
+                            else {
+                                Toast.makeText(requireContext(),
+                                    R.string.value_missing_message,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+
+                        alertName.setNegativeButton(R.string.cancel_message) { dialog, _ ->
+                            dialog.cancel() // Canceled.
+                        }
+                        alertName.show()
+                    }}
+            }
+
+
+
+            Arr.forEach {  }
             //for each element in the array setonclicklistener to display an alert dialog
         }
 
@@ -156,5 +189,19 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                 it
             )
         }
+    }
+    fun displayCocktail(cocktail: Cocktail){
+        binding?.singleCocktailName?.text = cocktail.strDrink
+        binding?.singleCocktailInstructions?.text = cocktail.strInstructions
+        binding?.singleCocktailIng1?.text = cocktail.strIngredient1
+        binding?.singleCocktailIng1Value?.text = cocktail.strMeasure1
+        binding?.singleCocktailIng2?.text = cocktail.strIngredient2
+        binding?.singleCocktailIng2Value?.text = cocktail.strMeasure2
+        binding?.singleCocktailIng3?.text = cocktail.strIngredient3
+        binding?.singleCocktailIng3Value?.text = cocktail.strMeasure3
+        binding?.singleCocktailIng4?.text = cocktail.strIngredient4
+        binding?.singleCocktailIng4Value?.text = cocktail.strMeasure4
+        binding?.singleCocktailIng5?.text = cocktail.strIngredient5
+        binding?.singleCocktailIng5Value?.text = cocktail.strMeasure5
     }
 }

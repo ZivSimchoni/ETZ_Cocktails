@@ -161,16 +161,15 @@
             app:layout_constraintTop_toBottomOf="@+id/single_cocktail_ing_4_value" />
 
         <ImageButton
-            android:background="@color/transparent"
             android:id="@+id/Fav"
-            android:scaleX="2"
-            android:scaleY="2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
             android:layout_marginTop="20dp"
+            android:background="@color/transparent"
+            android:scaleX="2"
+            android:scaleY="2"
             android:text="Favorite-Icon"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/EditButton"
             app:layout_constraintStart_toEndOf="@+id/single_cocktail_image"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -204,6 +203,42 @@
                 android:hint="@string/tag_optionalAlcoholic"
                 android:id="@+id/radio_optional_alcoholic"/>
         </RadioGroup>
+
+        <ImageButton
+            android:id="@+id/EditButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/transparent"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_edit"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/cancelButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@color/transparent"
+            android:scaleType="fitCenter"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/saveButton"
+            app:layout_constraintTop_toBottomOf="@+id/EditButton"
+            app:srcCompat="@drawable/ic_cancel" />
+
+        <ImageButton
+            android:id="@+id/saveButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/transparent"
+            android:scaleType="fitCenter"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EditButton"
+            app:srcCompat="@drawable/ic_tick" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout >

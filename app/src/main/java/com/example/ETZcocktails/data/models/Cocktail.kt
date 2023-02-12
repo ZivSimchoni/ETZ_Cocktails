@@ -54,6 +54,11 @@ class Cocktail( _id:Int ?=0,_idDrink: Long ?= null,_strDrink: String? = null,_st
                 strIngredient1 +" " + strIngredient2 +" " + strIngredient3 +" " + strIngredient4 +" " + strIngredient5 +" "+
                 strMeasure1 +" " + strMeasure2 +" " + strMeasure3 +" " + strMeasure4 +" " + strMeasure5
     }
+
+    fun copy(): Cocktail {
+        return Cocktail(id,idDrink,strDrink,strAlcoholic,strInstructions,strDrinkThumb,strIngredient1,strIngredient2,strIngredient3,strIngredient4,strIngredient5,strMeasure1,strMeasure2,strMeasure3,strMeasure4,strMeasure5)
+
+    }
 }
 
 data class CocktailList(
