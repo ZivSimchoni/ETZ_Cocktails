@@ -109,7 +109,9 @@ class AddCocktail : Fragment() {
         {
             idDrink_current=-1
         }
-
+        binding.imageBtn.setOnClickListener {
+            pickImageLauncher.launch(arrayOf("image/*"))
+        }
         binding.finishBtn.setOnClickListener {
 
 
@@ -138,11 +140,8 @@ class AddCocktail : Fragment() {
             )
             parentFragmentManager.popBackStack()
 
-            binding.imageBtn.setOnClickListener {
-                pickImageLauncher.launch(arrayOf("image/*"))
-            }
-        }
 
+        }
         else
         {
             Toast.makeText(requireContext(),

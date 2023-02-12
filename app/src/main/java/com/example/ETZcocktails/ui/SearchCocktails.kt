@@ -212,8 +212,7 @@ class SearchCocktails : Fragment() {
         super.onSaveInstanceState(outState)
         //TODO fix the cocktail view list not saving
         // TODO: Tidy-Up
-        //save the recycler view CocktailViewList
-//        outState.putParcelable("CocktailViewList", binding.CocktailViewList.layoutManager?.onSaveInstanceState())
+
 
     }
 

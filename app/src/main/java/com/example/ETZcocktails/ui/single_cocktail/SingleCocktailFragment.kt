@@ -1,12 +1,17 @@
 package com.example.ETZcocktails.ui.single_cocktail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.*
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -23,6 +28,15 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
 
     private val viewModel: CocktailViewModel by viewModels()
     val cocktailToDisplay : Cocktail = cocktail
+    private var imageUri: Uri? = null
+
+    val pickImageLauncher : ActivityResultLauncher<Array<String>> =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) {
+            binding?.singleCocktailImage?.setImageURI(it)
+            requireActivity().contentResolver.takePersistableUriPermission(it!!, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            imageUri = it
+        }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -110,6 +124,12 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
             val animshake = AnimationUtils.loadAnimation(requireContext(),R.anim.shake_text)
             //set onclick listener for edit button and when clicked animate all first elemnts in arr
             binding?.EditButton?.setOnClickListener{
+                Arr.forEach{
+                    it.first?.isClickable = true
+                }
+                binding?.singleCocktailImage?.isClickable = true
+                //binding?.singleCocktailImage?.setImageDrawable(getDrawable(requireContext(),R.drawable.ic_launcher))
+
                 binding?.EditButton?.visibility = View.GONE
                 binding?.Fav?.visibility = View.GONE
                 binding?.cancelButton?.visibility = View.VISIBLE
@@ -128,6 +148,10 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                     binding?.Fav?.visibility = View.VISIBLE
                     binding?.cancelButton?.visibility = View.GONE
                     binding?.saveButton?.visibility = View.GONE
+                    Arr.forEach{
+                        it.first?.isClickable = false
+                    }
+                    binding?.singleCocktailImage?.isClickable = false
 
                 }
                 binding?.cancelButton?.setOnClickListener{
@@ -142,10 +166,20 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                     binding?.cancelButton?.visibility = View.GONE
                     binding?.saveButton?.visibility = View.GONE
                     displayCocktail(cocktail)
+                    Arr.forEach{
+                        it.first?.isClickable = false
+                    }
+                    binding?.singleCocktailImage?.isClickable = false
+
                 }
 
 
-                Arr.forEach { it.first?.startAnimation(animshake)
+
+                Arr.forEach {binding?.singleCocktailImage?.startAnimation(animshake)
+                    binding?.singleCocktailImage?.setOnClickListener{
+                        pickImageLauncher.launch(arrayOf("image/*"))
+                    }
+                    it.first?.startAnimation(animshake)
                     it.first?.setOnClickListener{_->
                         val arrayListCollection: ArrayList<CharSequence> = ArrayList()
                         var adapter: ArrayAdapter<CharSequence?>

@@ -49,6 +49,7 @@ class FavCocktails : Fragment() {
             {
                 //show all cocktails
                 binding.NoCocktailsAdded.visibility = View.GONE
+                binding.scrollView.visibility = View.GONE
 
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     override fun onItemClicked(index: Int) {
@@ -79,6 +80,7 @@ class FavCocktails : Fragment() {
             }
         }
         else{
+            binding.scrollView.visibility = View.VISIBLE
             binding.NoCocktailsAdded.visibility = View.VISIBLE
             if(GlobalFunctions().isOnline(requireContext())) {
 
