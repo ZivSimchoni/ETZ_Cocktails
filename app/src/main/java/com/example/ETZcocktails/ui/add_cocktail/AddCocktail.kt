@@ -146,7 +146,7 @@ class AddCocktail : Fragment() {
         else
         {
             Toast.makeText(requireContext(),
-                "${R.string.no_name_add_cocktail}",
+                "${getString(R.string.no_name_add_cocktail)}",
                 Toast.LENGTH_SHORT
             ).show()
         }
