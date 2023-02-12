@@ -111,6 +111,9 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                 binding?.Fav?.setImageResource(R.drawable.ic_star_rate)
             }
         }
+
+        //if cocktail is type MyCocktail
+
         if(cocktail.idDrink!! < 0){
             Arr.forEach { it.first?.setOnClickListener{_->
                 val arrayListCollection: ArrayList<CharSequence> = ArrayList()
