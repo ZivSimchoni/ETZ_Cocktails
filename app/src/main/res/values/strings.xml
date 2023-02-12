@@ -19,6 +19,7 @@
     <string name="api_fail_message">Something went wrong on our server!</string>
     <string name="edit_message">Editing: </string>
     <string name="cancel_message">Cancel</string>
+    <string name="canceled_message">Canceled</string>
     <string name="save_message">Save</string>
     <string name="added_message">Added</string>
     <string name="edited_message">Cocktail Updated!</string>
