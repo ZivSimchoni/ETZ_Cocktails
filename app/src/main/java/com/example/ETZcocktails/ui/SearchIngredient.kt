@@ -18,7 +18,6 @@ import com.example.ETZcocktails.databinding.FragmentSearchIngredientBinding
 import com.example.ETZcocktails.ui.all_characters.CocktailAdapter
 import com.example.ETZcocktails.ui.single_cocktail.SingleCocktailFragment
 import com.example.ETZcocktails.utils.GlobalFunctions
-import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,7 +40,6 @@ class SearchIngredient : Fragment() {
     ): View? {
 
         _binding = FragmentSearchIngredientBinding.inflate(inflater,container,false)
-        // TODO InputValidation
         binding.searchButton.setOnClickListener {
             if(GlobalFunctions().isOnline(requireContext()))
             {
@@ -50,11 +48,10 @@ class SearchIngredient : Fragment() {
             else
             {
                 Toast.makeText(requireContext(),
-                    "No internet connection",
+                    R.string.no_connection_message,
                     Toast.LENGTH_SHORT
                 ).show()
             }
-
         }
 
         return binding.root
@@ -67,25 +64,24 @@ class SearchIngredient : Fragment() {
                 call: Call<CocktailList?>,
                 response: Response<CocktailList?>
             ) {
-
                 if (response.body() != null) {
                     //get list of cocktail names containing the ingredient
                     val cocktailList = response.body()!!.drinks!!
                     val cocktailNameList: MutableList<String> = mutableListOf()
                     for (cocktail in cocktailList) {
-
                         cocktailNameList.add(cocktail.strDrink.toString())
                         //send each cocktail name and print its name (in the future display it)
                         //GetCocktailsByName(cocktail.strDrink.toString())
                     }
-
                     GetCocktailsByName(cocktailNameList)
                 }
             }
 
             override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
-                // TODO("Not yet implemented")
-                //println("API onFailure ERROR")
+                Toast.makeText(requireContext(),
+                    R.string.api_fail_message,
+                    Toast.LENGTH_SHORT
+                ).show()
                 Log.d(
                     "ETZ-Ingredient-List-null",
                     "List Length is null"
@@ -93,8 +89,6 @@ class SearchIngredient : Fragment() {
             }
         })
     }
-
-
 
     fun GetCocktailsByName(CocktailsToSearch : MutableList<String>) {
         val cocktailList: MutableList<Cocktail> = mutableListOf()
@@ -109,20 +103,19 @@ class SearchIngredient : Fragment() {
                         val cocktail_ret = response.body()!!.drinks!!
                         cocktailList.add(cocktail_ret[0])
                     }
-
                     //show all cocktails
                     binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
-                            println("Clicked")
+                            // TODO: tidy-up
                             //replace fragment search cocktails with single cocktail
                             replaceFragment(SingleCocktailFragment(cocktailList[index]))
 //                            val fragmentManager = parentFragmentManager
 //                            val fragmentTransaction = fragmentManager.beginTransaction()
 //                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
-
                         }
 
                         override fun onItemLongClicked(index: Int) {
+                            // TODO remove i think cause its useless
                             println("Long Clicked")
                         }
                     }, false)
@@ -130,8 +123,14 @@ class SearchIngredient : Fragment() {
                 }
 
                 override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
-                    TODO("Not yet implemented")
-                    println("API onFailure ERROR")
+                    Toast.makeText(requireContext(),
+                        R.string.api_fail_message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.d(
+                        "ETZ-API-Failure-null",
+                        "API Query Failed"
+                    )
                 }
             })
         }
@@ -143,8 +142,4 @@ class SearchIngredient : Fragment() {
         fragmentTransaction.addToBackStack("SearchIngredient")
         fragmentTransaction.commit()
     }
-
-
-
-
 }

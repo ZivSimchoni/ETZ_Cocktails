@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item android:title="@string/my_favorite_cocktails"
         android:id="@+id/FavCocktails"
         android:icon="@drawable/ic_star_rate"/>
@@ -11,8 +12,6 @@
     <item android:title="@string/search_ingredient"
         android:id="@+id/searchIngredient"
         android:icon="@drawable/ic_cocktail_search_24"/>
-
-
 
     <item android:title="@string/my_cocktails"
         android:id="@+id/myCocktails"

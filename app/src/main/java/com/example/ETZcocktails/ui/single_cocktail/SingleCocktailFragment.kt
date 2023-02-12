@@ -78,14 +78,14 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                 if(cocktail.idDrink!!<=-1) //if cocktail is made by me
                 {
                     Toast.makeText(requireContext(),
-                        "Cocktail removed from My Cocktails",
+                        R.string.removed_my_cocktails_message,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
                 else //if cocktail is from api
                 {
                     Toast.makeText(requireContext(),
-                        "Cocktail removed from Favorites",
+                        R.string.removed_favs_message,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -96,14 +96,14 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                 if(cocktail.idDrink!!<=-1) //if cocktail is made by me
                 {
                     Toast.makeText(requireContext(),
-                        "Cocktail added to My Cocktails",
+                        R.string.added_my_cocktails_message,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
                 else //if cocktail is from api
                 {
                     Toast.makeText(requireContext(),
-                        "Cocktail added to Favorites",
+                        R.string.added_favs_message,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -112,46 +112,43 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
             }
         }
         if(cocktail.idDrink!! < 0){
-            Arr.forEach { it.first?.setOnClickListener{noneed->
+            Arr.forEach { it.first?.setOnClickListener{_->
                 val arrayListCollection: ArrayList<CharSequence> = ArrayList()
                 var adapter: ArrayAdapter<CharSequence?>
                 var txt: EditText // user input bar
                 val alertName: AlertDialog.Builder = AlertDialog.Builder(requireContext())
                 val editTextName1 = EditText(requireContext())
-                alertName.setTitle(" Alert Dialog Title")
+                alertName.setTitle("${getString(R.string.edit_message)} ${cocktail.strDrink}")
                 alertName.setView(editTextName1)
                 val layoutName = LinearLayout(requireContext())
                 layoutName.orientation = LinearLayout.VERTICAL
                 layoutName.addView(editTextName1) // displays the user input bar
                 alertName.setView(layoutName)
-                alertName.setPositiveButton("OK") { dialog, whichButton ->
+                alertName.setPositiveButton(R.string.save_message) { _, _ ->
                     val name = editTextName1.text.toString()
                     if (name != "") {
                         cocktail.setByColumn(it.second!!, name)
                         it.first?.text = name
                         viewModel.updateCocktail(cocktail)
                         Toast.makeText(requireContext(),
-                            "Cocktail updated",
+                            R.string.edited_message,
                             Toast.LENGTH_SHORT
                         ).show()
                     }
                     else {
                         Toast.makeText(requireContext(),
-                            "Please enter a value",
+                            R.string.value_missing_message,
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-
                 }
 
-                alertName.setNegativeButton("Cancel") { dialog, whichButton ->
-                    dialog.cancel()
-                    // Canceled.
+                alertName.setNegativeButton(R.string.cancel_message) { dialog, _ ->
+                    dialog.cancel() // Canceled.
                 }
                 alertName.show()
             } }
             //for each element in the array setonclicklistener to display an alert dialog
-
         }
 
         binding?.singleCocktailImage?.let {
@@ -160,5 +157,4 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
             )
         }
     }
-
 }

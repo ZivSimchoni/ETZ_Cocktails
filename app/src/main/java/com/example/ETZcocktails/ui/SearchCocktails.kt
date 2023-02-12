@@ -55,6 +55,7 @@ class SearchCocktails : Fragment() {
                     }
                     binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
+                            // TODO: Tidy-up
                             //replace fragment search cocktails with single cocktail
                             replaceFragment(SingleCocktailFragment(cocktailList[index]))
 //                            val fragmentManager = parentFragmentManager
@@ -63,6 +64,7 @@ class SearchCocktails : Fragment() {
                         }
 
                         override fun onItemLongClicked(index: Int) {
+                            // TODO: remove its useless
                             println("Long Clicked")
                         }
                     }, false)
@@ -71,7 +73,7 @@ class SearchCocktails : Fragment() {
                 else
                 {
                     Toast.makeText(requireContext(),
-                        "Error No Drinks Found!",
+                        R.string.no_cocktails_message,
                         Toast.LENGTH_SHORT
                     ).show()
                     Log.d(
@@ -83,7 +85,7 @@ class SearchCocktails : Fragment() {
 
             override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
                 Toast.makeText(requireContext(),
-                    "Server Error connection failed!",
+                    R.string.api_fail_message,
                     Toast.LENGTH_SHORT
                 ).show()
                 Log.d(
@@ -94,9 +96,6 @@ class SearchCocktails : Fragment() {
         })
     }
 
-
-
-    //get a random cocktail
     fun GetRandomCocktail(){
         val API = RetrofitHelper.FetchRandomCocktail()
         API?.enqueue(object: Callback<CocktailList?> {
@@ -111,6 +110,7 @@ class SearchCocktails : Fragment() {
                     }
                     binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
+                            // TODO: tidy-up
                             //replace fragment search cocktails with single cocktail
                             replaceFragment(SingleCocktailFragment(cocktailList[index]))
 //                            val fragmentManager = parentFragmentManager
@@ -119,6 +119,7 @@ class SearchCocktails : Fragment() {
                         }
 
                         override fun onItemLongClicked(index: Int) {
+                            //TODO: remove its useless
                             println("Long Clicked")
                         }
                     }, false)
@@ -127,7 +128,7 @@ class SearchCocktails : Fragment() {
                 else
                 {
                     Toast.makeText(requireContext(),
-                        "Error No Drinks Found!",
+                        R.string.no_cocktails_message,
                         Toast.LENGTH_SHORT
                     ).show()
                     Log.d(
@@ -139,7 +140,7 @@ class SearchCocktails : Fragment() {
 
             override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
                 Toast.makeText(requireContext(),
-                    "Server Error connection failed!",
+                    R.string.api_fail_message,
                     Toast.LENGTH_SHORT
                 ).show()
                 Log.d(
@@ -168,7 +169,7 @@ class SearchCocktails : Fragment() {
             }
             else {
                 Toast.makeText(requireContext(),
-                    "No internet connection",
+                    R.string.no_connection_message,
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -182,7 +183,7 @@ class SearchCocktails : Fragment() {
             }
             else {
                 Toast.makeText(requireContext(),
-                    "No internet connection",
+                    R.string.no_connection_message,
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -197,7 +198,7 @@ class SearchCocktails : Fragment() {
             }
             else {
                 Toast.makeText(requireContext(),
-                    "No internet connection",
+                    R.string.no_connection_message,
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -210,6 +211,7 @@ class SearchCocktails : Fragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         //TODO fix the cocktail view list not saving
+        // TODO: Tidy-Up
         //save the recycler view CocktailViewList
 //        outState.putParcelable("CocktailViewList", binding.CocktailViewList.layoutManager?.onSaveInstanceState())
 

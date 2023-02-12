@@ -48,7 +48,7 @@ class MyCocktails : Fragment() {
             var listLen = viewModel.getListCocktailsByMe()!!.toList().size
             if (listLen == 0) {
                 Toast.makeText(binding.root.context,
-                    "First make at least one Cocktail!",
+                    R.string.cocktail_missing_message,
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -61,7 +61,7 @@ class MyCocktails : Fragment() {
                 "Deleted All Cocktails."
             )
             Toast.makeText(binding.root.context,
-                "Deleted All Cocktails!",
+                R.string.removed_all_my_cocktails_message,
                 Toast.LENGTH_SHORT
             ).show()
             }
@@ -72,6 +72,7 @@ class MyCocktails : Fragment() {
         if (cocktailList.isNotEmpty())
         {
             //TODO show all cocktails - this is a temp value
+            //TODO: tidy-up
             //binding.textMyCocktailName.text = viewModel.items.toString()
             //get cocktail list
             try
@@ -81,7 +82,7 @@ class MyCocktails : Fragment() {
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     //click on a specific cocktail
                     override fun onItemClicked(index: Int) {
-                        println("Clicked")
+                        //TODO: tidy-up
                         replaceFragment(SingleCocktailFragment(cocktailList[index]))
 //                        val fragmentManager = parentFragmentManager
 //                        val fragmentTransaction = fragmentManager.beginTransaction()
@@ -89,6 +90,7 @@ class MyCocktails : Fragment() {
                     }
 
                     override fun onItemLongClicked(index: Int) {
+                        //TODO: tidy-up
                         println("Long Clicked")
                     }
                 },true,viewModel)
@@ -96,7 +98,14 @@ class MyCocktails : Fragment() {
             }
             catch (e:Exception)
             {
-                print("error in cocktail list probably")
+                Toast.makeText(requireContext(),
+                    R.string.api_fail_message,
+                    Toast.LENGTH_SHORT
+                ).show()
+                Log.d(
+                    "ETZ-List-My-Cocktails-Failure",
+                    "error in cocktail list probably"
+                )
             }
         }
         else

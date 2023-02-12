@@ -27,25 +27,6 @@ import retrofit2.Response
 
 class FavCocktails : Fragment() {
 
-//    private var param1: String? = null
-//    private var param2: String? = null
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        arguments?.let {
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
-//        }
-//    }
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_fav_cocktails, container, false)
-//    }
-
     private var _binding : FragmentFavCocktailsBinding? = null
 
     val viewModel : CocktailViewModel by activityViewModels()
@@ -54,8 +35,6 @@ class FavCocktails : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
@@ -66,23 +45,21 @@ class FavCocktails : Fragment() {
         val cocktailList=viewModel.getListFavoriteCocktails()!!
         if (!cocktailList.isEmpty())
         {
-
-            //get cocktail list
-            try
+            try //to get cocktail list
             {
-
                 //show all cocktails
                 binding.NoCocktailsAdded.visibility = View.GONE
 
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     override fun onItemClicked(index: Int) {
-                        println("Clicked")
+                        // TODO: tidy-up
                         replaceFragment(SingleCocktailFragment(cocktailList[index]))
 //                        val fragmentManager = parentFragmentManager
 //                        val fragmentTransaction = fragmentManager.beginTransaction()
 //                        fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
                     }
                     override fun onItemLongClicked(index: Int) {
+                        // TODO: tidy-up
                         println("Long Clicked")
                     }
                 },true,viewModel)
@@ -91,8 +68,14 @@ class FavCocktails : Fragment() {
             }
             catch (e:Exception)
             {
-
-                print("error in cocktail list probably")
+                Toast.makeText(requireContext(),
+                    R.string.api_fail_message,
+                    Toast.LENGTH_SHORT
+                ).show()
+                Log.d(
+                    "ETZ-List-Favorites-Cocktails-Failure",
+                    "error in cocktail list probably"
+                )
             }
         }
         else{
@@ -108,21 +91,20 @@ class FavCocktails : Fragment() {
                 catch (e:Exception) {
                     Toast.makeText(
                         requireContext(),
-                        "No internet connection",
+                        R.string.no_connection_message,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
             else {
                 Toast.makeText(requireContext(),
-                    "No internet connection",
+                    R.string.no_connection_message,
                     Toast.LENGTH_SHORT
                 ).show()
                 //hide RandomCocktailIntro
                 binding.RandomCocktailIntro.visibility = View.GONE
                 binding.DiceButton.visibility = View.GONE
             }
-
         }
 
         return binding.root
@@ -141,7 +123,6 @@ class FavCocktails : Fragment() {
                         val cocktail_ret = response.body()!!.drinks!!
                         cocktailList.add(cocktail_ret[0])
                     }
-
                     //show all cocktails
                     binding.ListOfRandomCocktails.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
@@ -151,10 +132,9 @@ class FavCocktails : Fragment() {
 //                            val fragmentManager = parentFragmentManager
 //                            val fragmentTransaction = fragmentManager.beginTransaction()
 //                            fragmentTransaction.replace(R.id.frameLayout, SingleCocktailFragment(cocktailList[index])).addToBackStack(null).commit()
-
                         }
-
                         override fun onItemLongClicked(index: Int) {
+                            // TODO: tidy-up
                             println("Long Clicked")
                         }
                     }, false)
@@ -162,8 +142,14 @@ class FavCocktails : Fragment() {
                 }
 
                 override fun onFailure(call: Call<CocktailList?>, t: Throwable) {
-                    TODO("Not yet implemented")
-                    println("API onFailure ERROR")
+                    Toast.makeText(requireContext(),
+                        R.string.api_fail_message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.d(
+                        "ETZ-Cocktails-API-ERROR-Fav",
+                        "Found No Cocktails on API"
+                    )
                 }
             })
         }
@@ -188,6 +174,7 @@ class FavCocktails : Fragment() {
         fragmentTransaction.commit()
     }
 
+    // TODO: Tidy-up
 //    private fun replaceFragment(fragment: Fragment) {
 //        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
 //        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()

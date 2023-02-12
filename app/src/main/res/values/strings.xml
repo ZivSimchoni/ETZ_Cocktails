@@ -5,7 +5,7 @@
     <string name="search_txt">Search</string>
     <string name="search_cocktails">Search Cocktails</string>
     <string name="search_ingredient">Search By Ingredient</string>
-    <string name="my_favorite_cocktails">Favorite Cocktails</string>
+    <string name="my_favorite_cocktails">Favorites</string>
     <string name="my_cocktails">My Cocktails</string>
     <string name="my_ingredients">My Ingredients</string>
     <string name="number_ingredients"># Ingredients:</string>
@@ -14,6 +14,20 @@
     <string name="glass">Glass</string>
     <string name="serve">Serve</string>
     <string name="bye_message">Press back twice to exit!</string>
+    <string name="no_connection_message">No internet connection!</string>
+    <string name="no_cocktails_message">No Cocktails Found!</string>
+    <string name="api_fail_message">Something went wrong on our server!</string>
+    <string name="edit_message">Editing: </string>
+    <string name="cancel_message">Cancel</string>
+    <string name="save_message">Save</string>
+    <string name="edited_message">Cocktail Updated!</string>
+    <string name="added_favs_message">Cocktail Added to Favorites!</string>
+    <string name="removed_favs_message">Cocktail removed from Favorites!</string>
+    <string name="added_my_cocktails_message">Cocktail Added to My Cocktails!</string>
+    <string name="removed_my_cocktails_message">Cocktail Removed from My Cocktails!</string>
+    <string name="removed_all_my_cocktails_message">Removed ALL My Cocktails!</string>
+    <string name="value_missing_message">Please enter value!</string>
+    <string name="cocktail_missing_message">First make at least one Cocktail!</string>
     <string name="deleted_message">Cocktail Deleted! Press the bar to view or undo the changes!</string>
     <!--   Add A Cocktail    -->
     <string name="add_name">Enter Cocktail Name</string>
