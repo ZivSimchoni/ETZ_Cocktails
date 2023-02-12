@@ -128,7 +128,7 @@ class AddCocktail : Fragment() {
             //index ++
 
             Toast.makeText(requireContext(),
-                "${binding.addCocktailName.text.toString()} ${R.string.added_message}",
+                "${binding.addCocktailName.text.toString()} ${getString(R.string.added_message)}",
                 Toast.LENGTH_SHORT
             ).show()
 
