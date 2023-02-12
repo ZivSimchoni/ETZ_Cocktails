@@ -113,32 +113,47 @@ class AddCocktail : Fragment() {
 
 
         binding.finishBtn.setOnClickListener {
-            // TODO Input Validation!
-            val selectedId: Int = binding.addCocktailRadioGroup.checkedRadioButtonId
-            val radio_button_text: String = binding.root.findViewById<RadioButton>(selectedId).hint.toString()
 
-            val cocktail = Cocktail(index,idDrink_current,binding.addCocktailName.text.toString(),radio_button_text,binding.addCocktailInstructions.text.toString(),imageUri.toString(),
-                  binding.addCocktailIngredient1.text.toString(),binding.addCocktailIngredient2.text.toString(),binding.addCocktailIngredient3.text.toString(),binding.addCocktailIngredient4.text.toString(),binding.addCocktailIngredient5.text.toString(),
-                  binding.addCocktailIngredient1measure.text.toString(),binding.addCocktailIngredient2measure.text.toString(),binding.addCocktailIngredient3measure.text.toString(),binding.addCocktailIngredient4measure.text.toString(),binding.addCocktailIngredient5measure.text.toString())
-            print("Cocktail Added:\n${cocktail}")
-            viewModel.addItem(cocktail)
-            //index ++
+            //if entered name to cocktail:
 
-            Toast.makeText(requireContext(),
-                "Added ${binding.addCocktailName.text.toString()}",
-                Toast.LENGTH_SHORT
-            ).show()
+            if(binding.addCocktailName.text.toString()!="")
+            {
+                val selectedId: Int = binding.addCocktailRadioGroup.checkedRadioButtonId
+                val radio_button_text: String = binding.root.findViewById<RadioButton>(selectedId).hint.toString()
 
-            Log.d(
-                "ETZ-Add-Cocktail",
-                "Cocktail Added ${binding.addCocktailName.text.toString()}"
-            )
-            parentFragmentManager.popBackStack()
+                val cocktail = Cocktail(index,idDrink_current,binding.addCocktailName.text.toString(),radio_button_text,binding.addCocktailInstructions.text.toString(),imageUri.toString(),
+                    binding.addCocktailIngredient1.text.toString(),binding.addCocktailIngredient2.text.toString(),binding.addCocktailIngredient3.text.toString(),binding.addCocktailIngredient4.text.toString(),binding.addCocktailIngredient5.text.toString(),
+                    binding.addCocktailIngredient1measure.text.toString(),binding.addCocktailIngredient2measure.text.toString(),binding.addCocktailIngredient3measure.text.toString(),binding.addCocktailIngredient4measure.text.toString(),binding.addCocktailIngredient5measure.text.toString())
+                print("Cocktail Added:\n${cocktail}")
+                viewModel.addItem(cocktail)
+                //index ++
+
+                Toast.makeText(requireContext(),
+                    "Added ${binding.addCocktailName.text.toString()}",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                Log.d(
+                    "ETZ-Add-Cocktail",
+                    "Cocktail Added ${binding.addCocktailName.text.toString()}"
+                )
+                parentFragmentManager.popBackStack()
+
+                binding.imageBtn.setOnClickListener {
+                    pickImageLauncher.launch(arrayOf("image/*"))
+                }
             }
 
-            binding.imageBtn.setOnClickListener {
-            pickImageLauncher.launch(arrayOf("image/*"))
-        }
+            else
+            {
+                Toast.makeText(requireContext(),
+                    "Cant upload an cocktail without a name!!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            }
+
 
         return binding.root
     }
