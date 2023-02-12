@@ -94,8 +94,8 @@
     <string name="glass_collins">הכוס של קולין</string>
     <string name="tag_iba">יבא</string>
     <string name="deleted_message">הקוקטייל נמחק! לחצו על הקו הריק כדי לראות או לבטל את השינויים!</string>
-    <string name="no_cocktails_added">לא הוספתה קוקטיילים</string>
-    <string name="heres_afew_random_cocktails">הנה כמה קוקטיילים רנדומליים בנתיים:</string>
+    <string name="no_cocktails_added">לא נוספו קוקטיילים</string>
+    <string name="heres_afew_random_cocktails">הינה כמה קוקטיילים רנדומליים בינתיים:</string>
     <string name="edit_message">"עורך: "</string>
     <string name="cancel_message">בטל</string>
     <string name="save_message">שמור</string>
@@ -104,7 +104,7 @@
     <string name="added_my_cocktails_message">הקוקטייל התווסף לקוקטיילים שלי!</string>
     <string name="added_favs_message">הקוקטייל התווסף למועדפים!</string>
     <string name="removed_favs_message">הקוקטייל הוסר מהמועדפים!</string>
-    <string name="removed_my_cocktails_message">הקוקטייל הוסר מהקוטיילים שלי!\\</string>
+    <string name="removed_my_cocktails_message">הקוקטייל הוסר מהקוטיילים שלי!</string>
     <string name="no_connection_message">אין גישה לאינטרנט!</string>
     <string name="api_fail_message">מתנצלים, יש בעיה בשרת!</string>
     <string name="no_cocktails_message">לא נמצאו קוקטיילים!</string>
