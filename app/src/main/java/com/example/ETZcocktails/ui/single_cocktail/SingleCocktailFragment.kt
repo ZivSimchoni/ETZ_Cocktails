@@ -74,6 +74,7 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
             else -> binding?.singleCocktailRadioGroup?.check(binding?.radioAlcoholic!!.id)
         }
 
+        binding?.EditButton?.visibility = View.INVISIBLE
         //check if the cocktail is inside the db or not. If it is, then hide the add button
         //if cocktail already liked, display liked image
         if (viewModel.getItemIdDrink((cocktail.idDrink)!!) != null) {
@@ -125,12 +126,17 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
 
         //if cocktail is type MyCocktail
 
+
         if(cocktail.idDrink!! < 0){
             val animshake = AnimationUtils.loadAnimation(requireContext(),R.anim.shake_text)
             binding?.singleCocktailImage?.setImageDrawable(getDrawable(requireContext(),R.drawable.ic_launcher))
 
 
             //set onclick listener for edit button and when clicked animate all first elemnts in arr
+            binding?.EditButton?.visibility = View.VISIBLE
+            binding?.radioAlcoholic?.isClickable = true
+            binding?.radioNonAlcoholic?.isClickable = true
+            binding?.radioOptionalAlcoholic?.isClickable = true
             binding?.EditButton?.setOnClickListener{
                 Arr.forEach{
                     it.first?.isClickable = true
@@ -148,6 +154,8 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                     if (imageUri != null){
                         newCocktail.strDrinkThumb = imageUri.toString()
                     }
+                    val selectedId: Int = binding?.singleCocktailRadioGroup?.checkedRadioButtonId!!
+                    newCocktail.strAlcoholic = binding?.root?.findViewById<RadioButton>(selectedId)?.hint.toString()
 
                     viewModel.updateCocktail(newCocktail)
                     Toast.makeText(requireContext(),
@@ -166,7 +174,9 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                     }
                     binding?.singleCocktailImage?.clearAnimation()
                     binding?.singleCocktailImage?.isClickable = false
-
+                    binding?.radioAlcoholic?.isClickable = false
+                    binding?.radioNonAlcoholic?.isClickable = false
+                    binding?.radioOptionalAlcoholic?.isClickable = false
                 }
                 binding?.cancelButton?.setOnClickListener{
                     Toast.makeText(requireContext(),
@@ -185,6 +195,9 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                     }
                     binding?.singleCocktailImage?.clearAnimation()
                     binding?.singleCocktailImage?.isClickable = false
+                    binding?.radioAlcoholic?.isClickable = false
+                    binding?.radioNonAlcoholic?.isClickable = false
+                    binding?.radioOptionalAlcoholic?.isClickable = false
 
                 }
 
