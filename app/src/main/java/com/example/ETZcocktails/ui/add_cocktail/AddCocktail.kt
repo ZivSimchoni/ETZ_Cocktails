@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
+import com.example.ETZcocktails.R
 import com.example.ETZcocktails.databinding.FragmentAddCocktailBinding
 
 
@@ -82,8 +83,6 @@ class AddCocktail : Fragment() {
                 }
             }
         }
-        //binding.addCocktailIngredient2.visibility=View.GONE
-        //binding.addCocktailIngredient2measure.visibility=View.GONE
 
         var index : Int
         try {
@@ -111,21 +110,25 @@ class AddCocktail : Fragment() {
             idDrink_current=-1
         }
 
-
         binding.finishBtn.setOnClickListener {
-            // TODO Input Validation!
+
+
+        //if entered name to cocktail:
+
+        if(binding.addCocktailName.text.toString()!="")
+        {
             val selectedId: Int = binding.addCocktailRadioGroup.checkedRadioButtonId
             val radio_button_text: String = binding.root.findViewById<RadioButton>(selectedId).hint.toString()
 
             val cocktail = Cocktail(index,idDrink_current,binding.addCocktailName.text.toString(),radio_button_text,binding.addCocktailInstructions.text.toString(),imageUri.toString(),
-                  binding.addCocktailIngredient1.text.toString(),binding.addCocktailIngredient2.text.toString(),binding.addCocktailIngredient3.text.toString(),binding.addCocktailIngredient4.text.toString(),binding.addCocktailIngredient5.text.toString(),
-                  binding.addCocktailIngredient1measure.text.toString(),binding.addCocktailIngredient2measure.text.toString(),binding.addCocktailIngredient3measure.text.toString(),binding.addCocktailIngredient4measure.text.toString(),binding.addCocktailIngredient5measure.text.toString())
+                binding.addCocktailIngredient1.text.toString(),binding.addCocktailIngredient2.text.toString(),binding.addCocktailIngredient3.text.toString(),binding.addCocktailIngredient4.text.toString(),binding.addCocktailIngredient5.text.toString(),
+                binding.addCocktailIngredient1measure.text.toString(),binding.addCocktailIngredient2measure.text.toString(),binding.addCocktailIngredient3measure.text.toString(),binding.addCocktailIngredient4measure.text.toString(),binding.addCocktailIngredient5measure.text.toString())
             print("Cocktail Added:\n${cocktail}")
             viewModel.addItem(cocktail)
             //index ++
 
             Toast.makeText(requireContext(),
-                "Added ${binding.addCocktailName.text.toString()}",
+                "${binding.addCocktailName.text.toString()} ${R.string.added_message}",
                 Toast.LENGTH_SHORT
             ).show()
 
@@ -134,11 +137,22 @@ class AddCocktail : Fragment() {
                 "Cocktail Added ${binding.addCocktailName.text.toString()}"
             )
             parentFragmentManager.popBackStack()
-            }
 
             binding.imageBtn.setOnClickListener {
-            pickImageLauncher.launch(arrayOf("image/*"))
+                pickImageLauncher.launch(arrayOf("image/*"))
+            }
         }
+
+        else
+        {
+            Toast.makeText(requireContext(),
+                "${getString(R.string.no_name_add_cocktail)}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        }
+
 
         return binding.root
     }

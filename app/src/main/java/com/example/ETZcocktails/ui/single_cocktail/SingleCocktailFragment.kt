@@ -103,6 +103,9 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
                 binding?.Fav?.setImageResource(R.drawable.ic_star_rate)
             }
         }
+
+        //if cocktail is type MyCocktail
+
         if(cocktail.idDrink!! < 0){
             val animshake = AnimationUtils.loadAnimation(requireContext(),R.anim.shake_text)
             //set onclick listener for edit button and when clicked animate all first elemnts in arr

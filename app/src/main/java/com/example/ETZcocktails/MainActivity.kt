@@ -79,9 +79,7 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
-
     private fun replaceFragment(fragment: Fragment) {
-
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
@@ -92,14 +90,10 @@ class MainActivity : AppCompatActivity() {
     private fun ClearBackStack()
     {
         val count = supportFragmentManager.backStackEntryCount;
-
         for(i in 1..count)
         {
             supportFragmentManager.popBackStack();
         }
-
-
     }
-
 }
 
