@@ -11,7 +11,9 @@ import com.example.ETZcocktails.ui.FavCocktails
 import com.example.ETZcocktails.ui.MyCocktails
 import com.example.ETZcocktails.ui.SearchCocktails
 import com.example.ETZcocktails.ui.SearchIngredient
+import com.example.ETZcocktails.ui.single_cocktail.SingleCocktailFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         setContentView(R.layout.activity_main)
         //create an instance of each fragment
@@ -61,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
     // double click to exit -> the only downside that its over all the fragments

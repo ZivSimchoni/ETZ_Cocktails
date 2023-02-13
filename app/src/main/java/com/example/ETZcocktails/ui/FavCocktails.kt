@@ -51,7 +51,24 @@ class FavCocktails : Fragment() {
                 binding.scrollView.visibility = View.GONE
                 binding.CocktailViewList.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                     override fun onItemClicked(index: Int) {
-                        replaceFragment(SingleCocktailFragment(cocktailList[index]))
+                        var bundle:Bundle = Bundle()
+                        bundle.putInt("id", cocktailList[index].id!!)
+                        bundle.putLong("idDrink", cocktailList[index].idDrink!!)
+                        bundle.putString("name", cocktailList[index].strDrink)
+                        bundle.putString("image", cocktailList[index].strDrinkThumb)
+                        bundle.putString("instructions", cocktailList[index].strInstructions)
+                        bundle.putString("ingredients", cocktailList[index].strIngredient1)
+                        bundle.putString("ingredients2", cocktailList[index].strIngredient2)
+                        bundle.putString("ingredients3", cocktailList[index].strIngredient3)
+                        bundle.putString("ingredients4", cocktailList[index].strIngredient4)
+                        bundle.putString("ingredients5", cocktailList[index].strIngredient5)
+                        bundle.putString("measure", cocktailList[index].strMeasure1)
+                        bundle.putString("measure2", cocktailList[index].strMeasure2)
+                        bundle.putString("measure3", cocktailList[index].strMeasure3)
+                        bundle.putString("measure4", cocktailList[index].strMeasure4)
+                        bundle.putString("measure5", cocktailList[index].strMeasure5)
+
+                        replaceFragment(SingleCocktailFragment().newInstance(bundle))
                     }
                     override fun onItemLongClicked(index: Int) {
                     }
@@ -119,7 +136,24 @@ class FavCocktails : Fragment() {
                     //show all cocktails
                     binding.ListOfRandomCocktails.adapter = CocktailAdapter(cocktailList, object : CocktailAdapter.ItemListener {
                         override fun onItemClicked(index: Int) {
-                            replaceFragment(SingleCocktailFragment(cocktailList[index]))
+                            var bundle:Bundle = Bundle()
+                            bundle.putInt("id", cocktailList[index].id!!)
+                            bundle.putLong("idDrink", cocktailList[index].idDrink!!)
+                            bundle.putString("name", cocktailList[index].strDrink)
+                            bundle.putString("image", cocktailList[index].strDrinkThumb)
+                            bundle.putString("instructions", cocktailList[index].strInstructions)
+                            bundle.putString("ingredients", cocktailList[index].strIngredient1)
+                            bundle.putString("ingredients2", cocktailList[index].strIngredient2)
+                            bundle.putString("ingredients3", cocktailList[index].strIngredient3)
+                            bundle.putString("ingredients4", cocktailList[index].strIngredient4)
+                            bundle.putString("ingredients5", cocktailList[index].strIngredient5)
+                            bundle.putString("measure", cocktailList[index].strMeasure1)
+                            bundle.putString("measure2", cocktailList[index].strMeasure2)
+                            bundle.putString("measure3", cocktailList[index].strMeasure3)
+                            bundle.putString("measure4", cocktailList[index].strMeasure4)
+                            bundle.putString("measure5", cocktailList[index].strMeasure5)
+
+                            replaceFragment(SingleCocktailFragment().newInstance(bundle))
                         }
                         override fun onItemLongClicked(index: Int) {
                         }

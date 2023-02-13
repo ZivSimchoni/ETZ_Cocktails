@@ -19,14 +19,25 @@ import com.example.ETZcocktails.Cocktail
 import com.example.ETZcocktails.CocktailViewModel
 import com.example.ETZcocktails.R
 import com.example.ETZcocktails.databinding.FragmentSingleCocktailBinding
+import com.google.gson.Gson
 
 
-class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
+class SingleCocktailFragment() : Fragment() {
+
+    fun newInstance(bundle : Bundle) : SingleCocktailFragment{
+        val fragment = ReceiveFragment()
+        fragment.arguments = bundle
+        return fragment
+    }
+
+    private fun ReceiveFragment(): SingleCocktailFragment {
+        return SingleCocktailFragment()
+    }
 
     private var binding:FragmentSingleCocktailBinding ?= null
 
     private val viewModel: CocktailViewModel by viewModels()
-    val cocktailToDisplay : Cocktail = cocktail
+    lateinit var cocktailToDisplay : Cocktail
     private var imageUri: Uri? = null
 
     val pickImageLauncher : ActivityResultLauncher<Array<String>> =
@@ -46,22 +57,89 @@ class SingleCocktailFragment(cocktail: Cocktail) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSingleCocktailBinding.inflate(inflater, container, false)
+        //set cocktailtodisplay according to arguments
+        var id = arguments?.getInt("id")
+        var idDrink = arguments?.getLong("idDrink")
+        var strDrink = arguments?.getString("strDrink")
+        var strDrinkThumb = arguments?.getString("image")
+        var instrc= arguments?.getString("instructions")
+        var ingredients1 = arguments?.getString("ingredients")
+        var ingredients2 = arguments?.getString("ingredients2")
+        var ingredients3 = arguments?.getString("ingredients3")
+        var ingredients4 = arguments?.getString("ingredients4")
+        var ingredients5 = arguments?.getString("ingredients5")
+        var measure1 = arguments?.getString("measure")
+        var measure2 = arguments?.getString("measure2")
+        var measure3 = arguments?.getString("measure3")
+        var measure4 = arguments?.getString("measure4")
+        var measure5 = arguments?.getString("measure5")
+        cocktailToDisplay = Cocktail(id,idDrink,strDrink,"",instrc,strDrinkThumb,ingredients1,ingredients2,ingredients3,ingredients4,ingredients5,measure1,measure2,measure3,measure4,measure5)
         updateCocktail(cocktailToDisplay)
-
         return binding?.root
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        var bundle:Bundle = Bundle()
+        bundle.putInt("id", cocktailToDisplay?.id!!)
+        bundle.putLong("idDrink", cocktailToDisplay.idDrink!!)
+        bundle.putString("name", cocktailToDisplay.strDrink)
+        bundle.putString("image", cocktailToDisplay.strDrinkThumb)
+        bundle.putString("instructions", cocktailToDisplay.strInstructions)
+        bundle.putString("ingredients", cocktailToDisplay.strIngredient1)
+        bundle.putString("ingredients2", cocktailToDisplay.strIngredient2)
+        bundle.putString("ingredients3", cocktailToDisplay.strIngredient3)
+        bundle.putString("ingredients4", cocktailToDisplay.strIngredient4)
+        bundle.putString("ingredients5", cocktailToDisplay.strIngredient5)
+        bundle.putString("measure", cocktailToDisplay.strMeasure1)
+        bundle.putString("measure2", cocktailToDisplay.strMeasure2)
+        bundle.putString("measure3", cocktailToDisplay.strMeasure3)
+        bundle.putString("measure4", cocktailToDisplay.strMeasure4)
+        bundle.putString("measure5", cocktailToDisplay.strMeasure5)
+        outState.putBundle("cocktail", bundle)
+
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        if (savedInstanceState != null) {
+            var arguments = savedInstanceState.getBundle("cocktail")
+            var id = arguments?.getInt("id")
+            var idDrink = arguments?.getLong("idDrink")
+            var strDrink = arguments?.getString("strDrink")
+            var strDrinkThumb = arguments?.getString("image")
+            var instrc= arguments?.getString("instructions")
+            var ingredients1 = arguments?.getString("ingredients")
+            var ingredients2 = arguments?.getString("ingredients2")
+            var ingredients3 = arguments?.getString("ingredients3")
+            var ingredients4 = arguments?.getString("ingredients4")
+            var ingredients5 = arguments?.getString("ingredients5")
+            var measure1 = arguments?.getString("measure")
+            var measure2 = arguments?.getString("measure2")
+            var measure3 = arguments?.getString("measure3")
+            var measure4 = arguments?.getString("measure4")
+            var measure5 = arguments?.getString("measure5")
+            cocktailToDisplay = Cocktail(id,idDrink,strDrink,"",instrc,strDrinkThumb,ingredients1,ingredients2,ingredients3,ingredients4,ingredients5,measure1,measure2,measure3,measure4,measure5)
+            updateCocktail(cocktailToDisplay)
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
 
-        updateCocktail(cocktailToDisplay)
     }
-    fun selectradio(cocktail: Cocktail){
-        when(cocktail.strAlcoholic!!)
-        {
-            binding?.root?.findViewById<RadioButton>(binding?.radioAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(binding?.radioAlcoholic!!.id)
-            binding?.root?.findViewById<RadioButton>(binding?.radioNonAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(binding?.radioNonAlcoholic!!.id)
-            binding?.root?.findViewById<RadioButton>(binding?.radioOptionalAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(binding?.radioOptionalAlcoholic!!.id)
+    fun selectradio(cocktail: Cocktail) {
+        when (cocktail.strAlcoholic!!) {
+            binding?.root?.findViewById<RadioButton>(binding?.radioAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(
+                binding?.radioAlcoholic!!.id
+            )
+            binding?.root?.findViewById<RadioButton>(binding?.radioNonAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(
+                binding?.radioNonAlcoholic!!.id
+            )
+            binding?.root?.findViewById<RadioButton>(binding?.radioOptionalAlcoholic!!.id)?.hint.toString() -> binding?.singleCocktailRadioGroup?.check(
+                binding?.radioOptionalAlcoholic!!.id
+            )
             else -> binding?.singleCocktailRadioGroup?.check(binding?.radioAlcoholic!!.id)
         }
     }
