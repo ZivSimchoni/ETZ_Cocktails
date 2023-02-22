@@ -1,10 +1,13 @@
-# ETZ_Cocktails
+# ETZ_Cocktails - Android App in Kotlin
+## App Idea
 
-ETZ Kotlin App Cocktails Manager
+The app idea is for ETZ Cocktails, a platform that allows cocktail enthusiasts to discover, save, and favorite drinks.
+The app provides access to a vast database of cocktail recipes, which users can easily search by name or ingredient, view detailed instructions, and save their favorite recipes all in one place. With its user-friendly design and comprehensive features, ETZ Cocktails streamlines the cocktail-making process and makes it easier for users to create delicious drinks.
 
-# Project Setup
+## Features
 
-**data** - contains the data model, the local and remote databases and the repositories <br>
-**ui** - contains the activities and fragments <br>
-**utils** - contains the extensions and the utils classes (i.e helper classes and such) <br>
-**di** - contains the dependency injection classes <br>
+- Search for cocktails by name or ingredient
+- Minimalistic design
+- Works offline
+- Create your own cocktail recipes
+- Save your favorite cocktails
