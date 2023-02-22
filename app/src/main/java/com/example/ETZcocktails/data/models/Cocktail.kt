@@ -1,5 +1,6 @@
 package com.example.ETZcocktails
 
+import android.os.Bundle
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -27,6 +28,7 @@ class Cocktail( _id:Int ?=0,_idDrink: Long ?= null,_strDrink: String? = null,_st
     var strMeasure4: String? = _strMeasure4
     var strMeasure5: String? = _strMeasure5
 
+
     fun setByColumn(column: String, value: String) {
         when (column) {
             "id" -> id = value.toInt()
@@ -47,6 +49,8 @@ class Cocktail( _id:Int ?=0,_idDrink: Long ?= null,_strDrink: String? = null,_st
             "strMeasure5" -> strMeasure5 = value
         }
     }
+
+
 
 
     override fun toString(): String {

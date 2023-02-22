@@ -1,4 +1,5 @@
 # ETZ_Cocktails - Android App in Kotlin
+
 ## App Idea
 
 The app idea is for ETZ Cocktails, a platform that allows cocktail enthusiasts to discover, save, and favorite drinks.
@@ -6,8 +7,10 @@ The app provides access to a vast database of cocktail recipes, which users can 
 
 ## Features
 
-- Search for cocktails by name or ingredient
-- Minimalistic design
-- Works offline
-- Create your own cocktail recipes
-- Save your favorite cocktails
+-   Search for cocktails by name or ingredient
+-   Minimalistic design
+-   Works offline
+-   Create your own cocktail recipes
+-   Save your favorite cocktails
+
+https://user-images.githubusercontent.com/63504193/219678542-7ce039f0-e521-4f7c-84a9-054af515e7a9.mp4
